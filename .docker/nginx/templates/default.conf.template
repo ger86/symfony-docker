@@ -1,6 +1,6 @@
 server {
     listen 80;
-    server_name dev.symfony.com;
+    server_name ${NGINX_BACKEND_DOMAIN};
     root /var/www/symfony/public;
 
     location / {

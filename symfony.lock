@@ -23,6 +23,9 @@
     "doctrine/dbal": {
         "version": "v2.10.0"
     },
+    "doctrine/deprecations": {
+        "version": "v0.5.3"
+    },
     "doctrine/doctrine-bundle": {
         "version": "2.0",
         "recipe": {
@@ -78,6 +81,12 @@
     "doctrine/sql-formatter": {
         "version": "1.1.0"
     },
+    "friendsofphp/proxy-manager-lts": {
+        "version": "v1.0.5"
+    },
+    "laminas/laminas-code": {
+        "version": "4.4.3"
+    },
     "laminas/laminas-zendframework-bridge": {
         "version": "1.0.4"
     },
@@ -129,6 +138,9 @@
     },
     "symfony/dependency-injection": {
         "version": "v5.0.1"
+    },
+    "symfony/deprecation-contracts": {
+        "version": "v2.4.0"
     },
     "symfony/doctrine-bridge": {
         "version": "v5.0.1"
@@ -184,6 +196,9 @@
             "src/Kernel.php"
         ]
     },
+    "symfony/http-client-contracts": {
+        "version": "v2.4.0"
+    },
     "symfony/http-foundation": {
         "version": "v5.0.1"
     },
@@ -202,8 +217,8 @@
     "symfony/mime": {
         "version": "v5.0.1"
     },
-    "symfony/orm-pack": {
-        "version": "v1.0.7"
+    "symfony/polyfill-intl-grapheme": {
+        "version": "v1.23.1"
     },
     "symfony/polyfill-intl-idn": {
         "version": "v1.13.1"
@@ -219,6 +234,9 @@
     },
     "symfony/polyfill-php80": {
         "version": "v1.18.0"
+    },
+    "symfony/polyfill-php81": {
+        "version": "v1.23.0"
     },
     "symfony/routing": {
         "version": "4.2",
@@ -239,6 +257,9 @@
     },
     "symfony/stopwatch": {
         "version": "v5.0.1"
+    },
+    "symfony/string": {
+        "version": "v5.3.7"
     },
     "symfony/var-dumper": {
         "version": "v5.0.1"

@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 
 services:
     db:
@@ -17,26 +17,28 @@ services:
             - symfony
     php:
         build:
-            context: .
-            dockerfile: docker/php/Dockerfile
+            context: ./php
             args:
                 TIMEZONE: ${TIMEZONE}
         volumes:
-            - ./symfony/:/var/www/symfony/
+            - symfony_docker_app_sync:/var/www/symfony/
         networks:
             - symfony
     nginx:
         build:
-            context: .
-            dockerfile: docker/nginx/Dockerfile
+            context: ./nginx
         volumes:
-            - ./symfony/:/var/www/symfony/
+            - symfony_docker_app_sync:/var/www/symfony/
         ports:
             - 80:80
         networks:
             - symfony
+        env_file:
+            - .env.nginx.local
 
 volumes:
+    symfony_docker_app_sync:
+        external: true
     db_app:
 
 networks:
