@@ -2,7 +2,8 @@ version: "3"
 
 services:
     db:
-        image: mysql:8.0.20
+        image: mysql:8.0.23
+        platform: linux/x86_64
         command: --default-authentication-plugin=mysql_native_password
         volumes:
             - "db_app:/var/lib/mysql"
@@ -21,14 +22,14 @@ services:
             args:
                 TIMEZONE: ${TIMEZONE}
         volumes:
-            - symfony_docker_app_sync:/var/www/symfony/
+            - symfony_dockerized_app_sync:/var/www/symfony/
         networks:
             - symfony
     nginx:
         build:
             context: ./nginx
         volumes:
-            - symfony_docker_app_sync:/var/www/symfony/
+            - symfony_dockerized_app_sync:/var/www/symfony/
         ports:
             - 80:80
         networks:
@@ -37,7 +38,7 @@ services:
             - .env.nginx.local
 
 volumes:
-    symfony_docker_app_sync:
+    symfony_dockerized_app_sync:
         external: true
     db_app:
 

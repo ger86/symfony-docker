@@ -5,7 +5,7 @@ options:
     verbose: true
 
 syncs:
-    symfony_docker_app_sync:
+    symfony_dockerized_app_sync:
         src: "../"
         sync_userid: "33"
         sync_excludes:

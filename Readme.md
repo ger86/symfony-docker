@@ -1,8 +1,8 @@
-# 🐳 Docker + PHP 8.0 + MySQL + Nginx + Symfony 5.3 Boilerplate
+# 🐳 Docker + PHP 8.1 + MySQL + Nginx + Symfony 6.1 Boilerplate
 
 ## Description
 
-This is a complete stack for running Symfony 5.3 into Docker containers using docker-compose tool with [docker-sync library](https://docker-sync.readthedocs.io/en/latest/).
+This is a complete stack for running Symfony 6.1 into Docker containers using docker-compose tool with [docker-sync library](https://docker-sync.readthedocs.io/en/latest/).
 
 It is composed by 4 containers:
 
@@ -26,13 +26,13 @@ It is composed by 4 containers:
 6. Use the following value for the DATABASE_URL environment variable:
 
 ```
-DATABASE_URL=mysql://app_user:helloworld@db:3306/app_db?serverVersion=5.7
+DATABASE_URL=mysql://app_user:helloworld@db:3306/app_db?serverVersion=8.0.23
 ```
 
 You could change the name, user and password of the database in the `env` file at the root of the project.
 
 ## To learn more
 
-I have recorded a Youtube session explaining the different parts of this project. You could see it here: 
+I have recorded a Youtube session explaining the different parts of this project. You could see it here:
 
 [Boilerplate para Symfony basado en Docker, NGINX y PHP8](https://youtu.be/A82-hry3Zvw)
