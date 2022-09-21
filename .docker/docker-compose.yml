@@ -4,6 +4,8 @@ services:
     db:
         image: mysql:8.0.23
         platform: linux/x86_64
+        # The mysql_native_password authentication plugin is statically 
+        # linked into the server, so no installation is necessary.
         command: --default-authentication-plugin=mysql_native_password
         volumes:
             - "db_app:/var/lib/mysql"
@@ -22,14 +24,14 @@ services:
             args:
                 TIMEZONE: ${TIMEZONE}
         volumes:
-            - symfony_dockerized_app_sync:/var/www/symfony/
+            - ../:/var/www/symfony/
         networks:
             - symfony
     nginx:
         build:
             context: ./nginx
         volumes:
-            - symfony_dockerized_app_sync:/var/www/symfony/
+            - ../:/var/www/symfony/
         ports:
             - 80:80
         networks:
