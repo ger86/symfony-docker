@@ -40,6 +40,19 @@
             "migrations/.gitignore"
         ]
     },
+    "doctrine/mongodb-odm-bundle": {
+        "version": "4.5",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "main",
+            "version": "4.4",
+            "ref": "838e2cfe094621c1c40ec2dd2166f1a48b895180"
+        },
+        "files": [
+            "config/packages/doctrine_mongodb.yaml",
+            "src/Document/.gitignore"
+        ]
+    },
     "phpunit/phpunit": {
         "version": "9.5",
         "recipe": {
