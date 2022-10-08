@@ -17,18 +17,18 @@ doctrine_mongodb:
                     prefix: 'App\Document'
                     alias: App
 
-when@prod:
-    doctrine_mongodb:
-        auto_generate_proxy_classes: false
-        auto_generate_hydrator_classes: false
-        document_managers:
-            default:
-                metadata_cache_driver:
-                    type: service
-                    id: doctrine_mongodb.system_cache_pool
+# when@prod:
+#     doctrine_mongodb:
+#         auto_generate_proxy_classes: false
+#         auto_generate_hydrator_classes: false
+#         document_managers:
+#             default:
+#                 metadata_cache_driver:
+#                     type: service
+#                     id: doctrine_mongodb.system_cache_pool
 
-    framework:
-        cache:
-            pools:
-                doctrine_mongodb.system_cache_pool:
-                    adapter: cache.system
+#     framework:
+#         cache:
+#             pools:
+#                 doctrine_mongodb.system_cache_pool:
+#                     adapter: cache.system

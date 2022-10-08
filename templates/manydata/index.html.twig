@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ManydataController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+{{ dump(oneb) }}
+<hr />
+{{ dump(auth) }}
+<hr />
+{{ dump(book) }}
+    {{ dump(book.owner.books.snapshot) }}
+      {% for user in book.owner.books.snapshot %}
+       <h1> autor ::  {{ book.owner.nombre }}</h1>  
+        <h1>  :: {{ user.datePublicacion }}</h1>  
+         <h5>  :: {{ user.nombre }}</h5>  
+            {{ dump(user.categories[0]) }}
+             {% for categ in user.categories[0] %} 
+          <h3> {{ categ }}</h3>
+         {% endfor %} 
+      {% endfor %} 
+   {# {{ book.owner.books.snapshot }} #} 
+    <ul>
+        <li>Your controller at <code><a href="{{ '/var/www/symfony/src/Controller/ManydataController.php'|file_link(0) }}">src/Controller/ManydataController.php</a></code></li>
+        <li>Your template at <code><a href="{{ '/var/www/symfony/templates/manydata/index.html.twig'|file_link(0) }}">templates/manydata/index.html.twig</a></code></li>
+    </ul>
+</div>
+{% endblock %}
