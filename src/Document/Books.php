@@ -25,9 +25,10 @@ class Books
   public $nombre;
    
 
- /** @MongoDB\ReferenceOne(targetDocument=Author::class, inversedBy="books" ) */
+ /** @MongoDB\ReferenceOne(targetDocument=Author::class, mappedBy="books", storeAs="id" ) */
    public $author;
-
+# storeAs="id" solo almacenará un id pero no una referencia con los datos (muy ligero)
+# 6342970556f603463e0d8c42 - estrateg,hooke,madrid - Fieras al volante - 6341520692cd2eb4340606bc - 2000
 
       /** 
     * @MongoDB\Field(type="int")

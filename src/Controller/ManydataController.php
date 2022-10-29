@@ -40,7 +40,7 @@ class ManydataController extends AbstractController
         //  $aut->setNombre("Numancio Peguero");
         
         // Si quiero inyectar el mismo user sin crear nuevos
-        //  $autorId = $dm->find(Author::class, '6341520692cd2eb4340606bc');
+           $autorId = $dm->find(Author::class, '6341520692cd2eb4340606bc');
         
         // $bookOne = new Books();
         // $bookOne->setNombre('Speedy Gonzales');
@@ -51,25 +51,25 @@ class ManydataController extends AbstractController
         // $bookOne2 = new Books();
         // $bookOne2->setNombre('Fieras al volante');
         // $bookOne2->setCategories(array('estrateg', 'hooke', 'madrid'));
-        // $bookOne2->setDatePublicacion(2000);
-        // $bookOne2->setAuthor($aut);
+        // $bookOne2->setDatePublicacion(1980);
+        // $bookOne2->setAuthor($autorId);
         
         // $dm->persist($aut);
         // $dm->persist($bookOne);
-        // $dm->persist($bookOne2);
+        //  $dm->persist($bookOne2);
 
-        // $dm->flush();
+        //  $dm->flush();
 
         $getB = $dm->find(Author::class, '6341520692cd2eb4340606bc');
         $res = $getB->getBooks();
          
-        $getABook = $dm->find(Books::class, '634152d192cd2eb4340606c1');
-        $getAut = $getABook->getAuthor();
+        // $getABook = $dm->find(Books::class, '634152d192cd2eb4340606c1');
+        // $getAut = $getABook->getAuthor();
 
         return $this->render('manydata/index.html.twig', [
             'book' => $res,
-            'auth' => $getAut,
-            'oneb' => $getABook
+            // 'auth' => $getAut,
+            // 'oneb' => $getABook
         ]);
     }
 }

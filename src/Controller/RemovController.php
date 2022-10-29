@@ -24,7 +24,7 @@ class RemovController extends AbstractController
  
 
         return $this->render('remov/index.html.twig', [
-            'dataToRemove' => $result,
+            'dataToRemove' => '$result',
         ]);
     }
 }
