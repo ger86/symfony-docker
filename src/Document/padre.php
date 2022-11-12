@@ -11,7 +11,7 @@ use Doctrine\ODM\MongoDB\PersistentCollection;
  * 
  * @MongoDB\Document(collection="Padre")
  */
-class Elpadre
+class Padre
 {
     /** @MongoDB\Id*/
     private $id;

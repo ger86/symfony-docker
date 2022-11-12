@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Welcome Ricardo Perez{% endblock %}
+{% block stylesheets %}
+<link href="{{ asset('/styles/home.css') }}" rel="stylesheet" />
+    
+{% endblock %}
+{% block body %}
+ 
+
+<section class="Home">
+      <div class="Home_wrapper">
+      <div class="Home_wrapper_msg">
+         <span>
+         Biembenido al sistema web exagonal.
+         </span>
+         <b>
+          Ingrese sus Credenciales
+         </b>
+       </div>
+      <form class="Home_wrapper-form" action="processloguin">
+      <div class="Home_wrapper_form_wrapper">
+      <input type="text" name="test" placeholder="nombre" />
+      <input type="password" placeholder="********" />
+      <input type="submit" value="entrar" /> 
+      </div>
+      </form>
+      </div>
+</section>
+{% endblock %}

@@ -18,7 +18,7 @@ class Loshijos
      */
     private $name;
  
-    /** @MongoDB\ReferenceOne(targetDocument=Elpadre::class, inversedBy="hijos") */
+    /** @MongoDB\ReferenceOne(targetDocument=Padre::class, inversedBy="hijos") */
     public $padre;
    
    public function setName($name):void{
@@ -30,7 +30,7 @@ class Loshijos
     public function setPadre($padre):void{
         $this->padre = $padre;
      }
-    public function getPadre():Elpadre{
+    public function getPadre():Padre{
         return $this->padre;
      }
    
