@@ -2,8 +2,8 @@ version: "3"
 
 services:
     db:
-        image: mysql:8.0.23
-        platform: linux/x86_64
+        image: mysql
+        # platform: linux/x86_64
         # The mysql_native_password authentication plugin is statically 
         # linked into the server, so no installation is necessary.
         command: --default-authentication-plugin=mysql_native_password
