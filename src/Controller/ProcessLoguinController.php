@@ -3,7 +3,10 @@
 namespace App\Controller;
 
 use App\Document\Userone;
-use App\Form\Loguin; 
+use App\Event\LoguinEvents;
+use App\Events\Loguinevent;
+use App\Form\Loguin;
+use Doctrine\Common\EventManager;
 use Doctrine\ODM\MongoDB\DocumentManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -23,18 +26,27 @@ class ProcessLoguinController extends AbstractController
         $form = $this->createForm(Loguin::class);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
-            // $this->confirm = ÷
-            //  $result = new Loguinhelper($form->getData()['email']
-            // ,$form->getData()['email']);
+          
             $values = ['email' => $form->getData()['email'],
                         'mipass' => md5($form->getData()['password'])];
            
             $geturser = $dm->getRepository(Userone::class)
              ->findOneBy($values);
             
-          dd( $geturser, $form->getData()['password'] );
+       //   dd( $geturser, $form->getData()['password'] );
 
             if($geturser){
+                $evm = new EventManager();
+                $test = new LoguinEvents($evm);
+                $evm->dispatchEvent(Loguinevents::LogueIn);
+
+                // $eventSubscriber = new Loguinevent();
+                // $evm->addEventSubscriber($eventSubscriber);
+                // $evm->dispatchEvent(Loguinevent::preFoo);
+
+                // $evm->dispatchEvent(TestEventSubscriber::preFoo);
+
+
                 $geco = array('result'=> true);
                 return $this->redirectToRoute("app_home", $geco);
                //  return new Response('worl');

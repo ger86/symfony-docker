@@ -19,14 +19,7 @@
          </b>
        </div>
        {{ form_start(Loguin, {'action': '/processloguin', 'method': 'POST'}) }}
-       {{ form_widget(Loguin) }}
-      {# <form class="Home_wrapper-form" action="processloguin" method="POST"> #}
-      {# <div class="Home_wrapper_form_wrapper">
-      <input type="text" name="test" placeholder="nombre" />
-      <input type="password" placeholder="********" />
-      <input type="submit" value="entrar" /> 
-      </div> #}
-      {# </form> #}
+       {{ form_widget(Loguin) }} 
       <input type="submit" value="entrar" /> 
       {{ form_end(Loguin) }}
       </div>
