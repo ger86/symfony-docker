@@ -16,14 +16,18 @@
          <b>
           Ingrese sus Credenciales
          </b>
+         {% if ErrorMessage  %}
+         <span class="Home_wrapper_msg-error">
+         {{ ErrorMessage }} 
+       </span>{% endif %}
        </div>
+        <div class="Home_wrapper_form">
        {{ form_start(Loguin, {'action': '/processloguin', 'method': 'POST'}) }}
        {{ form_widget(Loguin) }} 
       <input type="submit" value="entrar" /> 
       {{ form_end(Loguin) }}
       </div>
-      <pre>{% if ErrorMessage  %}
-        <p>{{ ErrorMessage }}</p>
-       {% endif %}</pre>
+       </div>
+      
 </section>
 {% endblock %}

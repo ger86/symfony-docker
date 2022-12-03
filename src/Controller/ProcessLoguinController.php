@@ -27,34 +27,25 @@ class ProcessLoguinController extends AbstractController
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
           
-            $values = ['email' => $form->getData()['email'],
-                        'mipass' => md5($form->getData()['password'])];
+        $values = ['email' => $form->getData()['email'],
+                  'mipass' => md5($form->getData()['password'])];
            
-            $geturser = $dm->getRepository(Userone::class)
-             ->findOneBy($values);
+        $geturser = $dm->getRepository(Userone::class)
+        ->findOneBy($values);
             
-       //   dd( $geturser, $form->getData()['password'] );
-
+     
             if($geturser){
                 $evm = new EventManager();
                  $test = new LoguinEvents($evm);
                 $evm->dispatchEvent(Loguinevents::LogueIn);
-
-                $geco = array('result'=> true);
-                return $this->redirectToRoute("app_home", $geco);
-               //  return new Response('worl');
-            } else {
+                
+                return $this->redirectToRoute("app_pannels");
+            
+                } else {
                 $errorMensaje = ['mensaje' => '😔 Revisa las credenciales subministradas.'];
                 return $this->redirectToRoute("app_home", $errorMensaje , 302);
-            }
-
-           
+            } 
 
         }
-
-         
-            
-
-      
     }
 }

@@ -1,0 +1,90 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Barlow', sans-serif;
+    font-size: 1em;
+  }
+  #header{
+    background: #565656;
+  }
+  #header > .topSection{
+    display: flex;
+    justify-content: flex-end;
+  }
+  #header > .topSection a{
+    color: white;
+    line-height: 40px;
+    padding: 0 20px;
+  }
+   
+#backend-elements {
+    display: flex;
+    height: 100vh;
+  }
+  #backend-elements > aside{
+    height: 100%;
+    width: 10%;
+    background: #197D90;
+    color: white;
+  }
+  #backend-elements > aside li{
+    padding-left: 10px;
+    box-sizing: border-box;
+    list-style: none;
+    font-size: 1.1em;
+    line-height: 35px;
+    display: block;
+    width: 100%;
+     border-bottom: solid 1px #0F9DB9;
+     position: relative;
+  }
+  #backend-elements > aside li:hover{
+    background: #026E83;
+    color: #00d8d8;
+    cursor: pointer;
+  }
+
+  #backend-elements > aside li{
+    z-index: 44;
+  }
+  #backend-elements > aside li > ul{
+    position: absolute;
+    top: 0;
+    right: 100%;
+    background: #026E83;
+    /* height: 100vh; */
+    z-index: -10;
+    display: none;
+    width: 120%;
+    opacity: 0;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+  }
+  #backend-elements > aside li > ul li{
+    display: block;
+    width: 100%; 
+    box-sizing: border-box;
+    color:white;
+    font-size: .85em;
+  }
+  #backend-elements > aside li > ul li:hover{
+    display: block;
+    width: 100%; 
+    box-sizing: border-box;
+  }
+  #backend-elements > aside li:hover ul{
+     z-index: 10;
+    right: -120%;
+    display: block;
+    opacity: 1;
+  }
+
+/* home body area*/
+#backend-elements-wrapper {
+    width: 90%;
+    background: #f1f1f1;
+  }
+  #backend-elements-wrapper > #backend-elements-wrapper-inner{
+    padding: 10px 0 0 10px;
+  }

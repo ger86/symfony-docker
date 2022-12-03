@@ -1,0 +1,46 @@
+ {% extends 'base.html.twig' %}
+ 
+ {% block stylesheets %}
+<link href="{{ asset('/styles/pannel.css') }}" rel="stylesheet" /> 
+{% endblock %}
+ {% block body %}
+ {% include 'templateParts/bar.html.twig' %} 
+
+<section id="backend-elements">
+<aside class="asidesPannels">
+ <ul>
+ <li>home</li>
+ <li>seccion >
+        <ul>
+           <li>Conocimientos</li>
+           <li>conocimientos</li>
+           <li>disemño web</li>
+           <li>empleos</li>
+           <li>trabajos</li>
+           <li>sobre mi</li>
+        </ul>
+     </li>
+     <li>blog ><ul>
+        <li>es</li>
+        <li>en</li> 
+        </ul>
+        </li>   
+    <li>comentarios</li>
+    <li>media</li> 
+ </ul> 
+</aside>
+
+<section id="backend-elements-wrapper">
+  <div id="backend-elements-wrapper-inner">
+   {% block backendBody %}{% endblock %}
+  </div>
+</section>
+
+</section>
+{% endblock %}
+
+ 
+
+
+   
+
