@@ -37,21 +37,19 @@ class ProcessLoguinController extends AbstractController
 
             if($geturser){
                 $evm = new EventManager();
-                $test = new LoguinEvents($evm);
+                 $test = new LoguinEvents($evm);
                 $evm->dispatchEvent(Loguinevents::LogueIn);
-
-                // $eventSubscriber = new Loguinevent();
-                // $evm->addEventSubscriber($eventSubscriber);
-                // $evm->dispatchEvent(Loguinevent::preFoo);
-
-                // $evm->dispatchEvent(TestEventSubscriber::preFoo);
-
 
                 $geco = array('result'=> true);
                 return $this->redirectToRoute("app_home", $geco);
                //  return new Response('worl');
+            } else {
+                $errorMensaje = ['mensaje' => '😔 Revisa las credenciales subministradas.'];
+                return $this->redirectToRoute("app_home", $errorMensaje , 302);
             }
+
            
+
         }
 
          
