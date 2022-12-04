@@ -17,6 +17,8 @@ class HomeController extends AbstractController
      */
     public function index(DocumentManager $dm, Request $request,): Response
     {
+     
+     
         // $saveUser = new Userone();
         // $saveUser->setEmail('infoarte247@gmail.com');
         // $saveUser->setMipass('Elapache_3030');
@@ -26,7 +28,9 @@ class HomeController extends AbstractController
         // if($request->query->get('mensaje')){
         //     dd( $request->query->get('mensaje') );
         // }
-      
+        if($request->cookies->get($_ENV['SECRETNAME_KOOKIE'])){
+            return $this->redirectToRoute("app_pannels");
+          }
 
         // ? 👆 this for save the unique user
        $form = $this->createForm(Loguin::class);
