@@ -13,10 +13,10 @@
 
  
  
-import confirmframse from "../test";
+import Loginscript from "../login";
 
 window.addEventListener("load", () => {
-  window.confirmframse = new confirmframse(); 
+  window.Loginscript = new Loginscript(); 
 });
  
     

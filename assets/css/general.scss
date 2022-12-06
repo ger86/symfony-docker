@@ -1,0 +1,39 @@
+// @mixin reset-list {
+//     margin: 0;
+//     padding: 0;
+//     list-style: none;
+//   }
+   
+//   nav ul {
+//     @include reset-list;
+//   }
+  
+//? variables
+
+// $base-color: #c6538c;
+
+
+//? transitions 
+// .enlarge {
+//     font-size: 14px;
+//     transition: {
+//       property: font-size;
+//       duration: 4s;
+//       delay: 2s;
+//     }
+  
+//     &:hover { font-size: 36px; }
+//   }
+  
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+}
+body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Barlow', sans-serif;
+    font-size: 1.5em;
+  }
