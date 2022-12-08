@@ -1,83 +1,171 @@
 @import '../general.scss';
 .newblog {
-    &_wrapper{
-        padding: 10px 20px 0 0;
-        &-form{
-            display: flex;
-            justify-content: space-between;
-            &-left{
-                width: 70%; 
-                &-title{
-                    margin-bottom:10px;
-                    display: flex;
-                    flex-direction: column;
-                    label{
-                        display: block;
-                        font-size:   $linksize;
-                        margin-bottom: 10px;
-                      }
-                      input{
-                        height: 35px;
-                        background: white;
-                        border: solid 1px $inputBorderColor;
-                        padding: 0 5px;
-                        font-size:   $linksize;
-                        
-                      }
-                      p{
-                        font-size: $smallText;
-                        color: $lightGrayText;
-                        
-                      }
-                }
-                &-htmlarea{
-                    label{
-                        display: block;
-                        font-size:   $linksize;
-                        margin-bottom: 10px;
-                      }
-                      p{
-                        font-size: $smallText;
-                        color: $lightGrayText;
-                        
-                      }
-                }
-              }
-            &-right{
-                width: 28%; 
-                &-items{
-                   &-imageSelector {
-                    margin-bottom: 20px;
-                    &-show{
-                        background: #e3e3e3;
-                        display: block;
-                        height: 200px;
-                      }
-                      &-help{
-                        font-size: $smallText;
-                        color: $lightGrayText;
-                        margin-bottom: 10px;
-                      }
-                      &-button{
-                        background: $pannelBg;
-                        border: none;
-                        display: block;
-                        width: max-content;
-                        line-height: 35px;
-                        font-size: 18px;
-                        color: white;
-                        padding: 0 20px;
-                        border-radius: 3px;
-                        cursor: pointer;
-                        &:hover{
-                            background: $backgroundLingk;
-                        }
-                      }
-                 }
-                }
-              }  
+  &_wrapper {
+    padding: 10px 20px 0 0;
+    &-form {
+      display: flex;
+      justify-content: space-between;
+      &-left {
+        width: 70%;
+        &-title {
+          margin-bottom: 10px;
+          display: flex;
+          flex-direction: column;
+          label {
+            display: block;
+            font-size: $linksize;
+            margin-bottom: 10px;
           }
+          input {
+            height: 35px;
+            background: white;
+            border: solid 1px $inputBorderColor;
+            padding: 0 5px;
+            font-size: $linksize;
+          }
+          p {
+            font-size: $smallText;
+            color: $lightGrayText;
+          }
+        }
+        &-htmlarea { 
+          label {
+            display: block;
+            font-size: $linksize;
+            margin-bottom: 10px;
+          }
+          p {
+            font-size: $smallText;
+            color: $lightGrayText;
+          }
+        }
+        &-keywordsCategories{
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+        &-keywords, &-categories {
+          width: 48%;
+          margin-top: 5px;
+          label {
+            display: block;
+            font-size: $linksize; 
+            margin-bottom: 10px;
+          }
+          input {
+            height: 35px;
+            background: white;
+            border: solid 1px $inputBorderColor;
+            padding: 0 5px;
+            font-size: $linksize;
+            width: 100%;
+          }
+          select {
+            background: white;
+            border: solid 1px $inputBorderColor;
+            height: 35px;
+            text-align: center;
+            margin: 5px;
+            border-radius: 3px;
+            background: #fbfbfb;
+            width: 98%;
+          }
+          p {
+            font-size: $smallText;
+            color: $lightGrayText;
+          }
+        }
       }
+        &-submit{
+          background: $pannelBg;
+          border: none;
+          display: block;
+          width: max-content;
+          line-height: 35px;
+          font-size: 18px;
+          color: white;
+          padding: 0 20px;
+          border-radius: 3px;
+          cursor: pointer;
+          margin-top: 10px;
+          &:hover {
+            background: $backgroundLingk;
+          }
+        }
+      }
+      &-right {
+        width: 28%;
+        &-items {
+          &-imageSelector {
+            margin-bottom: 20px;
+            &-show {
+              background: #e3e3e3;
+              display: block;
+              height: 200px;
+            }
+            &-help {
+              font-size: $smallText;
+              color: $lightGrayText;
+              margin-bottom: 10px;
+            }
+            &-button {
+              background: $pannelBg;
+              border: none;
+              display: block;
+              width: max-content;
+              line-height: 35px;
+              font-size: 18px;
+              color: white;
+              padding: 0 20px;
+              border-radius: 3px;
+              cursor: pointer;
+              &:hover {
+                background: $backgroundLingk;
+              }
+            }
+          }
+          &-status,
+          &-languaje,
+          &-published {
+            display: flex;
+            flex-direction: column;
+            background: white;
+            padding: 5px 0;
+            margin-bottom: 10px;
+            border: solid 1px $inputBorderColor;
+            &-wrapperLabel {
+              display: flex;
+              flex-direction: row;
+              justify-content: start;
+              border-bottom: solid 1px $inputBorderColor;
+              i {
+                font-size: $linksize;
+                color: $lightGrayText;
+                margin: 8px 0 0 5px;
+              }
+              label {
+                font-size: $linksize;
+                display: block;
+                margin: 0 10px; 
+                padding: 5px;
+              }
+            }
+            select {
+              background: white;
+              border: solid 1px $inputBorderColor;
+              height: 35px;
+              text-align: center;
+              margin: 15px 5px 5px;
+              border-radius: 3px;
+              background: #fbfbfb;
+            }
+            p {
+              font-size: $smallText;
+              color: $lightGrayText;
+              margin-left: 5px;
+            }
+          }
+        }
+      }
+    }
+  }
 }
-  
- 

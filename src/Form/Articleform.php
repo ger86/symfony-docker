@@ -26,21 +26,33 @@ class Articleform extends AbstractType
      ->add('htmlarea', CKEditorType::class)
      ->add('languaje', ChoiceType::class, [
         'choices'  => [
-            '--------' => null,
+            ' ' => null,
             'español' => 'es',
             'ingles' => 'en', 
         ],
     ])->add('keywords',  TextType::class)
     ->add('published_status', ChoiceType::class, [
         'choices'  => [
-            '--------' => null,
+            ' ' => null,
             'publicado' => 'publicado',
             'borrador' => 'borrador', 
         ],
     ])
+    ->add('categories', ChoiceType::class, [
+      'choices'  => [
+          ' ' => null,
+          'javascript' => 'javascript',
+          'wordpress' => 'wordpress',
+          'Sass' => 'Sass', 
+          'symfony' => 'symfony'
+      ],
+  ])
     ->add('publishedAt', DateType::class, [
       'widget' => 'choice',
-  ])->add('frendlyUrl', HiddenType::class); // for install ckeditor
+      'format' => 'dd-MM-yyyy',
+      'data' => new \DateTime()
+  ])->add('imageUrl', HiddenType::class)
+  ->add('frendlyUrl', HiddenType::class); // for install ckeditor
 
 
   }

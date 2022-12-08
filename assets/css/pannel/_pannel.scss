@@ -7,7 +7,8 @@
     background: #f6f6f6;
     &-aside{
         height: 100%;
-        width: max-content;
+        width: 10%;
+        min-width: max-content;
         background: #197D90;
         color: white;
         margin-right: 20px;
@@ -81,6 +82,9 @@
                       }
                 }
               }
-          }
+          } 
+    } 
+    &-body{
+        width: 90%;
     }
 }

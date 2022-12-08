@@ -5,13 +5,15 @@
  
 {% block backendBody %}
 <h1>
-  Inserte un nuevo artícu
+  Insert a new post
 </h1>
 <div class="newblog">
 <div class="newblog_wrapper">
  {{ form_start(Articleform, {'attr': {'class': 'newblog_wrapper-form'},
  'action': '/processloguin', 'method': 'POST'}
  ) }}
+ {{ form_widget(Articleform.imageUrl) }}
+ {{ form_widget(Articleform.frendlyUrl) }}
 <div class="newblog_wrapper-form-left"> 
      <div class="newblog_wrapper-form-left-title"> 
       {{ form_label(Articleform.Titulo_del_post) }} 
@@ -23,8 +25,21 @@
       {{ form_widget(Articleform.htmlarea) }}
        {{ form_help(Articleform.htmlarea,{'help': 'salida en html con estilos inclustados'}) }} 
      </div>
-       {# <div id="rest">  {{ form_widget(Articleform) }} </div> #}
-      
+    <div class="newblog_wrapper-form-left-keywordsCategories">
+          <div class="newblog_wrapper-form-left-keywordsCategories-keywords"> 
+      {{ form_label(Articleform.keywords) }}  
+      {{ form_widget(Articleform.keywords) }}
+       {{ form_help(Articleform.keywords,{'help': 'Set keyword like: tech-code-libraries'}) }} 
+     </div>
+     <div class="newblog_wrapper-form-left-keywordsCategories-categories"> 
+      {{ form_label(Articleform.categories) }}  
+      {{ form_widget(Articleform.categories) }}
+       {{ form_help(Articleform.categories,{'help': 'Set a category for this post'}) }} 
+     </div>
+    </div> 
+     
+ 
+      <input class="newblog_wrapper-form-left-submit" type="submit" value="Save post | save status without publish" /> 
    </div> 
    <div class="newblog_wrapper-form-right">
       <div  class="newblog_wrapper-form-right-items"> 
@@ -41,20 +56,30 @@
        
        </div>
       <div  class="newblog_wrapper-form-right-items-status"> 
-       {{ form_label(Articleform.published_status) }} 
+      <div  class="newblog_wrapper-form-right-items-status-wrapperLabel">
+       <i class="fa-sharp fa-solid fa-check"></i>{{ form_label(Articleform.published_status) }} 
+      </div>  
      {{ form_widget(Articleform.published_status) }}
      {{ form_help(Articleform.published_status,{'help': 'Post Status'}) }} 
     </div> 
 
       <div  class="newblog_wrapper-form-right-items-languaje"> 
-      <label>{{ form_label(Articleform.languaje) }}</label> 
+      <div  class="newblog_wrapper-form-right-items-status-wrapperLabel">
+       <i class="fa-solid fa-earth-americas"></i>{{ form_label(Articleform.languaje) }}
+       </div>
      {{ form_widget(Articleform.languaje) }}
-     <small>{{ form_help(Articleform.languaje,{'help': 'Seleccione lenguaje'}) }}</small>
+      {{ form_help(Articleform.languaje,{'help': 'Select languaje for this post'}) }} 
     </div> 
 
-
+    <div  class="newblog_wrapper-form-right-items-published"> 
+      <div  class="newblog_wrapper-form-right-items-published-wrapperLabel">
+      <i class="fa-regular fa-calendar-days"></i>{{ form_label(Articleform.publishedAt) }}
+       </div>
+     {{ form_widget(Articleform.publishedAt) }}
+      {{ form_help(Articleform.publishedAt,{'help': 'Select time to publish'}) }} 
+    </div>  
     </div> 
-     <input type="submit" value="entrar" /> 
+     
     {{ form_end(Articleform) }}
    </div> 
   </div>    
