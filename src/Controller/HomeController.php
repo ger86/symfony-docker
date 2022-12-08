@@ -15,7 +15,7 @@ class HomeController extends AbstractController
     /**
      * @Route("/", name="app_home")
      */
-    public function index(DocumentManager $dm, Request $request,): Response
+    public function index(DocumentManager $dm, Request $request): Response
     {
      
      

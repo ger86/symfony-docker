@@ -1,0 +1,86 @@
+@import '../general.scss';
+
+ 
+.backend-pannel{
+    display: flex;
+    height: 100vh; 
+    background: #f6f6f6;
+    &-aside{
+        height: 100%;
+        width: max-content;
+        background: #197D90;
+        color: white;
+        margin-right: 20px;
+        &-ul {
+            padding: 10px 0;
+            &-li {
+                position: relative;
+                &:hover{
+                    background: $backgroundLingk;
+                    color: #00d8d8;
+                    cursor: pointer;
+                    *{
+                        color: white;
+                    }
+                    ul{
+                        z-index: 10;
+                       right: -120%;
+                       display: block;
+                       opacity: 1;
+                       li{
+                        padding: 0 10px;
+                        line-height: 35px;
+                        font-size: $linksize;
+                        &:hover{
+                            background: #105d7b;
+                        }
+                       }
+                     }
+                  }
+                  &-ul{ 
+                        position: absolute;
+                        top: 0;
+                        right: 100%;
+                        background: $backgroundLingk;
+                        /* height: 100vh; */
+                        z-index: -10;
+                        display: none;
+                        width: 120%;
+                        opacity: 0;
+                        transition: all 0.5s;
+                        -webkit-transition: all 0.5s;
+                        -moz-transition: all 0.5s; 
+                        &-li{
+                            display: block;
+                            width: 100%; 
+                            box-sizing: border-box;
+                            color:white;
+                            font-size: .85em;
+                          }
+                  }
+                border-bottom: groove 1px #05aac5;
+                &-wrapper{
+                    display: flex;
+                    padding: 5px 10px;
+                    &-icon {
+                        padding: 0 5px 0 0;
+                        a{
+                            color: white;
+                            i{
+                                font-size: $linksize;
+                                color: $lightgreen;
+                            }
+                        }
+                      }
+                      &-anchor{
+                        padding: 0 0 0 5px;
+                         a{
+                            color: $lightgreen;
+                            font-size: $linksize;
+                         }
+                      }
+                }
+              }
+          }
+    }
+}

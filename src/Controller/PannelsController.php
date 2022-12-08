@@ -16,9 +16,11 @@ class PannelsController extends AbstractController
     {
         
        
-        if(!$request->cookies->get($_ENV['SECRETNAME_KOOKIE'])){
+        $getLoguinStatus = intval( $request->cookies->get( $_ENV['SECRETNAME_KOOKIE'] ) ); 
+         if( !$getLoguinStatus )
+         {
           return $this->redirectToRoute("app_home");
-        }
+         }
 
         return $this->render('pannels/index.html.twig', [
             'controller_name' => 'PannelsController',

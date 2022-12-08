@@ -30,6 +30,10 @@
     padding: 0;
     list-style: none;
     text-decoration: none;
+    font-family: 'Barlow', sans-serif;
+     transition: all .3s;
+    -moz-transition: all .3s;
+    -webkit-transition: all .3s;
 }
 body {
     padding: 0;
@@ -37,3 +41,19 @@ body {
     font-family: 'Barlow', sans-serif;
     font-size: 1.5em;
   }
+  h1{
+    font-size: 2em;
+  }
+// for border input color
+ $inputBorderColor:rgb(182, 182, 182);
+ // great for background of pannel, buttons and lings
+ $pannelBg:#197D90;
+  // great for color of input helper
+   $lightGrayText:gray;
+  // great for color of pannel menu
+  $lightgreen:#B2F3FF;
+  $backgroundLingk: #026E83;
+  // tamano normal del texto
+  $linksize:18px;
+  // great for input help and more
+  $smallText: 13px;

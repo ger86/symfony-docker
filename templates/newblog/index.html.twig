@@ -1,0 +1,61 @@
+
+{% extends 'pannels.html.twig' %}
+
+{% block title %}™️ New Blog{% endblock %}
+ 
+{% block backendBody %}
+<h1>
+  Inserte un nuevo artícu
+</h1>
+<div class="newblog">
+<div class="newblog_wrapper">
+ {{ form_start(Articleform, {'attr': {'class': 'newblog_wrapper-form'},
+ 'action': '/processloguin', 'method': 'POST'}
+ ) }}
+<div class="newblog_wrapper-form-left"> 
+     <div class="newblog_wrapper-form-left-title"> 
+      {{ form_label(Articleform.Titulo_del_post) }} 
+      {{ form_widget(Articleform.Titulo_del_post) }}
+       {{ form_help(Articleform.Titulo_del_post,{'help': 'con este dato generaremos la url amigable'}) }} 
+     </div>
+     <div class="newblog_wrapper-form-left-htmlarea"> 
+      {{ form_label(Articleform.htmlarea) }}  
+      {{ form_widget(Articleform.htmlarea) }}
+       {{ form_help(Articleform.htmlarea,{'help': 'salida en html con estilos inclustados'}) }} 
+     </div>
+       {# <div id="rest">  {{ form_widget(Articleform) }} </div> #}
+      
+   </div> 
+   <div class="newblog_wrapper-form-right">
+      <div  class="newblog_wrapper-form-right-items"> 
+       <div  class="newblog_wrapper-form-right-items-imageSelector"> 
+        <div  class="newblog_wrapper-form-right-items-imageSelector-show"> 
+       
+        </div>
+         <p class="newblog_wrapper-form-right-items-imageSelector-help">
+        seleccionar imagen para el post
+        </p>
+        <button class="newblog_wrapper-form-right-items-imageSelector-button">
+        seleccionar
+        </button>
+       
+       </div>
+      <div  class="newblog_wrapper-form-right-items-status"> 
+       {{ form_label(Articleform.published_status) }} 
+     {{ form_widget(Articleform.published_status) }}
+     {{ form_help(Articleform.published_status,{'help': 'Post Status'}) }} 
+    </div> 
+
+      <div  class="newblog_wrapper-form-right-items-languaje"> 
+      <label>{{ form_label(Articleform.languaje) }}</label> 
+     {{ form_widget(Articleform.languaje) }}
+     <small>{{ form_help(Articleform.languaje,{'help': 'Seleccione lenguaje'}) }}</small>
+    </div> 
+
+
+    </div> 
+     <input type="submit" value="entrar" /> 
+    {{ form_end(Articleform) }}
+   </div> 
+  </div>    
+{% endblock %}

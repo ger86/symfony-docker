@@ -1,51 +1,78 @@
- {% extends 'base.html.twig' %}
- 
- {% block stylesheets %}
-      <link href="{{ asset('/styles/pannel.css') }}" rel="stylesheet" /> 
-        {# <link href="{{ asset('/build/css/app.css') }}" rel="stylesheet" /> --works--  #} 
-{% endblock %}
- {% block javascripts %}
-       <script src="{{ asset('/build/js/main.js') }}" type="text/javascript"></script>  
-     {% endblock %}
+{% extends 'base.html.twig' %}
 
- {% block body %}
- {% include 'templateParts/bar.html.twig' %} 
+  
+{% block body %}
+  {% include 'templateParts/bar.html.twig' %}
 
-<section id="backend-elements">
-<aside class="asidesPannels">
- <ul>
- <li>home</li>
- <li>seccion >
-        <ul>
-           <li>Conocimientos</li>
-           <li>conocimientos</li>
-           <li>disemño web</li>
-           <li>empleos</li>
-           <li>trabajos</li>
-           <li>sobre mi</li>
-        </ul>
-     </li>
-     <li>blog ><ul>
-        <li>es</li>
-        <li>en</li> 
-        </ul>
-        </li>   
-    <li>comentarios</li>
-    <li>media</li> 
- </ul> 
-</aside>
+  <section class="backend-pannel">
+    <aside class="backend-pannel-aside">
+      <ul class="backend-pannel-aside-ul">
+        <li class="backend-pannel-aside-ul-li">
+          <div class="backend-pannel-aside-ul-li-wrapper">
+            <div class="backend-pannel-aside-ul-li-wrapper-icon">
+              <a href="{{ path('app_home') }}"><i class="fa-solid fa-house-user"></i></a> 
+            </div>
+            <div class="backend-pannel-aside-ul-li-wrapper-anchor">
+              <a href="{{ path('app_home') }}">home</a>
+            </div>
+          </div>
+        </li>
+        <li class="backend-pannel-aside-ul-li">
+          <div class="backend-pannel-aside-ul-li-wrapper">
+            <div class="backend-pannel-aside-ul-li-wrapper-icon">
+              <a href="{{ path('app_home') }}"><i class="fa-solid fa-shield-halved"></i></a>
+            </div>
+            <div class="backend-pannel-aside-ul-li-wrapper-anchor">
+              <a href="{{ path('app_home') }}">seccion</a>
+            </div>
+          </div>
+          <ul class="backend-pannel-aside-ul-li-ul">
+            <li class="backend-pannel-aside-ul-li-ul-li">Conocimientos</li>
+            <li class="backend-pannel-aside-ul-li-ul-li">conocimientos</li>
+            <li class="backend-pannel-aside-ul-li-ul-li">disemño web</li>
+            <li class="backend-pannel-aside-ul-li-ul-li">empleos</li>
+            <li class="backend-pannel-aside-ul-li-ul-li">trabajos</li>
+            <li class="backend-pannel-aside-ul-li-ul-li">sobre mi</li>
+          </ul>
+        </li>
+        <li class="backend-pannel-aside-ul-li">
+          <div class="backend-pannel-aside-ul-li-wrapper">
+            <div class="backend-pannel-aside-ul-li-wrapper-icon">
+               <a href="{{ path('app_blog_list') }}"><i class="fa-solid fa-file-lines"></i></a> 
+            </div>
+            <div class="backend-pannel-aside-ul-li-wrapper-anchor">
+              <a href="{{ path('app_blog_list') }}">blogs</a>
+            </div>
+          </div>
+        </li>
+        <li class="backend-pannel-aside-ul-li">
+          <div class="backend-pannel-aside-ul-li-wrapper">
+            <div class="backend-pannel-aside-ul-li-wrapper-icon">
+              <a href="#"><i class="fa-regular fa-comment"></i></a> 
+            </div>
+            <div class="backend-pannel-aside-ul-li-wrapper-anchor">
+              <a href="#">comentarios</a>
+            </div>
+          </div>
+        </li>
+        <li class="backend-pannel-aside-ul-li">
+          <div class="backend-pannel-aside-ul-li-wrapper">
+            <div class="backend-pannel-aside-ul-li-wrapper-icon">
+             <a href="#"><i class="fa-solid fa-photo-film"></i></a> 
+            </div>
+            <div class="backend-pannel-aside-ul-li-wrapper-anchor">
+              <a href="#">media</a>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </aside>
 
-<section id="backend-elements-wrapper">
-  <div id="backend-elements-wrapper-inner">
-   {% block backendBody %}{% endblock %}
-  </div>
-</section>
-
-</section>
-{% endblock %}
-
- 
-
-
-   
-
+    <section class="backend-pannel-body">
+      <div id="backend-pannel-body-wrapper">
+        {% block backendBody %}
+        {% endblock %}
+      </div>
+    </section>
+  </section>
+{% endblock %} 

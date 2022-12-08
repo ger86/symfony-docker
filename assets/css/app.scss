@@ -1,2 +1,5 @@
 @use './general.scss';
- @use './loguin/index.scss'
+@use './bar/bar';
+@use './pannel/pannel';
+@use './loguin/loguin';
+@use './blog/newblog';

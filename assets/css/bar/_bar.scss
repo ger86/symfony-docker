@@ -1,0 +1,26 @@
+#header{
+    background: #565656;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  img{
+    width: 100%;
+    max-width: 30px;
+    height: 26px;
+    margin-left: 10px;
+  }
+  #header > .topSection{
+    display: flex;
+    justify-content: flex-end;
+  }
+  #header > .topSection a{
+    color: white;
+    line-height: 40px;
+    padding: 0 20px;
+    text-decoration: none;
+    font-size: 18px;
+    i{
+        font-size: 18px;
+    }
+  }
