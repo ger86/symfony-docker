@@ -30,7 +30,8 @@ class Articleform extends AbstractType
             'español' => 'es',
             'ingles' => 'en', 
         ],
-    ])->add('keywords',  TextType::class)
+    ])
+    ->add('keywords',  TextType::class)
     ->add('published_status', ChoiceType::class, [
         'choices'  => [
             ' ' => null,
@@ -38,6 +39,7 @@ class Articleform extends AbstractType
             'borrador' => 'borrador', 
         ],
     ])
+    ->add('featured_Image', TextType::class, ['attr'=>['class'=>'newblog_wrapper-form-right-items-imageSelector-input']])
     ->add('categories', ChoiceType::class, [
       'choices'  => [
           ' ' => null,
@@ -51,7 +53,7 @@ class Articleform extends AbstractType
       'widget' => 'choice',
       'format' => 'dd-MM-yyyy',
       'data' => new \DateTime()
-  ])->add('imageUrl', HiddenType::class)
+  ])
   ->add('frendlyUrl', HiddenType::class); // for install ckeditor
 
 

@@ -6,5 +6,6 @@ class Loginscript {
     console.log('try than this work')
     
     }
+     
   }
   export default Loginscript;

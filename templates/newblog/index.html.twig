@@ -8,13 +8,13 @@
   Insert a new post
 </h1>
 <div class="newblog">
-<div class="newblog_wrapper">
- {{ form_start(Articleform, {'attr': {'class': 'newblog_wrapper-form'},
- 'action': '/processloguin', 'method': 'POST'}
- ) }}
- {{ form_widget(Articleform.imageUrl) }}
- {{ form_widget(Articleform.frendlyUrl) }}
-<div class="newblog_wrapper-form-left"> 
+  <div class="newblog_wrapper">
+    {{ form_start(Articleform, {'attr': {'class': 'newblog_wrapper-form'},
+    'action': '/processloguin', 'method': 'POST'}
+    ) }}
+     
+    {{ form_widget(Articleform.frendlyUrl) }}
+   <div class="newblog_wrapper-form-left"> 
      <div class="newblog_wrapper-form-left-title"> 
       {{ form_label(Articleform.Titulo_del_post) }} 
       {{ form_widget(Articleform.Titulo_del_post) }}
@@ -44,15 +44,20 @@
    <div class="newblog_wrapper-form-right">
       <div  class="newblog_wrapper-form-right-items"> 
        <div  class="newblog_wrapper-form-right-items-imageSelector"> 
-        <div  class="newblog_wrapper-form-right-items-imageSelector-show"> 
-       
-        </div>
-         <p class="newblog_wrapper-form-right-items-imageSelector-help">
-        seleccionar imagen para el post
-        </p>
-        <button class="newblog_wrapper-form-right-items-imageSelector-button">
-        seleccionar
-        </button>
+          <div  class="newblog_wrapper-form-right-items-imageSelector-show"> 
+        
+          </div>
+        
+             {{ form_widget(Articleform.featured_Image) }} 
+             
+          <p class="newblog_wrapper-form-right-items-imageSelector-help">
+          seleccionar imagen para el post
+          </p>
+            <button class="newblog_wrapper-form-right-items-imageSelector-button">
+            seleccionar
+            </button>
+
+             
        
        </div>
       <div  class="newblog_wrapper-form-right-items-status"> 
@@ -82,5 +87,9 @@
      
     {{ form_end(Articleform) }}
    </div> 
-  </div>    
+  </div>  
+   <section class="newblog_media">
+     <button class="newblog_media_buttonClose">close media resource</button>
+     <iframe src="https://media.lavour.es/" class="newblog_media_button-iframe"></iframe> 
+    </section>  
 {% endblock %}

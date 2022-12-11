@@ -28,7 +28,7 @@
             color: $lightGrayText;
           }
         }
-        &-htmlarea { 
+        &-htmlarea {
           label {
             display: block;
             font-size: $linksize;
@@ -39,56 +39,58 @@
             color: $lightGrayText;
           }
         }
-        &-keywordsCategories{
+        &-keywordsCategories {
           display: flex;
           flex-direction: row;
           justify-content: space-between;
-        &-keywords, &-categories {
-          width: 48%;
-          margin-top: 5px;
-          label {
-            display: block;
-            font-size: $linksize; 
-            margin-bottom: 10px;
-          }
-          input {
-            height: 35px;
-            background: white;
-            border: solid 1px $inputBorderColor;
-            padding: 0 5px;
-            font-size: $linksize;
-            width: 100%;
-          }
-          select {
-            background: white;
-            border: solid 1px $inputBorderColor;
-            height: 35px;
-            text-align: center;
-            margin: 5px;
-            border-radius: 3px;
-            background: #fbfbfb;
-            width: 98%;
-          }
-          p {
-            font-size: $smallText;
-            color: $lightGrayText;
+          &-keywords,
+          &-categories {
+            width: 48%;
+            margin-top: 5px;
+            label {
+              display: block;
+              font-size: $linksize;
+              margin-bottom: 10px;
+            }
+            input {
+              height: 35px;
+              background: white;
+              border: solid 1px $inputBorderColor;
+              padding: 0 5px;
+              font-size: $linksize;
+              width: 100%;
+            }
+            select {
+              background: white;
+              border: solid 1px $inputBorderColor;
+              height: 35px;
+              text-align: center;
+              margin: 5px;
+              border-radius: 3px;
+              background: #fbfbfb;
+              width: 98%;
+            }
+            p {
+              font-size: $smallText;
+              color: $lightGrayText;
+            }
           }
         }
-      }
-        &-submit{
+        &-submit {
           background: $pannelBg;
           border: none;
           display: block;
           width: max-content;
           line-height: 35px;
           font-size: 18px;
-          color: white;
+          color:  $lightgreen;
           padding: 0 20px;
           border-radius: 3px;
           cursor: pointer;
           margin-top: 10px;
           &:hover {
             background: $backgroundLingk;
+            color: white;
           }
         }
       }
@@ -101,7 +103,18 @@
               background: #e3e3e3;
               display: block;
               height: 200px;
+              background-size: cover;
             }
+            &-input {
+              width:99%;
+              height: 35px;
+              background: white;
+              border: solid 1px $inputBorderColor;
+              padding: 0 5px;
+              font-size: $linksize;  
+              box-sizing: border-box;
+              margin-top: 10px;
+             }
             &-help {
               font-size: $smallText;
               color: $lightGrayText;
@@ -114,12 +127,13 @@
               width: max-content;
               line-height: 35px;
               font-size: 18px;
-              color: white;
+              color:  $lightgreen;
               padding: 0 20px;
               border-radius: 3px;
               cursor: pointer;
               &:hover {
                 background: $backgroundLingk;
+                color: white;
               }
             }
           }
@@ -145,7 +159,7 @@
               label {
                 font-size: $linksize;
                 display: block;
-                margin: 0 10px; 
+                margin: 0 10px;
                 padding: 5px;
               }
             }
@@ -168,4 +182,45 @@
       }
     }
   }
+  &_media {
+    position: fixed;
+    height: 0;
+    width: 0;
+    background: #000000d9;
+    z-index: -10;
+    opacity: 0;
+    &_buttonClose {
+      position: absolute;
+      right: 1%;
+      top: 3%;
+      border: none;
+      background: $backgroundLingk;
+      line-height: 35px;
+      font-size: 18px;
+      color:  $lightgreen;
+      padding: 0 10px;
+      border-radius: 3px;
+      &:hover{
+        background: #00596B;
+        cursor: pointer;
+      }
+    }
+    iframe {
+      background: white;
+      height: 100vh;
+      width: 100%;
+      padding: 5%;
+      box-sizing: border-box;
+    }
+  }
+}
+.active{
+  position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    background: #000000d9;
+    z-index: 999;
+    opacity: 1;
 }

@@ -14,10 +14,13 @@
  
  
 import Loginscript from "../login";
+import MediaSelector from "./mediaselector/MediaSelector";
 
 window.addEventListener("load", () => {
-  window.Loginscript = new Loginscript(); 
+  window.Loginscript     = new Loginscript(); 
+  window.MediaSelector   = new MediaSelector();
 });
  
     
+ 
  
