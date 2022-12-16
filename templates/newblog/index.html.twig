@@ -13,12 +13,18 @@
     'action': '/processloguin', 'method': 'POST'}
     ) }}
      
-    {{ form_widget(Articleform.frendlyUrl) }}
+     
+
    <div class="newblog_wrapper-form-left"> 
      <div class="newblog_wrapper-form-left-title"> 
       {{ form_label(Articleform.Titulo_del_post) }} 
       {{ form_widget(Articleform.Titulo_del_post) }}
-       {{ form_help(Articleform.Titulo_del_post,{'help': 'con este dato generaremos la url amigable'}) }} 
+       {{ form_help(Articleform.Titulo_del_post,{'help': 'Titulo post head del post'}) }} 
+     </div>
+     <div class="newblog_wrapper-form-left-Furl"> 
+      {{ form_label(Articleform.FriendlyUrl) }} 
+      {{ form_widget(Articleform.FriendlyUrl) }}
+       {{ form_help(Articleform.FriendlyUrl,{'help': 'Para SEO url amigable'}) }} 
      </div>
      <div class="newblog_wrapper-form-left-htmlarea"> 
       {{ form_label(Articleform.htmlarea) }}  
@@ -90,6 +96,18 @@
   </div>  
    <section class="newblog_media">
      <button class="newblog_media_buttonClose">close media resource</button>
-     <iframe src="https://media.lavour.es/" class="newblog_media_button-iframe"></iframe> 
+     {# <iframe src="https://media.lavour.es/" class="newblog_media_button-iframe"></iframe>  #}
+     <div class="newblog_media-items">
+        <div class="newblog_media-items-wrapper">
+      {% for elemets in mediaElement %}
+        <div class="newblog_media-items-wrapper-item">
+         <img src={{elemets.file}} />  
+        </div>
+       {% endfor %}
+        </div>
+     </div>
     </section>  
 {% endblock %}
+
+
+ 

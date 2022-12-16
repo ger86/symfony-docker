@@ -23,6 +23,11 @@ class Articleform extends AbstractType
         'attr' => [
             'placeholder' => 'agregar titulo del artículo' 
         ]]) 
+        ->add('FriendlyUrl',  TextType::class, [
+          'attr' => [
+              'placeholder' => 'seo friendly url',
+              'class'=>'newblog_wrapper-form-left-Furl-input'
+          ]]) 
      ->add('htmlarea', CKEditorType::class)
      ->add('languaje', ChoiceType::class, [
         'choices'  => [
@@ -53,10 +58,9 @@ class Articleform extends AbstractType
       'widget' => 'choice',
       'format' => 'dd-MM-yyyy',
       'data' => new \DateTime()
-  ])
-  ->add('frendlyUrl', HiddenType::class); // for install ckeditor
+    ]);
+ 
 
-
-  }
-
+  
+    }
 }

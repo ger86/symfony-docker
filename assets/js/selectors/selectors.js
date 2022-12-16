@@ -3,5 +3,7 @@ export const MEDIASELECTORS = {
     selectorTriguer: 'newblog_wrapper-form-right-items-imageSelector-button',
           showMedia: 'newblog_wrapper-form-right-items-imageSelector-show',
          closeMedia: 'newblog_media_buttonClose',
-          dataInput: 'newblog_wrapper-form-right-items-imageSelector-input'
+          dataInput: 'newblog_wrapper-form-right-items-imageSelector-input',
+ boxMediaCollection:  'newblog_media-items-wrapper', 
+  friendlyUrlSwitch: 'newblog_wrapper-form-left-Furl-input'
 }
