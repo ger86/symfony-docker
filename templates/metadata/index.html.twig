@@ -1,0 +1,72 @@
+{% extends 'pannels.html.twig' %}
+
+{% block title %}
+  metadata
+{% endblock %}
+
+{% block backendBody %}
+  <h1>
+    Metadata
+  </h1>
+  <div class="metadata">
+    <div class="metadata-wrapper">
+      <div class="metadata-wrapper-selector">
+        <ul class="metadata-wrapper-selector-ul">
+          <li class="metadata-wrapper-selector-ul-li">
+            <a class="metadata-wrapper-selector-ul-li-actionLang activeMetadata"
+              href="#">
+              Languajes
+            </a>
+          </li>
+          <li class="metadata-wrapper-selector-ul-li">
+            <a class="metadata-wrapper-selector-ul-li-actionCategory" href="#">
+              Categorys
+            </a>
+          </li>
+          <li class="metadata-wrapper-selector-ul-li">
+            <a class="metadata-wrapper-selector-ul-li-actionCategory" href="#">
+              another
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="metadata-wrapper-lang activeBodyMetadata">
+       {{ form_start(LanguajeForm, {'attr': {'class': 'metadata-wrapper-lang-formLang'},
+    'action': '/metadata', 'method': 'POST'}
+    ) }}
+     
+     
+
+   <div class="metadata-wrapper-lang-formLang-wrapper"> 
+     <div class="metadata-wrapper-lang-formLang-wrapper-item"> 
+      {{ form_label(LanguajeForm.languaje) }} 
+      {{ form_widget(LanguajeForm.languaje) }}
+       {{ form_help(LanguajeForm.languaje,{'help': 'insert a new languaje in the sistem'}) }} 
+     </div>
+    <input class="metadata-wrapper-lang-formLang-wrapper-item-submit" type="submit" value="Add Languaje" /> 
+     
+    {{ form_end(LanguajeForm) }}
+    </div>
+         <table  class="metadata-wrapper-lang-table" 
+         border="1" style="border-collapse: collapse;width: 30%; max-width: 300px; text-align: center;">
+           <thead>
+           <tr>
+            <td>lanuguaje name</td>
+            <td>small</td>
+           </tr>
+             </thead>
+           <tbody>
+             <tr>
+            <td>spanish</td>
+            <td>es</td>
+           </tr>
+            <tr>
+            <td>english</td>
+            <td>en</td>
+           </tr>
+           </tbody>
+         </table>
+      </div>
+    </div>
+  </div>
+{% endblock %}
