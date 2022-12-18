@@ -6,67 +6,38 @@
 
 {% block backendBody %}
   <h1>
-    Metadata
+    Metadata 
   </h1>
+    
+       {% set languaje = 'templateParts/metadata/languaje/lang.html.twig' %}
+       {% set category = 'templateParts/metadata/category/category.html.twig' %}
+        {% set isActivelang = active == 'lang' ? 'activeMetadata' : null  %}
+         {% set isActivecat = active == 'cat' ? 'activeMetadata' : null  %}
   <div class="metadata">
     <div class="metadata-wrapper">
       <div class="metadata-wrapper-selector">
         <ul class="metadata-wrapper-selector-ul">
           <li class="metadata-wrapper-selector-ul-li">
-            <a class="metadata-wrapper-selector-ul-li-actionLang activeMetadata"
-              href="#">
+            <a class="metadata-wrapper-selector-ul-li-actionLang {{ isActivelang }}"
+              href="{{ path('app_metadata', {active: 'lang'}) }}">
               Languajes
             </a>
           </li>
           <li class="metadata-wrapper-selector-ul-li">
-            <a class="metadata-wrapper-selector-ul-li-actionCategory" href="#">
+            <a class="metadata-wrapper-selector-ul-li-actionCategory {{ isActivecat }}" href="{{ path('app_metadata', {active: 'cat'}) }}">
               Categorys
             </a>
-          </li>
+          </li> 
           <li class="metadata-wrapper-selector-ul-li">
-            <a class="metadata-wrapper-selector-ul-li-actionCategory" href="#">
+            <a class="metadata-wrapper-selector-ul-li-actionAnother" href="{{ path('app_metadata', {active: 'lang'}) }}">
               another
             </a>
           </li>
         </ul>
       </div>
-      <div class="metadata-wrapper-lang activeBodyMetadata">
-       {{ form_start(LanguajeForm, {'attr': {'class': 'metadata-wrapper-lang-formLang'},
-    'action': '/metadata', 'method': 'POST'}
-    ) }}
      
-     
-
-   <div class="metadata-wrapper-lang-formLang-wrapper"> 
-     <div class="metadata-wrapper-lang-formLang-wrapper-item"> 
-      {{ form_label(LanguajeForm.languaje) }} 
-      {{ form_widget(LanguajeForm.languaje) }}
-       {{ form_help(LanguajeForm.languaje,{'help': 'insert a new languaje in the sistem'}) }} 
-     </div>
-    <input class="metadata-wrapper-lang-formLang-wrapper-item-submit" type="submit" value="Add Languaje" /> 
-     
-    {{ form_end(LanguajeForm) }}
-    </div>
-         <table  class="metadata-wrapper-lang-table" 
-         border="1" style="border-collapse: collapse;width: 30%; max-width: 300px; text-align: center;">
-           <thead>
-           <tr>
-            <td>lanuguaje name</td>
-            <td>small</td>
-           </tr>
-             </thead>
-           <tbody>
-             <tr>
-            <td>spanish</td>
-            <td>es</td>
-           </tr>
-            <tr>
-            <td>english</td>
-            <td>en</td>
-           </tr>
-           </tbody>
-         </table>
-      </div>
+      {% include active == 'lang' ? languaje : category  %} 
+      
     </div>
   </div>
 {% endblock %}

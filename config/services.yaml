@@ -33,3 +33,6 @@ services:
 
     App\Feching\:
         resource: '../src/Feching/' 
+
+    App\Datasaver\:
+        resource: '../src/Datasaver' 

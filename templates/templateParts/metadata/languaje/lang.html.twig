@@ -1,0 +1,65 @@
+ <div class="metadata-wrapper-lang activeBodyMetadata">
+        {{
+          form_start(
+            LanguajeForm,
+            {
+              attr: {
+                class: 'metadata-wrapper-lang-formLang'
+              },
+              action: '/metadata?active="cat"',
+              method: 'POST'
+            }
+          )
+        }}
+        <div class="metadata-wrapper-lang-formLang-wrapper">
+          <div class="metadata-wrapper-lang-formLang-wrapper-item">
+            {{ form_label(LanguajeForm.languaje) }}
+            {{ form_widget(LanguajeForm.languaje) }}
+            {{
+              form_help(
+                LanguajeForm.languaje,
+                {
+                  help: 'insert a new languaje in the sistem'
+                }
+              )
+            }}
+          </div>
+          <input class="metadata-wrapper-lang-formLang-wrapper-item-submit"
+            type="submit"
+            value="Add Languaje" />
+
+          {{ form_end(LanguajeForm) }}
+        </div>
+        <table class="metadata-wrapper-lang-table"
+          border="1"
+          style="border-collapse: collapse;width: 30%; max-width: 300px; text-align: center;">
+          <thead class="metadata-wrapper-lang-table-thead">
+            <tr>
+              <td>
+                lanuguaje name
+              </td>
+              <td>
+                small
+              </td>
+            </tr>
+          </thead>
+          <tbody class="metadata-wrapper-lang-table-tbody activeBodyMetadata">
+            <tr>
+              <td>
+                spanish
+              </td>
+              <td>
+                es
+              </td>
+            </tr>
+            <tr>
+              <td>
+                english
+              </td>
+              <td>
+                en
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
