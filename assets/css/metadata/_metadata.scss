@@ -26,9 +26,33 @@
         }
         &-lang{
             &-table{
+              width: 30%; max-width: 300px; text-align: center;min-width: 300px;
                 font-size: $linksize;
                 thead {
                     background: #d5d5d5;
+                  }
+                  tbody {
+                     tr{
+                      td{
+                        position: relative;
+                        overflow: hidden;
+                        a{
+                          position: absolute;
+                          right: -30px;
+                        }
+                        &:hover{
+                          a{
+                            right: 5px;
+                            i{
+                              color: $pannelBg;
+                              &:hover{
+                                color:red;
+                              }
+                            }
+                          }
+                        }
+                      }
+                     }
                   }
             }
             &-formLang{

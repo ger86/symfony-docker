@@ -2,6 +2,7 @@
 
 namespace App\Controller\Blog;
 
+ 
 use App\Form\Articleform; 
 use App\Feching\Fetchdata;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController; 
@@ -28,7 +29,7 @@ class NewblogController extends AbstractController
 
  
       $form = $this->createForm(Articleform::class);
-
+ 
         return $this->render('newblog/index.html.twig', [
             'Articleform'  => $form->createView(),
             'mediaElement' => $response

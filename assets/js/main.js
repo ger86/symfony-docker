@@ -14,13 +14,20 @@
  
  
 import Loginscript from "../login";
+import ConfigureValueInPostSelect from "./configureValueOptionsInBlog";
+// import confirmDeletteCategory from "./confirmdeletteCategory/deletteCategory";
+// import ConfirmDeletteCategory from "./confirmdeletteCategory/deletteCategory";
 import MediaSelector from "./mediaselector/MediaSelector";
 
+
 window.addEventListener("load", () => {
-  window.Loginscript     = new Loginscript(); 
-  window.MediaSelector   = new MediaSelector();
+  window.Loginscript                = new Loginscript(); 
+  window.MediaSelector              = new MediaSelector();
+  window.ConfigureValueInPostSelect = new ConfigureValueInPostSelect();
+  // window.ConfirmDeletteCategory     = new ConfirmDeletteCategory();
+  
 });
- 
+
     
  
  

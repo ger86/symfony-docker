@@ -1,3 +1,20 @@
+ 
+  
+  <script>
+    function confirmDeletteCategory(e) {  
+
+      const confirmResponse = prompt('Please type: '+ e.href.split("_")[1].toLowerCase() + ' to delette this Category');
+       if(confirmResponse === e.href.split("_")[1].toLowerCase()){
+        e.href = e.href 
+        return
+       }
+      e.href =  "/metadata?active=cat";
+  }
+     </script>
+
+ 
+
+
  <div class="metadata-wrapper-lang activeBodyMetadata">
         {{
           form_start(
@@ -32,7 +49,7 @@
         </div>
         <table class="metadata-wrapper-lang-table"
           border="1"
-          style="border-collapse: collapse;width: 30%; max-width: 300px; text-align: center;">
+          style="border-collapse: collapse;">
           <thead class="metadata-wrapper-lang-table-thead">
             <tr>
               <td>
@@ -44,10 +61,17 @@
           <tbody class="metadata-wrapper-lang-table-tbody activeBodyMetadata">
             
             {% if categories != '' %}
+
+            
     {% for category in categories %}
+     
            <tr>
               <td>
-               {{ category.category }}
+               {{ category}}
+              <a onClick="{{ 'confirmDeletteCategory(this)'}}" class="{{ 'metadata-wrapper-lang-table-tbody__' ~ category}}" 
+              href="{{ path('app_metadata', {active: 'delette_' ~ category}) }}">
+             <i class="fa-solid fa-trash"></i>
+            </a>
               </td>
                
             </tr>

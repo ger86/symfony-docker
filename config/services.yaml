@@ -34,5 +34,5 @@ services:
     App\Feching\:
         resource: '../src/Feching/' 
 
-    App\Datasaver\:
-        resource: '../src/Datasaver' 
+    App\PostMetadata\:
+        resource: '../src/PostMetadata' 

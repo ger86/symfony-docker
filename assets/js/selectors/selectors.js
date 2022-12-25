@@ -7,3 +7,7 @@ export const MEDIASELECTORS = {
  boxMediaCollection:  'newblog_media-items-wrapper', 
   friendlyUrlSwitch: 'newblog_wrapper-form-left-Furl-input'
 }
+
+export const POSTSELECTVALUES = {
+     options : 'articleform_categories'
+}

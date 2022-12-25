@@ -2,9 +2,11 @@
 
 namespace App\Controller;
 
-use App\Datasaver\CategorySaver;
+use App\PostMetadata\Category\CategorySaver;
+use App\PostMetadata\Category\GetCategory;
 use App\Form\CategoryType;
 use App\Form\LanguajeType;
+use App\PostMetadata\Category\DeletteCategory;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
  
 use Symfony\Component\HttpFoundation\Request; 
@@ -16,7 +18,11 @@ class MetadataController extends AbstractController
     /**
      * @Route("/metadata", name="app_metadata")
      */
-    public function index(Request $request, CategorySaver $saveCategory): Response
+    public function index(
+      Request $request, 
+      CategorySaver $saveCategory,
+      GetCategory $GetCategory,
+      DeletteCategory $delette): Response
     {
       
         //  dd($request->request->all());
@@ -43,20 +49,30 @@ class MetadataController extends AbstractController
           }
 
           $categories = []; 
+
           if(isset($request->request->get('category')['category'])){ 
             $category = $request->request->get('category')['category'];  
             $response = $saveCategory->saveCategory($category);
             $categories = $response;
             $isActive = 'cat';
           };
-        
-    
+
+       if( $request->query->get('active') != null ){
+            $isActive = $request->query->get('active');
+            $confirmDeletteAction = explode('_', $isActive);
+            if('delette' == $confirmDeletteAction[0]){
+                $delette->removeCategory($confirmDeletteAction[1]);
+                $isActive = 'cat';
+            }
+          } 
+
+         
            
         return $this->render('metadata/index.html.twig', [
             'LanguajeForm' =>  $form->createView(),
             'CategoryForm' =>  $CategoryForm->createView(),
             'active'       =>  $isActive,
-            'categories'         =>  $categories != '' ? $saveCategory->getAllCategory()[0] : null
+            'categories'         =>  $categories != '' ? $GetCategory->getAllCategory() : null
         ]);
     }
 }
