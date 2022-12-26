@@ -2,7 +2,10 @@
 
 namespace App\Document;
  
-use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB; 
+use App\Document\Languajes;
+use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
+use Doctrine\ODM\MongoDB\PersistentCollection;
+ 
 
 /**
  * 
@@ -17,13 +20,13 @@ class Category
      * @MongoDB\Field(type="string")
      */
     private $category;
- 
-    // /** @MongoDB\ReferenceOne(targetDocument=Post::class, inversedBy="categoryes") */
-    // public $post;
 
-    //   /** @MongoDB\ReferenceOne(targetDocument=Lang::class, inversedBy="categoryes") */
-    //   public $lang;
-    public function getId():int{
+  /** @MongoDB\ReferenceMany(targetDocument=Post::class, mappedBy="languaje") */
+  public $post;
+
+
+    
+    public function getId():int{  
         return $this->id;
      }
    public function setCategory($category):void{
@@ -31,18 +34,15 @@ class Category
     }
     public function getCategory():string{
        return $this->category;
-    }
-    // public function setPadre($post):void{
-    //     $this->post = $post;
+    } 
+    // public function setLanguaje($languaje):void
+    // {
+    //     $this->languaje = $languaje;
     //  }
-    // public function getPadre():Post{
-    //     return $this->post;
+    // public function getLanguaje():Languajes
+    // {
+    //     return $this->languaje;
     //  }
-    //  public function setLang($lang):void{
-    //     $this->lang = $lang;
-    //  }
-    // public function getLang():Lang{
-    //     return $this->lang;
-    //  }
+    
    
 }

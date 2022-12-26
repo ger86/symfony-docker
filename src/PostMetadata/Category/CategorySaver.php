@@ -4,6 +4,7 @@ namespace App\PostMetadata\Category;
 
  
 use App\Document\Category;
+use App\Document\Languajes;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ODM\MongoDB\DocumentManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -23,14 +24,13 @@ class CategorySaver extends AbstractController
     {
         try {
             $getCategoryCollection = $this->GetCategory->getAllCategory();
-
-
+            
+             
             $setcategory = new Category();
-            $setcategory->setCategory($category);
+            $setcategory->setCategory($category); 
             $this->dm->persist($setcategory);
             $this->dm->flush();
-
-            // return self::getAllCategory();
+             
             return $getCategoryCollection;
         } catch (\Exception $e) {
             return ['error' => $e->getMessage()];

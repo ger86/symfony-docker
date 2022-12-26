@@ -2,7 +2,7 @@
 
 namespace App\PostMetadata\Category;
 
- 
+
 use App\Document\Category;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ODM\MongoDB\DocumentManager;
@@ -17,14 +17,17 @@ class GetCategory extends AbstractController
         $this->dm = $dm;
     }
 
-    
+
     public function getAllCategory(): ArrayCollection
     {
+
+
         $outputCategorys = [];
         $getCategoryRepository = $this->dm->getRepository(Category::class);
         $categpryRepository = $getCategoryRepository->findAll();
-
+        //   dd( get_mangled_object_vars(  $categpryRepository[0] ) );
         for ($i = 0; $i < count($categpryRepository); $i++) {
+
             $outputCategorys[] = get_mangled_object_vars(
                 $categpryRepository[$i]
             )["\x00App\Document\Category\x00category"];

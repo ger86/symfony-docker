@@ -44,22 +44,31 @@
             </tr>
           </thead>
           <tbody class="metadata-wrapper-lang-table-tbody activeBodyMetadata">
-            <tr>
+       
+
+            {% if languajes != '' %}
+
+            
+    {% for languaje in languajes %}
+         <tr>
               <td>
-                spanish
+               {% if languaje == 'es' %}
+                español
+               {% endif %}
+                {% if languaje == 'en' %}
+                ingles
+               {% endif %}
               </td>
+               
+            
+       
               <td>
-                es
+               {{ languaje }}
               </td>
+               
             </tr>
-            <tr>
-              <td>
-                english
-              </td>
-              <td>
-                en
-              </td>
-            </tr>
+      {% endfor %} 
+          {% endif %}
           </tbody>
         </table>
       </div>

@@ -10,6 +10,20 @@
        }
       e.href =  "/metadata?active=cat";
   }
+
+  window.addEventListener('load', ()=>{
+      const selectLanguaje = 'category_languajes';
+ 
+    
+    if (document.getElementById(selectLanguaje)) { 
+      const optoinsValues = document.getElementById(selectLanguaje);
+      optoinsValues.childNodes.forEach(
+        (element) => (element.innerText = element.value)
+      );
+    }
+   
+
+  })
      </script>
 
  
@@ -40,7 +54,7 @@
                 }
               )
             }}
-          </div>
+          </div> 
           <input class="metadata-wrapper-lang-formLang-wrapper-item-submit"
             type="submit"
             value="Add category" />
