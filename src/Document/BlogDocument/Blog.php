@@ -33,9 +33,9 @@ class Blog
     private $body;
 
     /**
-     * @MongoDB\Field(type="ArrayCollection")
+     * @MongoDB\Field(type="collection")
      */
-    private $keyword; // set like arrayContro..
+    private $keyword; 
 
     /**
      * @MongoDB\Field(type="string")
@@ -59,7 +59,12 @@ class Blog
     /** @MongoDB\ReferenceOne(targetDocument=Category::class, inversedBy="post", storeAs="id") */
     private $category;
 
-    public function getId(): int
+    public function __construct()
+    {
+        $this->keyword = new ArrayCollection();
+    } 
+
+    public function getId(): string
     {
         return $this->id;
     }
@@ -92,22 +97,22 @@ class Blog
         return $this->body;
     }
     // * $keyword
-    public function setKeyword(array $keyword): void
+    public function setKeyword($keyword): void
     {
         $this->keyword = $keyword;
     }
-    public function getKeyword(): array
-    {
-        return $this->keyword;
-    }
+    // public function getKeyword():ArrayCollection
+    // {
+    //     return new ArrayCollection($this->keyword);
+    // }
     // * $imageUrl
-    public function setImageUrl(array $imageUrl): void
+    public function setImageUrl(string $imageUrl): void
     {
         $this->imageUrl = $imageUrl;
     }
-    public function getImageUrl(): array
+    public function getImageUrl(): string
     {
-        return [$this->imageUrl];
+        return $this->imageUrl;
     }
     // * $status; 
     public function setStatus(bool $status): void
@@ -128,10 +133,17 @@ class Blog
     {
         return $this->datePublished;
     }
-
+    public function setCategory($category): void
+    {
+        $this->category = $category;
+    }
     public function getCategory(): Category
     {
         return $this->category;
+    }
+    public function setLanguaje($languaje): void
+    {
+        $this->languaje = $languaje;
     }
 
     public function getLanguaje(): Languajes

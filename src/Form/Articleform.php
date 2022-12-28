@@ -5,6 +5,7 @@ namespace App\Form;
 use App\PostMetadata\Category\CategorySaver;
 use App\Document\Userone;
 use App\PostMetadata\Category\GetCategory;
+use App\PostMetadata\Languaje\GetLanguaje;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -20,11 +21,17 @@ class Articleform extends AbstractType
 
   private $getCAtegory;
   private $GetCategory;
+  private $languaje;
 
-  public function __construct(CategorySaver $getCAtegory, GetCategory $GetCategory)
+  public function __construct(
+    CategorySaver $getCAtegory, 
+    GetCategory $GetCategory,
+    GetLanguaje $languaje,
+    )
   {
       $this->getCAtegory = $getCAtegory;
       $this->GetCategory = $GetCategory;
+      $this->languaje = $languaje;
   }
 
 
@@ -32,7 +39,7 @@ class Articleform extends AbstractType
   {
 
     $getCategoryCollection = $this->GetCategory->getAllCategory();
-    
+    $languaje = $this->languaje->getAllLanguaje();
 
     $builder->add('Titulo_del_post',  TextType::class, [
         'attr' => [
@@ -46,10 +53,7 @@ class Articleform extends AbstractType
      ->add('htmlarea', CKEditorType::class)
      ->add('languaje', ChoiceType::class, [
         'choices'  => [
-            ' ' => null,
-            'español' => 'es',
-            'ingles' => 'en', 
-        ],
+            ' ' => '', ...$languaje],
     ])
     ->add('keywords',  TextType::class)
     ->add('published_status', ChoiceType::class, [

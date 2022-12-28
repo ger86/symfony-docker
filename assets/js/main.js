@@ -16,12 +16,14 @@
 import Loginscript from "../login";
 import ConfigureValueInPostSelect from "./configureValueOptionsInBlog"; 
 import MediaSelector from "./mediaselector/MediaSelector";
+import PostStatusHidden from "./postStatusHidden";
 
 
 window.addEventListener("load", () => {
   window.Loginscript                    = new Loginscript(); 
   window.MediaSelector                  = new MediaSelector();
   window.ConfigureValueInPostSelect     = new ConfigureValueInPostSelect(); 
+  window.PostStatusHidden               = new PostStatusHidden();
 });
 
     

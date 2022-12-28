@@ -2,6 +2,13 @@
 .newblog {
   &_wrapper {
     padding: 10px 20px 0 0;
+    &_status{
+      background: #dff3df;
+      font-size: 18px;
+      padding: 10px;
+      overflow: hidden;
+    }
+    
     &-form {
       display: flex;
       justify-content: space-between;
@@ -269,4 +276,9 @@
   background: #000000d9;
   z-index: 999;
   opacity: 1;
+}
+
+.hiddeStatus {
+  padding:0;
+  height: 0;
 }

@@ -9,6 +9,13 @@
 </h1>
 <div class="newblog">
   <div class="newblog_wrapper">
+
+               {% if status == true %}
+                <div class="newblog_wrapper_status">
+                  <span>👏 Great. Post was submited! </span>
+                </div>
+               {% endif %}
+
     {{ form_start(Articleform, {'attr': {'class': 'newblog_wrapper-form'},
     'action': '/blog/newblog', 'method': 'POST'}
     ) }}

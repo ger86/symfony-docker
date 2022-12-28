@@ -40,7 +40,7 @@ class MediaSelector
         
 
         imageSelector.addEventListener('click', (e) => {
-            console.log("🚀 ~ file: ~ e", show)
+            // console.log("🚀 ~ file: ~ e", show)
             if("IMG" == e.target.nodeName){
                 media.classList.remove(this.active);
                 input.value = e.target.currentSrc
