@@ -5,6 +5,99 @@
 {% block backendBody %}
 <h1>
   Todos los artículos
-</h1>
+</h1><div class="blogList">
+  <div class="blogList_wrapper">
+  {# {{ dump(BlogList) }} #}
+<div class="blogList_wrapper-newBlog">
+ <a href="{{ path('app_newblog') }}"><button>Add a New Blog</button> </a>  
+</div>
+  
+   <div class="blogList_wrapper-filter">
+    <div class="blogList_wrapper-filter-languaje">
+    <div class="blogList_wrapper-filter-languaje-wrapper">
+    <label for="langajeFilter">Filter By languaje</label>
+    <select id="langajeFilter">
+    <option value="">-------------</option>
+     <option value="es">es</option>
+     <option value="en">en</option>
+    </select>
+    </div>
+   
+    <button class="blogList_wrapper-filter-languaje-filterLanguaje">apply</button>
+     </div>
+       <div class="blogList_wrapper-filter-published">
+     <div class="blogList_wrapper-filter-published-wrapper">
+     <label for="langajeStatusPublished">Filter By status</label>
+    <select id="langajeStatusPublished">
+    <option value="">-------------</option>
+     <option value="published">published</option>
+     <option value="draft">draft</option>
+    </select>
+     </div>
+   
+    <button class="blogList_wrapper-filter-languaje-filterPublished">apply</button>
+     </div>
+   </div>
+    <table>
+      <thead>
+      <tr>
+      <td>title</td>
+      <td>status</td>
+      <td>Date Published</td>
+      <td>see</td>
+      <td>eddit</td>
+      <td>delette</td>
+      </tr>
+      </thead>
+
+      <tbody>
+     
+       {% if BlogList %}
+          {% for blog in BlogList %}
+           <tr>
+            <td><a>{{ blog.title }}</a></td> 
+              {% if blog.status == 1 %}
+                <td>Published</td>
+                {% else %}
+                <td>draft</td>
+              {% endif %}
+               <td>{{ blog.datePublished|date("m/d/Y") }}</td>
+              <td><button><i style="color:#1ca238;" class="fa-solid fa-eye"></i></button></td>
+              <td><button><i style="color: #ba36e9;" class="fa-solid fa-pen-to-square"></i></button></td> 
+              <td><button><i style="color: #fa6868;" class="fa-solid fa-trash"></i></button></td> 
+               </tr>
+         {% endfor %} 
+       {% endif %}
+      
+       </tbody>
+
+      <tfoot>
+      <tr>
+      <td>title</td>
+      <td>status</td>
+      <td>Date Published</td>
+      <td>see</td>
+      <td>eddit</td>
+      <td>delette</td>
+      </tr>
+      </tfoot>
+
+    </table>
+  </div>
+  </div>
+
+
   
 {% endblock %}
+
+    {# -id: "63ac53b6fa15c3dd9a0bfad9"
+    -title: "854 Tromp Parkways"
+    -urlFriendly: "Ab-quam-officia-aspernatur"
+    -body: ""
+    -keyword: array:3 [▶]
+    -imageUrl: "https://media.lavour.es/images/paso3.jpg"
+    -status: true
+    -datePublished: DateTime @1619042400 {#595 ▶}
+    -languaje: MongoDBODMProxies\__PM__\App\Document\Languajes\Generatedb549523b6483353641dfc3cb847ca0a8 - App\Document\Languajes@proxy {#643 ▶}
+    -category: MongoDBODMProxies\__PM__\App\Document\Category\Generated82c42129b4ae6796ee3807577047e6a2 - App\Document\Category@proxy {#683 ▶}
+    #}

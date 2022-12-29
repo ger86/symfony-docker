@@ -1,0 +1,112 @@
+@import '../general.scss';
+.blogList {
+    &_wrapper { 
+        &-newBlog {
+            display: block;
+            margin-bottom: 10px;
+            button{
+                border: solid 1px $linkColor;
+                line-height: 30px;
+                padding: 0 20px;
+                border-radius: 4px;
+                color: $linkColor;
+                &:hover{
+                   cursor: pointer; 
+                  }
+              }
+          } 
+
+  &-filter {
+    display: flex;
+    margin-bottom: 10px;
+    &-languaje, &-published{
+        display: flex;
+        align-items:end;
+      &-wrapper{
+        display: flex;
+        flex-direction: column;
+        label{
+            margin-bottom: 5px;
+          font-size: 14px;
+        }
+        select{
+            background: white;
+            border: solid 1px gray;
+            text-align: center;
+            height: 25px;
+          }
+      }
+      button{
+        margin: 0 5px;
+        padding: 0 10px;
+        height: 25px;
+        border-radius: 3px;
+        border: solid 1px gray;
+      }
+    }
+  }
+      padding: 10px 20px 0 0;
+      table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+        thead, tfoot{
+          font-size: $linksize;
+          color: $backgroundLingk;
+          td{
+             
+            text-align: center;
+            &:first-child{
+                text-align: left;
+            }
+        }
+        }
+        tr:nth-child(even) {
+            background-color: #e7e7e7;
+          }
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+          }
+          tbody{
+            tr{
+                td{
+                    font-size: $smallText;
+                    font-weight: 400;
+                    text-align: center;
+                    &:first-child{
+                        text-align: left;
+                    }
+                    a{
+                        color: $linkColor;
+                        &:hover{
+                            text-decoration: underline;
+                            cursor: pointer;
+                        }
+                    }
+
+                    button {
+                        background: #dedede;
+                        border: none;
+                        padding: 3px 10px;
+                        border-radius: 5px;
+                        cursor: pointer;
+                        border: solid 1px #b8b8b800;
+                        &:hover{
+                            border: solid 1px #b8b8b8;
+                        }
+                      }
+
+                }
+            }
+           
+          }
+      }
+    }
+}
+
+ 
+  
+  
+   
