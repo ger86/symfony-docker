@@ -2,13 +2,13 @@
 .newblog {
   &_wrapper {
     padding: 10px 20px 0 0;
-    &_status{
+    &_status {
       background: #dff3df;
       font-size: 18px;
       padding: 10px;
       overflow: hidden;
     }
-    
+
     &-form {
       display: flex;
       justify-content: space-between;
@@ -236,6 +236,36 @@
     &-items {
       width: 90%;
       margin: 15vh auto;
+
+      &-filter {
+        border: solid 1px #3b3b3b;
+        margin: 0 0 15px;
+        padding: 10px;
+        span {
+          color: gray;
+          display: block;
+          margin: 10px 0;
+        }
+        ul {
+          display: flex;
+          li {
+            button {
+              background: none;
+              border: solid 1px #595858;
+              color: white;
+              display: block;
+              line-height: 30px;
+              padding: 0 30px;
+              margin: 0 1px;
+              &:hover {
+                background: #595858;
+                border: solid 1px #595858;
+                cursor: pointer;
+              }
+            }
+          }
+        }
+      }
       &-wrapper {
         display: flex;
         flex-wrap: wrap;
@@ -258,7 +288,7 @@
               width: 100%;
               height: 200px;
               min-width: 300px;
-              border: solid 5px $lightgreen;;
+              border: solid 5px $lightgreen;
               cursor: pointer;
             }
           }
@@ -279,6 +309,6 @@
 }
 
 .hiddeStatus {
-  padding:0;
+  padding: 0;
   height: 0;
 }

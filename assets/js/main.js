@@ -15,6 +15,7 @@
  
 import Loginscript from "../login";
 import ConfigureValueInPostSelect from "./configureValueOptionsInBlog"; 
+import GalleryFilter from "./galleryFilter";
 import MediaSelector from "./mediaselector/MediaSelector";
 import PostStatusHidden from "./postStatusHidden";
 
@@ -24,6 +25,7 @@ window.addEventListener("load", () => {
   window.MediaSelector                  = new MediaSelector();
   window.ConfigureValueInPostSelect     = new ConfigureValueInPostSelect(); 
   window.PostStatusHidden               = new PostStatusHidden();
+  window.GalleryFilter                  = new GalleryFilter();
 });
 
     

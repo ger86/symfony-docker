@@ -105,7 +105,38 @@
      <button class="newblog_media_buttonClose">close media resource</button>
      {# <iframe src="https://media.lavour.es/" class="newblog_media_button-iframe"></iframe>  #}
      <div class="newblog_media-items">
+     <div class="newblog_media-items-filter">
+        <span>Filter this gallery</span>
+         <ul class="newblog_media-items-filter_trigger">
+         <li>
+         <button id="newblog_media-items-filter__all">
+         all
+         </button>
+         </li>
+         <li>
+         <button id="newblog_media-items-filter__blog">
+         blog
+         </button>
+         </li>
+          <li>
+         <button id="newblog_media-items-filter__article">
+         article
+         </button>
+         </li>
+          <li>
+         <button id="newblog_media-items-filter__home">
+         home
+         </button>
+         </li>
+          <li>
+         <button id="newblog_media-items-filter__pages">
+         pages
+         </button>
+         </li>
+         </ul>
+        </div>
         <div class="newblog_media-items-wrapper">
+        
       {% for elemets in mediaElement %}
         <div class="newblog_media-items-wrapper-item">
          <img src={{elemets.file}} />  

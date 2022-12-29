@@ -17,3 +17,10 @@ export const HIDESTATUSPOST = {
      extatusWrapper: 'newblog_wrapper_status'
 }
 
+export const GALLERYFILTER = {
+       boxgallery : 'newblog_media-items-wrapper',
+       partUrl : 'https://media.lavour.es/',
+       trigger: 'newblog_media-items-filter_trigger'
+ 
+}
+
