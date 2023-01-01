@@ -22,6 +22,8 @@ class Articleform extends AbstractType
   private $getCAtegory;
   private $GetCategory;
   private $languaje;
+  private $listCategories;
+  private $listLanguaje;
 
   public function __construct(
     CategorySaver $getCAtegory, 
@@ -32,6 +34,8 @@ class Articleform extends AbstractType
       $this->getCAtegory = $getCAtegory;
       $this->GetCategory = $GetCategory;
       $this->languaje = $languaje;
+      $this->listCategories = [];
+      $this->listLanguaje = [];
   }
 
 
@@ -40,6 +44,15 @@ class Articleform extends AbstractType
 
     $getCategoryCollection = $this->GetCategory->getAllCategory();
     $languaje = $this->languaje->getAllLanguaje();
+
+    foreach ($getCategoryCollection->toArray() as $key => $value) {
+      $this->listCategories[$value] = $value;
+}
+
+foreach ($languaje->toArray() as $key => $value) {
+$this->listLanguaje[$value] = $value;
+}
+
 
     $builder->add('Titulo_del_post',  TextType::class, [
         'attr' => [
@@ -53,7 +66,7 @@ class Articleform extends AbstractType
      ->add('htmlarea', CKEditorType::class)
      ->add('languaje', ChoiceType::class, [
         'choices'  => [
-            ' ' => '', ...$languaje],
+            ' ' => '', ...$this->listLanguaje],
     ])
     ->add('keywords',  TextType::class)
     ->add('published_status', ChoiceType::class, [
@@ -65,7 +78,7 @@ class Articleform extends AbstractType
     ])
     ->add('featured_Image', TextType::class, ['attr'=>['class'=>'newblog_wrapper-form-right-items-imageSelector-input']])
     ->add('categories', ChoiceType::class, [
-      'choices'  => [''=>'',...$getCategoryCollection],  
+      'choices'  => [''=>'',...$this->listCategories],  
   ])
     ->add('publishedAt', DateType::class, [
       'widget' => 'choice',

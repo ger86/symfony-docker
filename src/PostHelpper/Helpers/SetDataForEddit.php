@@ -3,7 +3,7 @@
 namespace App\PostHelpper\Helpers;
 
  
-use App\Document\Languajes;
+ 
 use App\Document\BlogDocument\Blog;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ODM\MongoDB\DocumentManager; 
@@ -20,8 +20,7 @@ class SetDataForEddit extends AbstractController
         DocumentManager $dm
         )
     {
-        $this->dm = $dm;
-        $postIdObject = [];
+        $this->dm = $dm; 
         $this->postValues = [];
         $this->GetBlogForEddit = [];
     

@@ -19,25 +19,25 @@ use Symfony\Component\Form\FormBuilderInterface;
 class EdditForm extends AbstractType 
 {
 
-  private $getCAtegory;
   private $GetCategory;
   private $languaje;
+  private $listCategories;
+  private $listLanguaje;
 
   public function __construct(
-    CategorySaver $getCAtegory, 
     GetCategory $GetCategory,
     GetLanguaje $languaje,
     )
   {
-      $this->getCAtegory = $getCAtegory;
       $this->GetCategory = $GetCategory;
       $this->languaje = $languaje;
+      $this->listCategories = [];
+      $this->listLanguaje = [];
   }
 
 
   public function buildForm(FormBuilderInterface $builder, array $options)
   {
-
        $getData = explode('-',$options['attr']['date']);
        $f = new \DateTime();
        $a = $f->setDate(intval($getData[0]),
@@ -45,9 +45,18 @@ class EdditForm extends AbstractType
        intval($getData[2]))->format('Y-m-d');
       
     
-  $getCategoryCollection = $this->GetCategory->getAllCategory();
+    $getCategoryCollection = $this->GetCategory->getAllCategory();
     $languaje = $this->languaje->getAllLanguaje();
 
+    foreach ($getCategoryCollection->toArray() as $key => $value) {
+              $this->listCategories[$value] = $value;
+    }
+
+    foreach ($languaje->toArray() as $key => $value) {
+      $this->listLanguaje[$value] = $value;
+}
+
+   
     $builder->add('Titulo_del_post',  TextType::class, [
         'attr' => [
             'placeholder' => 'agregar titulo del artículo',
@@ -68,7 +77,7 @@ class EdditForm extends AbstractType
        ])
      ->add('languaje', ChoiceType::class, [
         'choices'  => [
-          $options['attr']['languaje'] => $options['attr']['languaje'], ...$languaje],
+          $options['attr']['languaje'] => $options['attr']['languaje'], ...$this->listLanguaje],
     ])
     ->add('keywords',  TextType::class, [
       'attr' => [ 
@@ -87,13 +96,18 @@ class EdditForm extends AbstractType
         'value' => $options['attr']['imageURL']]])
     ->add('categories', ChoiceType::class, [
       'choices'  => [$options['attr']['category'] => $options['attr']['category'],
-      ...$getCategoryCollection],  
+      ...$this->listCategories],  
   ])
     ->add('publishedAt', DateType::class, [
        'widget' => 'choice',
        'format' => 'dd-MM-yyyy',
          'input' => 'string',
         'data' => $a
+    ])
+    ->add('PostId', HiddenType::class,[
+      'attr' =>[
+        'value' => $options['attr']['id']
+      ]
     ]);
   
     }

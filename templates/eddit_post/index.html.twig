@@ -5,19 +5,19 @@
  
 {% block backendBody %}
 <h1>
-  Eddit Post
+  🖊️ You Are Editing this Post.
 </h1>
 <div class="newblog">
   <div class="newblog_wrapper">
 
-               {# {% if status == true %}
+               {% if status == true %}
                 <div class="newblog_wrapper_status">
-                  <span>👏 Great. Post was submited! </span>
+                  <span>🖊️ Great. Post was eddited! </span>
                 </div>
-               {% endif %} #}
+               {% endif %}
 
     {{ form_start(edditform, {'attr': {'class': 'newblog_wrapper-form'},
-    'action': '/blog/newblog', 'method': 'POST'}
+    'action': '/eddit/post?type=save', 'method': 'POST'}
     ) }}
      
       
@@ -52,7 +52,7 @@
     </div> 
      
  
-      <input class="newblog_wrapper-form-left-submit" type="submit" value="Save post | save status without publish" /> 
+      <input class="newblog_wrapper-form-left-submit" type="submit" value="Eddit Post" /> 
    </div> 
    <div class="newblog_wrapper-form-right">
       <div  class="newblog_wrapper-form-right-items"> 
@@ -137,11 +137,11 @@
         </div>
         <div class="newblog_media-items-wrapper">
         
-      {# {% for elemets in mediaElement %}
+      {% for elemets in mediaElement %}
         <div class="newblog_media-items-wrapper-item">
          <img src={{elemets.file}} />  
         </div>
-       {% endfor %} #}
+       {% endfor %}
         </div>
      </div>
     </section>  

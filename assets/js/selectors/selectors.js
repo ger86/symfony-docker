@@ -8,11 +8,6 @@ export const MEDIASELECTORS = {
   friendlyUrlSwitch: 'newblog_wrapper-form-left-Furl-input'
 }
 
-export const POSTSELECTVALUES = {
-     options : 'articleform_categories',
-     lang    : 'articleform_languaje'
-}
-
 export const HIDESTATUSPOST = {
      extatusWrapper: 'newblog_wrapper_status'
 }
