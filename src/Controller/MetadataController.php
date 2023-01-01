@@ -2,12 +2,12 @@
 
 namespace App\Controller;
 
-use App\PostMetadata\Category\CategorySaver;
-use App\PostMetadata\Category\GetCategory;
+use App\PostHelpper\Category\CategorySaver;
+use App\PostHelpper\Category\GetCategory;
 use App\Form\CategoryType;
 use App\Form\LanguajeType;
-use App\PostMetadata\Category\DeletteCategory;
-use App\PostMetadata\Languaje\GetLanguaje;
+use App\PostHelpper\Category\DeletteCategory;
+use App\PostHelpper\Languaje\GetLanguaje;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 use Symfony\Component\HttpFoundation\Request;

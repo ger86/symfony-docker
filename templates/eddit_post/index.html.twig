@@ -1,0 +1,151 @@
+
+{% extends 'pannels.html.twig' %}
+
+{% block title %}™️ New Blog{% endblock %}
+ 
+{% block backendBody %}
+<h1>
+  Eddit Post
+</h1>
+<div class="newblog">
+  <div class="newblog_wrapper">
+
+               {# {% if status == true %}
+                <div class="newblog_wrapper_status">
+                  <span>👏 Great. Post was submited! </span>
+                </div>
+               {% endif %} #}
+
+    {{ form_start(edditform, {'attr': {'class': 'newblog_wrapper-form'},
+    'action': '/blog/newblog', 'method': 'POST'}
+    ) }}
+     
+      
+
+   <div class="newblog_wrapper-form-left"> 
+     <div class="newblog_wrapper-form-left-title"> 
+      {{ form_label(edditform.Titulo_del_post) }} 
+      {{ form_widget(edditform.Titulo_del_post) }}
+       {{ form_help(edditform.Titulo_del_post,{'help': 'Titulo post head del post'}) }} 
+     </div>
+     <div class="newblog_wrapper-form-left-Furl"> 
+      {{ form_label(edditform.FriendlyUrl) }} 
+      {{ form_widget(edditform.FriendlyUrl) }}
+       {{ form_help(edditform.FriendlyUrl,{'help': 'Para SEO url amigable'}) }} 
+     </div>
+     <div class="newblog_wrapper-form-left-htmlarea"> 
+      {{ form_label(edditform.htmlarea) }}  
+      {{ form_widget(edditform.htmlarea) }}
+       {{ form_help(edditform.htmlarea,{'help': 'salida en html con estilos inclustados'}) }} 
+     </div>
+    <div class="newblog_wrapper-form-left-keywordsCategories">
+          <div class="newblog_wrapper-form-left-keywordsCategories-keywords"> 
+      {{ form_label(edditform.keywords) }}  
+      {{ form_widget(edditform.keywords) }}
+       {{ form_help(edditform.keywords,{'help': 'Set keyword like: tech-code-libraries'}) }} 
+     </div>
+     <div class="newblog_wrapper-form-left-keywordsCategories-categories"> 
+      {{ form_label(edditform.categories) }}  
+      {{ form_widget(edditform.categories) }}
+       {{ form_help(edditform.categories,{'help': 'Set a category for this post'}) }} 
+     </div>
+    </div> 
+     
+ 
+      <input class="newblog_wrapper-form-left-submit" type="submit" value="Save post | save status without publish" /> 
+   </div> 
+   <div class="newblog_wrapper-form-right">
+      <div  class="newblog_wrapper-form-right-items"> 
+       <div  class="newblog_wrapper-form-right-items-imageSelector"> 
+          <div  class="newblog_wrapper-form-right-items-imageSelector-show"> 
+        
+          </div>
+        
+             {{ form_widget(edditform.featured_Image) }} 
+             
+          <p class="newblog_wrapper-form-right-items-imageSelector-help">
+          seleccionar imagen para el post
+          </p>
+            <button class="newblog_wrapper-form-right-items-imageSelector-button">
+            seleccionar
+            </button>
+
+             
+       
+       </div>
+      <div  class="newblog_wrapper-form-right-items-status"> 
+      <div  class="newblog_wrapper-form-right-items-status-wrapperLabel">
+       <i class="fa-sharp fa-solid fa-check"></i>{{ form_label(edditform.published_status) }} 
+      </div>  
+     {{ form_widget(edditform.published_status) }}
+     {{ form_help(edditform.published_status,{'help': 'Post Status'}) }} 
+    </div> 
+
+      <div  class="newblog_wrapper-form-right-items-languaje"> 
+      <div  class="newblog_wrapper-form-right-items-status-wrapperLabel">
+       <i class="fa-solid fa-earth-americas"></i>{{ form_label(edditform.languaje) }}
+       </div>
+     {{ form_widget(edditform.languaje) }}
+      {{ form_help(edditform.languaje,{'help': 'Select languaje for this post'}) }} 
+    </div> 
+
+    <div  class="newblog_wrapper-form-right-items-published"> 
+      <div  class="newblog_wrapper-form-right-items-published-wrapperLabel">
+      <i class="fa-regular fa-calendar-days"></i>{{ form_label(edditform.publishedAt) }}
+       </div>
+     {{ form_widget(edditform.publishedAt) }}
+      {{ form_help(edditform.publishedAt,{'help': 'Select time to publish'}) }} 
+    </div>  
+    </div> 
+      
+    {{ form_end(edditform) }}
+   </div> 
+  </div>  
+   <section class="newblog_media">
+     <button class="newblog_media_buttonClose">close media resource</button>
+     {# <iframe src="https://media.lavour.es/" class="newblog_media_button-iframe"></iframe>  #}
+     <div class="newblog_media-items">
+     <div class="newblog_media-items-filter">
+        <span>Filter this gallery</span>
+         <ul class="newblog_media-items-filter_trigger">
+         <li>
+         <button id="newblog_media-items-filter__all">
+         all
+         </button>
+         </li>
+         <li>
+         <button id="newblog_media-items-filter__blog">
+         blog
+         </button>
+         </li>
+          <li>
+         <button id="newblog_media-items-filter__article">
+         article
+         </button>
+         </li>
+          <li>
+         <button id="newblog_media-items-filter__home">
+         home
+         </button>
+         </li>
+          <li>
+         <button id="newblog_media-items-filter__pages">
+         pages
+         </button>
+         </li>
+         </ul>
+        </div>
+        <div class="newblog_media-items-wrapper">
+        
+      {# {% for elemets in mediaElement %}
+        <div class="newblog_media-items-wrapper-item">
+         <img src={{elemets.file}} />  
+        </div>
+       {% endfor %} #}
+        </div>
+     </div>
+    </section>  
+{% endblock %}
+
+
+ 

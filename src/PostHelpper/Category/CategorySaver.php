@@ -1,6 +1,6 @@
 <?php
 
-namespace App\PostMetadata\Category;
+namespace App\PostHelpper\Category;
 
  
 use App\Document\Category;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\PostMetadata\Languaje;
+namespace App\PostHelpper\Languaje;
 
  
 use App\Document\Languajes;

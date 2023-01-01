@@ -5,7 +5,8 @@
 {% block backendBody %}
 <h1>
   Todos los artículos
-</h1><div class="blogList">
+</h1>
+<div class="blogList">
   <div class="blogList_wrapper">
   {# {{ dump(BlogList) }} #}
 <div class="blogList_wrapper-newBlog">
@@ -53,18 +54,21 @@
       <tbody>
      
        {% if BlogList %}
-          {% for blog in BlogList %}
+          {% for blog in BlogList %} 
            <tr>
-            <td><a>{{ blog.title }}</a></td> 
+            <td><a href="{{ path('app_eddit_post', {type: 'Eddit', value:blog.id}) }}">{{ blog.title }}</a></td> 
               {% if blog.status == 1 %}
                 <td>Published</td>
                 {% else %}
                 <td>draft</td>
               {% endif %}
                <td>{{ blog.datePublished|date("m/d/Y") }}</td>
-              <td><button><i style="color:#1ca238;" class="fa-solid fa-eye"></i></button></td>
-              <td><button><i style="color: #ba36e9;" class="fa-solid fa-pen-to-square"></i></button></td> 
-              <td><button><i style="color: #fa6868;" class="fa-solid fa-trash"></i></button></td> 
+              <td><a href="{{ path('app_eddit_post', {type: 'See', value:blog.id}) }}">
+              <button class="{{'actionSee__' ~ blog.id  }}"><i style="color:#1ca238;" class="fa-solid fa-eye"></i></button></a></td>
+              <td><a href="{{ path('app_eddit_post', {type: 'Eddit', value:blog.id}) }}">
+              <button class="{{'actionEddit__' ~ blog.id }}"><i style="color: #ba36e9;" class="fa-solid fa-pen-to-square"></i></button></a></td> 
+              <td><a href="{{ path('app_eddit_post', {type: 'Delette', value:blog.id}) }}">
+              <button class="{{'actionTrash__' ~ blog.id }}"><i style="color: #fa6868;" class="fa-solid fa-trash"></i></button></a></td> 
                </tr>
          {% endfor %} 
        {% endif %}
@@ -84,20 +88,8 @@
 
     </table>
   </div>
-  </div>
+</div>
 
 
   
-{% endblock %}
-
-    {# -id: "63ac53b6fa15c3dd9a0bfad9"
-    -title: "854 Tromp Parkways"
-    -urlFriendly: "Ab-quam-officia-aspernatur"
-    -body: ""
-    -keyword: array:3 [▶]
-    -imageUrl: "https://media.lavour.es/images/paso3.jpg"
-    -status: true
-    -datePublished: DateTime @1619042400 {#595 ▶}
-    -languaje: MongoDBODMProxies\__PM__\App\Document\Languajes\Generatedb549523b6483353641dfc3cb847ca0a8 - App\Document\Languajes@proxy {#643 ▶}
-    -category: MongoDBODMProxies\__PM__\App\Document\Category\Generated82c42129b4ae6796ee3807577047e6a2 - App\Document\Category@proxy {#683 ▶}
-    #}
+{% endblock %} 

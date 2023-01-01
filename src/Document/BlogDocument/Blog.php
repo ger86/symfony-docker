@@ -101,10 +101,10 @@ class Blog
     {
         $this->keyword = $keyword;
     }
-    // public function getKeyword():ArrayCollection
-    // {
-    //     return new ArrayCollection($this->keyword);
-    // }
+    public function getKeyword():string
+    {
+        return  $this->keyword[0];
+    }
     // * $imageUrl
     public function setImageUrl(string $imageUrl): void
     {

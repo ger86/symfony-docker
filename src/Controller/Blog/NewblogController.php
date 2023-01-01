@@ -40,7 +40,7 @@ class NewblogController extends AbstractController
 
     try {
 
-     
+       // ! CONVERTIR TODO ESTO EN UN SERVICIO !!!!!!!!! 
 
       if ("array" == getType($request->request->get("articleform"))) {
 
