@@ -12,8 +12,10 @@
     
        {% set languaje = 'templateParts/metadata/languaje/lang.html.twig' %}
        {% set category = 'templateParts/metadata/category/category.html.twig' %}
-        {% set isActivelang = active == 'lang' ? 'activeMetadata' : null  %}
+       {% set status = 'templateParts/metadata/status/status.html.twig' %}
+         {% set isActivelang = active == 'lang' ? 'activeMetadata' : null  %}
          {% set isActivecat = active == 'cat' ? 'activeMetadata' : null  %}
+          {% set isActivestatus = active == 'stat' ? 'activeMetadata' : null  %}
   <div class="metadata">
     <div class="metadata-wrapper">
       <div class="metadata-wrapper-selector">
@@ -30,14 +32,14 @@
             </a>
           </li> 
           <li class="metadata-wrapper-selector-ul-li">
-            <a class="metadata-wrapper-selector-ul-li-actionAnother" href="{{ path('app_metadata', {active: 'lang'}) }}">
-              another
+            <a class="metadata-wrapper-selector-ul-li-actionStatus {{ isActivestatus }}" href="{{ path('app_metadata', {active: 'stat'}) }}">
+              Status
             </a>
           </li>
         </ul>
       </div>
      
-      {% include active == 'lang' ? languaje : category  %} 
+      {% include active == 'lang' ? languaje : active == 'stat' ? status : category  %} 
       
     </div>
   </div>

@@ -1,0 +1,67 @@
+ {# <div class="metadata-wrapper-lang activeBodyMetadata">
+        {{
+          form_start(
+            LanguajeForm,
+            {
+              attr: {
+                class: 'metadata-wrapper-lang-formLang'
+              },
+              action: '/metadata?active="cat"',
+              method: 'POST'
+            }
+          )
+        }}
+        <div class="metadata-wrapper-lang-formLang-wrapper">
+          <div class="metadata-wrapper-lang-formLang-wrapper-item">
+            {{ form_label(LanguajeForm.languaje) }}
+            {{ form_widget(LanguajeForm.languaje) }}
+            {{
+              form_help(
+                LanguajeForm.languaje,
+                {
+                  help: 'insert a new status in the sistem'
+                }
+              )
+            }}
+          </div>
+          <input class="metadata-wrapper-lang-formLang-wrapper-item-submit"
+            type="submit"
+            value="Add Status" />
+
+          {{ form_end(LanguajeForm) }}
+        </div> #}
+        <br>
+        <span>Status</span>
+        <br>
+        <br>
+        <table class="metadata-wrapper-lang-table"
+          border="1"
+          style="border-collapse: collapse;width: 30%; max-width: 300px; text-align: center;">
+          <thead class="metadata-wrapper-lang-table-thead">
+            <tr>
+              <td>
+                status name
+              </td>
+              
+            </tr>
+          </thead>
+          <tbody class="metadata-wrapper-lang-table-tbody activeBodyMetadata">
+       
+              {# {{ dump(allstatus) }} #}
+            {% if allstatus != '' %}
+
+            
+       {% for status in allstatus %}
+         <tr>
+            
+       
+              <td>
+               {{ status }}
+              </td>
+               
+            </tr>
+      {% endfor %} 
+          {% endif %}
+          </tbody>
+        </table>
+      </div>

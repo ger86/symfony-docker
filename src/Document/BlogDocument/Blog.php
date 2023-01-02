@@ -4,6 +4,7 @@ namespace App\Document\BlogDocument;
 
 use App\Document\Category;
 use App\Document\Languajes;
+use App\Document\Status;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 use Doctrine\ODM\MongoDB\PersistentCollection;
@@ -42,10 +43,10 @@ class Blog
      */
     private $imageUrl;
 
-    /**
-     * @MongoDB\Field(type="bool")
-     */
-    private $status;
+    // /**
+    //  * @MongoDB\Field(type="bool")
+    //  */
+    // private $status;
 
     /**
      * @MongoDB\Field(type="date")
@@ -58,6 +59,9 @@ class Blog
 
     /** @MongoDB\ReferenceOne(targetDocument=Category::class, inversedBy="post", storeAs="id") */
     private $category;
+
+    /** @MongoDB\ReferenceOne(targetDocument=Status::class, inversedBy="post", storeAs="id") */
+    private $status;
 
     public function __construct()
     {
@@ -114,16 +118,7 @@ class Blog
     {
         return $this->imageUrl;
     }
-    // * $status; 
-    public function setStatus(bool $status): void
-    {
-        $this->status = $status;
-    }
-    public function getStatus(): bool
-    {
-        return $this->status;
-    }
-
+     
     // * $datePublished   
     public function setDatePublished(\DateTime $datePublished): void
     {
@@ -149,5 +144,13 @@ class Blog
     public function getLanguaje(): Languajes
     {
         return $this->languaje;
+    } 
+    public function setStatus($status): void
+    {
+        $this->status = $status;
+    }
+    public function getStatus(): Status
+    {
+        return $this->status;
     }
 }

@@ -7,7 +7,9 @@ use App\PostHelpper\Category\GetCategory;
 use App\Form\CategoryType;
 use App\Form\LanguajeType;
 use App\PostHelpper\Category\DeletteCategory;
+ 
 use App\PostHelpper\Languaje\GetLanguaje;
+use App\PostHelpper\Status\GetStatus;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 use Symfony\Component\HttpFoundation\Request;
@@ -24,12 +26,11 @@ class MetadataController extends AbstractController
     CategorySaver $saveCategory,
     GetCategory $GetCategory,
     GetLanguaje $languaje,
-    DeletteCategory $delette
+    DeletteCategory $delette,
+    GetStatus $getStatus
   ): Response {
 
-    //  dd($request->request->all());
-
-
+     
     $getLoguinStatus = intval($request->cookies->get($_ENV['SECRETNAME_KOOKIE']));
     if (!$getLoguinStatus) {
       return $this->redirectToRoute("app_home");
@@ -41,13 +42,23 @@ class MetadataController extends AbstractController
     if (isset($request->request->get('languaje')['languaje'])) {
     };
 
-    $isActive = '';
-    if ($request->query->get('active') != null) {
-      $isActive = $request->query->get('active');
-    } else {
-      $isActive = 'lang';
-    }
 
+    $isActive = 'lang';
+    if ($request->query->get('active') != null) {
+    switch ($request->query->get('active')) {
+      case 'lang':
+        $isActive = 'lang';
+        break;
+        case 'cat':
+          $isActive = 'cat';
+          break;
+          case 'stat':
+            $isActive = 'stat';
+            break;
+       
+    }
+  }
+  
     $categories = [];
 
 
@@ -73,7 +84,8 @@ class MetadataController extends AbstractController
       'CategoryForm' =>  $CategoryForm->createView(),
       'active'       =>  $isActive,
       'categories'   =>  $categories != '' ? $GetCategory->getAllCategory() : null,
-      'languajes'     =>  $languaje->getAllLanguaje()
+      'languajes'    =>  $languaje->getAllLanguaje(),
+      'allstatus'       =>  $getStatus->getAllStatus()
     ]);
   }
 }
