@@ -49,13 +49,13 @@ class EdditPostController extends AbstractController
         if ($request->query->get('type')) {
             switch ($request->query->get('type')) {
                 case 'Eddit':
-                    $this->filtredPostEdditData =  $SetDataForEddit->getFiltredDataForFillPostOrShowPost($request->query->get('value'));
+                    $this->filtredPostEdditData =  $SetDataForEddit->getFiltredDataForFillPostOrShowPost($request->query->get('value')); 
                     break;
                 case 'save':
                     try {
                         $edditResult = $savePostEdited->getDataToSavePostEditedInDatabase($request->request->get("eddit_form"));
                         $this->status = $edditResult == 1 ? true : false;
-                        $this->filtredPostEdditData =  $SetDataForEddit->getFiltredDataForFillPostOrShowPost($request->request->get("eddit_form")['PostId']);
+                        $this->filtredPostEdditData = $SetDataForEddit->getFiltredDataForFillPostOrShowPost($request->request->get("eddit_form")['PostId']); 
                     } catch (\Throwable $th) {
                         //throw $th;
                     }

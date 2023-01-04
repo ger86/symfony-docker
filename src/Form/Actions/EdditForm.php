@@ -6,6 +6,7 @@ use App\PostHelpper\Category\CategorySaver;
 use App\Document\Userone;
 use App\PostHelpper\Category\GetCategory;
 use App\PostHelpper\Languaje\GetLanguaje;
+use App\PostHelpper\Status\GetStatus;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -21,18 +22,23 @@ class EdditForm extends AbstractType
 
   private $GetCategory;
   private $languaje;
+  private $getStatus;
   private $listCategories;
   private $listLanguaje;
+  private $listStatus;
 
   public function __construct(
     GetCategory $GetCategory,
     GetLanguaje $languaje,
+    GetStatus $getStatus
     )
   {
-      $this->GetCategory = $GetCategory;
-      $this->languaje = $languaje;
-      $this->listCategories = [];
-      $this->listLanguaje = [];
+      $this->GetCategory     = $GetCategory;
+      $this->languaje        = $languaje;
+      $this->getStatus       = $getStatus;
+      $this->listCategories  = [];
+      $this->listLanguaje    = [];
+      $this->listStatus      = [];
   }
 
 
@@ -47,16 +53,24 @@ class EdditForm extends AbstractType
     
     $getCategoryCollection = $this->GetCategory->getAllCategory();
     $languaje = $this->languaje->getAllLanguaje();
-
+    $status = $this->getStatus->getAllStatus();
+    
     foreach ($getCategoryCollection->toArray() as $key => $value) {
               $this->listCategories[$value] = $value;
     }
 
     foreach ($languaje->toArray() as $key => $value) {
       $this->listLanguaje[$value] = $value;
-}
+    }
 
+    foreach ($status->toArray() as $key => $value) {
+      $this->listStatus[$value] = $value;
+    }
    
+    $actualStatus = $options['attr']['Status'];
+
+ 
+
     $builder->add('Titulo_del_post',  TextType::class, [
         'attr' => [
             'placeholder' => 'agregar titulo del artículo',
@@ -85,10 +99,7 @@ class EdditForm extends AbstractType
       ]])
     ->add('published_status', ChoiceType::class, [
         'choices'  => [
-          $options['attr']['Status'] == 1 ? 'publicado': 'borrador' => $options['attr']['Status'] == 1 ? 'publicado': 'borrador',
-            'publicado' => 'publicado',
-            'borrador' => 'borrador', 
-        ]
+          $actualStatus => $actualStatus, ...$this->listStatus]
     ])
     ->add('featured_Image', TextType::class, [
       'attr'=>[

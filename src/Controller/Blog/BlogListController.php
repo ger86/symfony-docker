@@ -24,7 +24,9 @@ class BlogListController extends AbstractController
        
         $allBlog = $dm->getRepository(Blog::class)->findAll();
 
-         
+        // for()
+
+        //  dd( $allBlog  );
         return $this->render('blog_list/index.html.twig', [
             'BlogList' => $allBlog,
         ]);

@@ -7,6 +7,7 @@ namespace App\PostHelpper\Helpers;
 use App\Document\BlogDocument\Blog;
 use App\Document\Category;
 use App\Document\Languajes;
+use App\Document\Status;
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ODM\MongoDB\DocumentManager; 
@@ -37,6 +38,11 @@ class SavePost extends AbstractController
           $languaje = $dm->getRepository(Languajes::class)->findOneBy(
             ['languaje' => $postData["languaje"]]
           );
+
+
+          $status = $dm->getRepository(Status::class)->findOneBy(
+            ['status' => $postData["published_status"]]
+          );
          
   
           $dateTime = $postData["publishedAt"]["day"] . "-" .
@@ -56,7 +62,7 @@ class SavePost extends AbstractController
           // ? set the image of the post 
           $newPost->setImageUrl($postData["featured_Image"]);
           // ? set the status of the post 
-          $newPost->setStatus($postData["published_status"]);
+          $newPost->setStatus($status);
           // ? set the keywords of the post 
           $newPost->setKeyword( $getKeywords );
           // ? set the languajes of the post 
@@ -68,8 +74,8 @@ class SavePost extends AbstractController
           $dm->persist($newPost);
           $dm->flush();
         
-          $this->status = $newPost->getId() != null ? true : false ;
-             return $this->status;
+          $result = $newPost->getId() != null ? true : false ;
+             return $result;
         } 
     }
  

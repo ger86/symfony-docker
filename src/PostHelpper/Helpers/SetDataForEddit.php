@@ -33,18 +33,19 @@ class SetDataForEddit extends AbstractController
         $dm = $this->dm;
         
         $this->GetBlogForEddit = $dm->find(Blog::class, $postId);
-
-
+            
              $postIdObject =  $this->GetBlogForEddit;
             $getDataPublished = $postIdObject->getDatePublished();
             $formatedDataPublished = $getDataPublished->format('Y-m-d');
+
+
          
           $this->postValues['id'] = $postIdObject->getId();
           $this->postValues['title'] = $postIdObject->getTitle();
           $this->postValues['friendlyURL'] = $postIdObject->getUrlFriendly();
           $this->postValues['body'] = $postIdObject->getBody();
           $this->postValues['imageURL'] = $postIdObject->getImageUrl();
-          $this->postValues['Status'] = $postIdObject->getStatus();
+          $this->postValues['Status'] = $postIdObject->getStatus()->getStatus();
           $this->postValues['keyworl'] = $postIdObject->getKeyword();
           $this->postValues['date'] = $formatedDataPublished;
           $this->postValues['category'] = $postIdObject->getCategory()->getCategory();

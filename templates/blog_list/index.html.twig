@@ -52,16 +52,15 @@
       </thead>
 
       <tbody>
+
      
+          
        {% if BlogList %}
-          {% for blog in BlogList %} 
+          {% for blog in BlogList %}  
+          {# {{ dump(blog.languaje.languaje) }} #}
            <tr>
-            <td><a href="{{ path('app_eddit_post', {type: 'Eddit', value:blog.id}) }}">{{ blog.title }}</a></td> 
-              {% if blog.status == 1 %}
-                <td>Published</td>
-                {% else %}
-                <td>draft</td>
-              {% endif %}
+            <td><a href="{{ path('app_eddit_post', {type: 'Eddit', value:blog.id}) }}">{{ blog.title }}</a></td>   
+                <td>{{blog.status.status}}</td> 
                <td>{{ blog.datePublished|date("m/d/Y") }}</td>
               <td><a href="{{ path('app_eddit_post', {type: 'See', value:blog.id}) }}">
               <button class="{{'actionSee__' ~ blog.id  }}"><i style="color:#1ca238;" class="fa-solid fa-eye"></i></button></a></td>

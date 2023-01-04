@@ -7,6 +7,7 @@ namespace App\PostHelpper\Helpers;
 use App\Document\BlogDocument\Blog;
 use App\Document\Category;
 use App\Document\Languajes;
+use App\Document\Status;
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ODM\MongoDB\DocumentManager; 
@@ -29,7 +30,7 @@ class SavePostEdited extends AbstractController
         // * $postIdObject: objectWiththePost::class Collectiom
         $dm = $this->dm;
 
-    //    dd( $postData );
+      //  dd( $postData );
        
         $category = $dm->getRepository(Category::class)->findOneBy(
             ['category' => $postData["categories"]]
@@ -38,6 +39,10 @@ class SavePostEdited extends AbstractController
   
           $languaje = $dm->getRepository(Languajes::class)->findOneBy(
             ['languaje' => $postData["languaje"]]
+          );
+
+          $status = $dm->getRepository(Status::class)->findOneBy(
+            ['status' => $postData["published_status"]]
           );
          
   
@@ -57,7 +62,7 @@ class SavePostEdited extends AbstractController
             ->field('body')->set($postData["htmlarea"])
             ->field('keyword')->set($getKeywords)
             ->field('imageUrl')->set($postData["featured_Image"])
-            ->field('status')->set($postData["published_status"])
+            ->field('status')->set($status)
             ->field('datePublished')->set(new DateTime($dateTime)) 
             ->field('languaje')->set($languaje)
             ->field('category')->set($category)
