@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Blog;
 
 use App\Feching\Fetchdata;
 use App\Form\Actions\EdditForm;
@@ -70,13 +70,14 @@ class EdditPostController extends AbstractController
         $get_form = $this->createForm(EdditForm::class, null, [
             'attr' =>  $this->filtredPostEdditData->toArray()
         ]);
-
+        
         $imageBank = $fetchdata->fetchGitHubInformation();
 
         return $this->render('eddit_post/index.html.twig', [
             'edditform' => $get_form->createView(),
             'mediaElement' => $imageBank,
-            'status'       => $this->status
+            'status'       => $this->status,
+            'id'           => $this->filtredPostEdditData->toArray()['id']
         ]);
     }
 }

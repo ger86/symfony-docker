@@ -8,6 +8,20 @@
       padding: 10px;
       overflow: hidden;
     }
+    &_actions{
+      &-ul{
+        padding: 0 0 10px 0;
+        display: flex;
+        li{
+          margin-right: 5px;
+          a{
+            button{
+              @include buttonStyle;
+            }
+          }
+        }
+      }
+    }
 
     &-form {
       display: flex;

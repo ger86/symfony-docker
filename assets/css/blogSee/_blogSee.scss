@@ -1,0 +1,41 @@
+.seepost {
+    width: 99%;
+    height: 100vh;
+    overflow: auto;
+    &_wrapper {
+        margin-top: 10px;
+        background: white;
+        &_title{
+            padding: 20px;
+            h1{
+                font-size: 2em;
+                color: #196887;
+              }
+          }
+         &_date {
+            padding: 0 20px;
+          }
+          &_image {
+            padding: 20px;
+            width: 95%;
+           
+            img{
+                width: 100%!important;
+                height: auto; 
+              }
+          }
+          &_body {
+            padding: 40px 20px;
+            box-sizing:  content-box;
+            img{
+              margin: 30px auto;
+              display: block;
+              width: 100%!important;
+              height: auto!important;
+            }
+          } 
+    }
+  }
+
+ 
+ 

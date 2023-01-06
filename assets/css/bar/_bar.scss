@@ -3,13 +3,16 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }
-  img{
+    a{
+      img{
     width: 100%;
     max-width: 30px;
     height: 26px;
     margin-left: 10px;
   }
+    }
+  }
+  
   #header > .topSection{
     display: flex;
     justify-content: flex-end;

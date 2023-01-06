@@ -12,8 +12,20 @@
                {% if status == true %}
                 <div class="newblog_wrapper_status">
                   <span>🖊️ Great. Post was eddited! </span>
-                </div>
+                </div> 
                {% endif %}
+                 <div class="newblog_wrapper_actions">
+               <ul class="newblog_wrapper_actions-ul">
+                <li>
+                 <a href="{{ path('app_see_post', {type: 'See', value:id}) }}">
+              <button class="{{'actionSee__' ~ id  }}">See this post</button></a>
+                </li>
+                 <li>
+                 <a href="{{ path('app_newblog') }}">
+              <button>Add new post</button></a>
+                </li>
+               </ul>
+              </div>
 
     {{ form_start(edditform, {'attr': {'class': 'newblog_wrapper-form'},
     'action': '/eddit/post?type=save', 'method': 'POST'}

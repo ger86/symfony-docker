@@ -62,7 +62,7 @@
             <td><a href="{{ path('app_eddit_post', {type: 'Eddit', value:blog.id}) }}">{{ blog.title }}</a></td>   
                 <td>{{blog.status.status}}</td> 
                <td>{{ blog.datePublished|date("m/d/Y") }}</td>
-              <td><a href="{{ path('app_eddit_post', {type: 'See', value:blog.id}) }}">
+              <td><a href="{{ path('app_see_post', {type: 'See', value:blog.id}) }}">
               <button class="{{'actionSee__' ~ blog.id  }}"><i style="color:#1ca238;" class="fa-solid fa-eye"></i></button></a></td>
               <td><a href="{{ path('app_eddit_post', {type: 'Eddit', value:blog.id}) }}">
               <button class="{{'actionEddit__' ~ blog.id }}"><i style="color: #ba36e9;" class="fa-solid fa-pen-to-square"></i></button></a></td> 

@@ -1,0 +1,17 @@
+@import '../general.scss';
+.home {
+  &_wrapper {
+    padding: 10px 20px 0 0;
+     
+      &-ul{
+        padding: 0 0 10px 0;
+        li{ 
+            button{
+              @include buttonStyle;
+            } 
+        }
+      }
+     
+  }
+}
+    

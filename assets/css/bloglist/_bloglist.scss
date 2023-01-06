@@ -5,14 +5,7 @@
             display: block;
             margin-bottom: 10px;
             button{
-                border: solid 1px $linkColor;
-                line-height: 30px;
-                padding: 0 20px;
-                border-radius: 4px;
-                color: $linkColor;
-                &:hover{
-                   cursor: pointer; 
-                  }
+              @include buttonStyle;
               }
           } 
 
@@ -51,7 +44,7 @@
         border-collapse: collapse;
         width: 100%;
         thead, tfoot{
-          font-size: $linksize;
+          font-size: $smallText;
           color: $backgroundLingk;
           td{
              

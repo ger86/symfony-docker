@@ -1,29 +1,18 @@
-// @mixin reset-list {
-//     margin: 0;
-//     padding: 0;
-//     list-style: none;
-//   }
-   
-//   nav ul {
-//     @include reset-list;
-//   }
-  
-//? variables
-
-// $base-color: #c6538c;
-
-
-//? transitions 
-// .enlarge {
-//     font-size: 14px;
-//     transition: {
-//       property: font-size;
-//       duration: 4s;
-//       delay: 2s;
-//     }
-  
-//     &:hover { font-size: 36px; }
-//   }
+@mixin buttonStyle { 
+    border: solid 1px rgb(77, 77, 77);
+    line-height: 30px;
+    padding: 0 20px;
+    border-radius: 4px;
+    color: rgb(77, 77, 77);
+    &:hover{
+       cursor: pointer; 
+       border: solid 1px $linkColor;
+       color: $linkColor;
+       background: unset;
+      }
+ 
+  }
+    
   
 *{
     margin: 0;
