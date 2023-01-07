@@ -1,0 +1,71 @@
+{% extends 'pannels.html.twig' %}
+
+{% block title %}Home Sections{% endblock %}
+
+{% block backendBody %}
+  <h1>
+   Home Sections
+  </h1>
+  {% set PrincipalKnowledgeForm = 'templateParts/homesections/principalknowledges.html.twig' %}
+  {% set  GraphicDesignForm = 'templateParts/homesections/GraphicDesign.html.twig' %}
+
+  <div class="homesection">
+    <div class="homesection_wrapper">
+        <div class="homesection_wrapper-selector">
+            <ul class="homesection_wrapper-selector-ul">
+                <li class="homesection_wrapper-selector-ul-li">
+                <a href="{{ path('app_home_sections', {active: 'principal_knowledges'}) }}">
+                principal knowledges
+                </a>
+                </li>
+                <li class="homesection_wrapper-selector-ul-li">
+                <a href="{{ path('app_home_sections', {active: 'graphicDesign'}) }}">
+                GraphicDesign
+                </a>
+                </li>
+                <li class="homesection_wrapper-selector-ul-li">
+                <a href="{{ path('app_home_sections', {active: 'web_developer'}) }}">
+                Web Developer
+                </a>
+                </li>
+                  <li class="homesection_wrapper-selector-ul-li">
+                <a href="{{ path('app_home_sections', {active: 'jobs_timeLine'}) }}">
+                Jobs TimeLine
+                </a>
+                </li>
+               <li class="homesection_wrapper-selector-ul-li">
+                <a href="{{ path('app_home_sections', {active: 'some_works'}) }}">
+                 Some Works
+                </a>
+                </li>
+                {#    <li class="homesection_wrapper-selector-ul-li">
+                <a href="{{ path('app_home_sections', {active: 'webPack'}) }}">
+                  WebPack
+                </a>
+                </li>
+                 <li class="homesection_wrapper-selector-ul-li">
+                <a href="{{ path('app_home_sections', {active: 'hubSpot'}) }}">
+                  HubSpot
+                </a>
+                </li> #}
+            </ul>
+            <div class="homesection_wrapper-form">
+                
+                    {% if active == 'principal_knowledges' %}
+                        {% include PrincipalKnowledgeForm  %}
+                    {% endif %}
+                    {% if active == 'graphicDesign' %}
+                         {% include GraphicDesignForm  %}
+                    
+                    {% endif %}
+
+
+               </div>
+               <div class="homesection_wrapper-content">
+               </div>
+            </div>
+        </div>
+    </div>
+  </div>
+
+{% endblock %}

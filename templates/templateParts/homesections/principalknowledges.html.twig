@@ -1,0 +1,53 @@
+ {% if PrincipalKnowledgeType %}
+<div class="homesection_wrapper-form-principalKnowledges">
+     
+        {{
+          form_start(
+            PrincipalKnowledgeType,
+            {
+              attr: {
+                class: 'homesection_wrapper-form-principalKnowledges-form'
+              },
+              action: '/metadata',
+              method: 'POST'
+            }
+          )
+        }}
+        <div class="homesection_wrapper-form-principalKnowledges-form-wrapper">
+         <div class="homesection_wrapper-form-principalKnowledges-form-wrapper-item">
+            {{ form_label(PrincipalKnowledgeType.languaje) }}
+            {{ form_widget(PrincipalKnowledgeType.languaje) }}
+            {{
+              form_help(
+                PrincipalKnowledgeType.languaje,
+                {
+                  help: 'Select the languaje for this knowledge'
+                }
+              )
+            }}
+          </div> 
+          <div class="homesection_wrapper-form-principalKnowledges-form-wrapper-item">
+            {{ form_label(PrincipalKnowledgeType.title) }}
+            {{ form_widget(PrincipalKnowledgeType.title) }}
+            {{
+              form_help(
+                PrincipalKnowledgeType.title,
+                {
+                  help: 'insert a new Title for this knowledge'
+                }
+              )
+            }}
+          </div> 
+         <div class="homesection_wrapper-form-principalKnowledges-form-wrapper-item">
+      {{ form_label(PrincipalKnowledgeType.htmlarea) }}  
+      {{ form_widget(PrincipalKnowledgeType.htmlarea) }}
+       {{ form_help(PrincipalKnowledgeType.htmlarea,{'help': 'salida en html con estilos inclustados'}) }} 
+     </div>
+          <input class="homesection_wrapper-form-principalKnowledges-form-wrapper-item-submit"
+            type="submit"
+            value="Add principal knowledge" />
+
+          {{ form_end(PrincipalKnowledgeType) }}
+
+        </div>
+        {% endif %}
