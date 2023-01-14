@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Home;
 
+use App\CustomHelper\Homehelper\Saveknowledge;
 use App\Form\PrincipalKnowledge\PrincipalKnowledgeType;
+use Doctrine\ODM\MongoDB\DocumentManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -10,6 +12,13 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class HomeSectionsController extends AbstractController
 {
+    private $dm; 
+
+    public function __construct(DocumentManager $dm)
+    { 
+        $this->dm = $dm;   
+    }
+
     /**
      * @Route("/home/sections", name="app_home_sections")
      */
@@ -22,12 +31,26 @@ class HomeSectionsController extends AbstractController
         if (!$getLoguinStatus) {
             return $this->redirectToRoute("app_home");
         }
-
-        $isActive = 'layourMaker';
+  
+        //  dd($request->query->all());
+        $status = null;
+        $isActive = 'principal_knowledges';
         if ($request->query->get('active') != null) {
             switch ($request->query->get('active')) {
                 case 'principal_knowledges':
                     $isActive = 'principal_knowledges';
+                    if('principal_knowledges' == $request->query->get('savetype') ){
+                     
+                        $saveKnowledge = new Saveknowledge();
+                        $saveKnowledgeResult = $saveKnowledge->saveKnowledgeInDatabase($this->dm, $request->request->get('principal_knowledge'));
+                        //  dd( getType($saveKnowledgeResult) );
+                        if(true == $saveKnowledgeResult && 'boolean' == getType($saveKnowledgeResult))
+                        {
+                            $status = '✨ knowledge Saved Suscessfully';
+                        } else {
+                            $status = '🤬 '.$saveKnowledgeResult;
+                        }
+                    }
                     break;
                 case 'graphicDesign':
                     $isActive = 'graphicDesign';
@@ -54,11 +77,12 @@ class HomeSectionsController extends AbstractController
         $PrincipalKnowledgeType = $this->createForm(PrincipalKnowledgeType::class);
 
 
-    //   dd($languaje->getAllLanguaje());
+        
 
         return $this->render('home_sections/index.html.twig', [
              'active'                     => $isActive,
-             'PrincipalKnowledgeType'     => $PrincipalKnowledgeType->createView() 
+             'PrincipalKnowledgeType'     => $PrincipalKnowledgeType->createView(),
+             'status'                     => $status
         ]);
     }
 }

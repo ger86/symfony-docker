@@ -6,6 +6,14 @@
   <h1>
    Home Sections
   </h1>
+
+  
+
+              {% if status == true %}
+                <div class="newblog_wrapper_status">
+                  <span>  {{ status }}</span>
+                </div> 
+               {% endif %}
   {% set PrincipalKnowledgeForm = 'templateParts/homesections/principalknowledges.html.twig' %}
   {% set  GraphicDesignForm = 'templateParts/homesections/GraphicDesign.html.twig' %}
 
@@ -14,12 +22,14 @@
         <div class="homesection_wrapper-selector">
             <ul class="homesection_wrapper-selector-ul">
                 <li class="homesection_wrapper-selector-ul-li">
-                <a href="{{ path('app_home_sections', {active: 'principal_knowledges'}) }}">
+                <a href="{{ path('app_home_sections', {active: 'principal_knowledges'}) }}" 
+                class={% if active == 'principal_knowledges' %}'active_home_menu'{% endif %}>
                 principal knowledges
                 </a>
                 </li>
                 <li class="homesection_wrapper-selector-ul-li">
-                <a href="{{ path('app_home_sections', {active: 'graphicDesign'}) }}">
+                <a href="{{ path('app_home_sections', {active: 'graphicDesign'}) }}" 
+                class={% if active == 'graphicDesign' %}'active_home_menu'{% endif %}>
                 GraphicDesign
                 </a>
                 </li>

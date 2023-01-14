@@ -1,6 +1,6 @@
 <?php
 
-namespace App\PostHelpper\Helpers;
+namespace App\CustomHelper\Helpers;
 
  
  
@@ -14,7 +14,7 @@ use Doctrine\ODM\MongoDB\DocumentManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
  
 
-class SavePost extends AbstractController
+class SavePostEdited extends AbstractController
 {    
     private $dm; 
 
@@ -25,10 +25,12 @@ class SavePost extends AbstractController
     }
 
     
-    public function getDataToSavePostInDatabase($postData): bool
+    public function getDataToSavePostEditedInDatabase(array $postData): int
     {
         // * $postIdObject: objectWiththePost::class Collectiom
         $dm = $this->dm;
+
+      //  dd( $postData );
        
         $category = $dm->getRepository(Category::class)->findOneBy(
             ['category' => $postData["categories"]]
@@ -38,7 +40,6 @@ class SavePost extends AbstractController
           $languaje = $dm->getRepository(Languajes::class)->findOneBy(
             ['languaje' => $postData["languaje"]]
           );
-
 
           $status = $dm->getRepository(Status::class)->findOneBy(
             ['status' => $postData["published_status"]]
@@ -52,30 +53,26 @@ class SavePost extends AbstractController
           $getKeywords = explode(' ', $postData["keywords"]);
       
   
-         $newPost = new Blog();
-          // ? set the title of the post 
-          $newPost->setTitle($postData["Titulo_del_post"]);
-          // ? set the friendly url of the post 
-          $newPost->setUrlFriendly($postData["FriendlyUrl"]);
-          // ? set the html body of the post 
-          $newPost->setBody($postData["htmlarea"]);
-          // ? set the image of the post 
-          $newPost->setImageUrl($postData["featured_Image"]);
-          // ? set the status of the post 
-          $newPost->setStatus($status);
-          // ? set the keywords of the post 
-          $newPost->setKeyword( $getKeywords );
-          // ? set the languajes of the post 
-          $newPost->setLanguaje($languaje);
-          // ? set the category of the post 
-          $newPost->setCategory($category);
-          // ? set the date of the post 
-          $newPost->setDatePublished(new DateTime($dateTime));
-          $dm->persist($newPost);
-          $dm->flush();
         
-          $result = $newPost->getId() != null ? true : false ;
-             return $result;
+         
+            $resultUpdatedPost = $dm->createQueryBuilder(Blog::class)
+            ->updateOne()
+            ->field('title')->set($postData["Titulo_del_post"])
+            ->field('urlFriendly')->set($postData["FriendlyUrl"])
+            ->field('body')->set($postData["htmlarea"])
+            ->field('keyword')->set($getKeywords)
+            ->field('imageUrl')->set($postData["featured_Image"])
+            ->field('status')->set($status)
+            ->field('datePublished')->set(new DateTime($dateTime)) 
+            ->field('languaje')->set($languaje)
+            ->field('category')->set($category)
+            ->field('_id')->equals($postData["PostId"]) 
+            ->getQuery()
+            ->execute();
+
+          // dd($resultUpdatedPost->getModifiedCount());
+            
+            return $resultUpdatedPost->getModifiedCount(); // if is true return 1 or 0 is null
         } 
     }
  

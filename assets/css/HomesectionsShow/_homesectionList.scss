@@ -1,0 +1,28 @@
+@import '../general.scss';
+.homesectionList{
+    &_wrapper{
+        &-principalKnowledges{
+         &-h3 {
+            font-size: 18px;
+            margin:15px 0;
+          }
+          table{
+            font-size: $linksize;
+            @include tableStyle;
+            td, th {
+              @include tableTdTh;
+            }
+          }
+        }
+    }
+   
+}
+.Knowledge_head{
+  background:  #ffffff;
+}
+.Knowledge_es{
+ background:  #ededed;
+}
+.Knowledge_en{
+  background:  #e4e4e4;
+}

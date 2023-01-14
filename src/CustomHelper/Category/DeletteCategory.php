@@ -1,6 +1,6 @@
 <?php
 
-namespace App\PostHelpper\Category;
+namespace App\CustomHelper\Category;
 
  
 use App\Document\Category;
@@ -10,13 +10,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class DeletteCategory extends AbstractController
 {
-    private $dm;
-    private $GetCategory;
+    private $dm; 
 
-    public function __construct(DocumentManager $dm, GetCategory $GetCategory)
+    public function __construct(DocumentManager $dm)
     {
-        $this->dm = $dm;
-        $this->GetCategory = $GetCategory;
+        $this->dm = $dm; 
     }
 
     public function removeCategory($categoryToRemove): array

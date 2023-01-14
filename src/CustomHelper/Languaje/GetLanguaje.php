@@ -1,6 +1,6 @@
 <?php
 
-namespace App\PostHelpper\Languaje;
+namespace App\CustomHelper\Languaje;
 
  
 use App\Document\Languajes;

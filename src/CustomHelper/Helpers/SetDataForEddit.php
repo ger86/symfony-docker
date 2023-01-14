@@ -1,6 +1,6 @@
 <?php
 
-namespace App\PostHelpper\Helpers;
+namespace App\CustomHelper\Helpers;
 
  
  

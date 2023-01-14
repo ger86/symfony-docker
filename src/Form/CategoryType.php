@@ -3,7 +3,7 @@
 namespace App\Form;
 
 
-use App\PostHelpper\Languaje\GetLanguaje;
+use App\CustomHelper\Languaje\GetLanguaje;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;

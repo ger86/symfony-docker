@@ -2,14 +2,14 @@
 
 namespace App\Controller;
 
-use App\PostHelpper\Category\CategorySaver;
-use App\PostHelpper\Category\GetCategory;
+use App\CustomHelper\Category\CategorySaver;
+use App\CustomHelper\Category\GetCategory;
 use App\Form\CategoryType;
 use App\Form\LanguajeType;
-use App\PostHelpper\Category\DeletteCategory;
+use App\CustomHelper\Category\DeletteCategory;
  
-use App\PostHelpper\Languaje\GetLanguaje;
-use App\PostHelpper\Status\GetStatus;
+use App\CustomHelper\Languaje\GetLanguaje;
+use App\CustomHelper\Status\GetStatus;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 use Symfony\Component\HttpFoundation\Request;

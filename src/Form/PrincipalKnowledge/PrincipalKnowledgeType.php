@@ -2,7 +2,7 @@
 
 namespace App\Form\PrincipalKnowledge;
 
-use App\PostHelpper\Languaje\GetLanguaje;
+use App\CustomHelper\Languaje\GetLanguaje;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;

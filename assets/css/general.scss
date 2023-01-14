@@ -30,8 +30,16 @@
       color: white;
     }
   }
-    
-  
+  @mixin tableStyle {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  @mixin tableTdTh {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
 *{
     margin: 0;
     padding: 0;

@@ -2,7 +2,7 @@
 
 namespace App\Controller\Blog;
 
-use App\PostHelpper\Helpers\SetDataForEddit;
+use App\CustomHelper\Helpers\SetDataForEddit;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

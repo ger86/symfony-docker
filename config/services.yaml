@@ -34,6 +34,6 @@ services:
     App\Feching\:
         resource: '../src/Feching/' 
 
-    App\PostHelpper\:
-        resource: '../src/PostHelpper' 
+    App\CustomHelper\:
+        resource: '../src/CustomHelper' 
         

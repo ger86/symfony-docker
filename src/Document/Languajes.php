@@ -3,8 +3,8 @@
 namespace App\Document;
  
 use App\Document\Category;
-use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
-use Doctrine\ODM\MongoDB\PersistentCollection;
+use App\Document\Homedata\Principalknowledge;
+use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB; 
 
 /**
  * 
@@ -24,8 +24,11 @@ class Languajes
     /** @MongoDB\ReferenceMany(targetDocument=Post::class, mappedBy="languaje") */
       public $post;
 
-    
-    public function getId():int{
+     /** @MongoDB\ReferenceMany(targetDocument=Principalknowledge::class, mappedBy="languaje") */
+     public $principalknowledge;
+
+
+    public function getId():string{
         return $this->id;
      }
    public function setLanguaje($languaje):void{
@@ -34,6 +37,10 @@ class Languajes
     public function getLanguaje():string{
        return $this->languaje;
     }
+     public function getKnowledges():Principalknowledge
+    {
+        return $this->principalknowledge;
+     }
   
     // public function getCategorys():PersistentCollection
     // {

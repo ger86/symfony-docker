@@ -1,6 +1,6 @@
 <?php
 
-namespace App\PostHelpper\Category;
+namespace App\CustomHelper\Category;
 
 
 use App\Document\Category;

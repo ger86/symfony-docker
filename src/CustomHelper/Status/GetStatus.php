@@ -1,6 +1,6 @@
 <?php
 
-namespace App\PostHelpper\Status;
+namespace App\CustomHelper\Status;
 
 
 use App\Document\Category;

@@ -2,11 +2,11 @@
 
 namespace App\Form;
 
-use App\PostHelpper\Category\CategorySaver;
+use App\CustomHelper\Category\CategorySaver;
 use App\Document\Userone;
-use App\PostHelpper\Category\GetCategory;
-use App\PostHelpper\Languaje\GetLanguaje;
-use App\PostHelpper\Status\GetStatus;
+use App\CustomHelper\Category\GetCategory;
+use App\CustomHelper\Languaje\GetLanguaje;
+use App\CustomHelper\Status\GetStatus;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;

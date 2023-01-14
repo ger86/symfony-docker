@@ -1,0 +1,50 @@
+{% extends 'pannels.html.twig' %}
+
+{% block title %}Home Sections List{% endblock %}
+
+{% block backendBody %}
+  <h1>
+   Home Sections List
+  </h1>
+ 
+ 
+  <div class="homesectionList">
+    <div class="homesectionList_wrapper"> 
+    <div class="homesectionList_wrapper-principalKnowledges"> 
+        <h3 class="homesectionList_wrapper-principalKnowledges-h3">Pincipal Knowledges </h3>
+          <table>
+            <thead>
+              <tr class="Knowledge_head">
+               <td>Languaje</td>
+                <td>knowledge title</td>
+                <td>knowledge description</td>
+              </tr>
+            </thead>
+            <tbody>
+              
+                {% for Knowledge in Knowledge_es %}
+                 <tr class="Knowledge_es">
+                  <td>es</td>
+                 <td>{{ Knowledge.title }}</td>
+                  <td>{{ Knowledge.body|raw }}</td>
+                   </tr>
+                {% endfor %}
+
+                {% for Knowledge in Knowledge_en %}
+                 <tr class="Knowledge_en">
+                  <td>en</td>
+                 <td>{{ Knowledge.title }}</td>
+                  <td>{{ Knowledge.body|raw }}</td>
+                   </tr>
+                {% endfor %}
+             
+            </tbody>
+          </table>
+       
+    </div>
+    </div>
+  </div>
+
+  
+
+{% endblock %}

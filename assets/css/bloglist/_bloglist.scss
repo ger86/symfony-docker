@@ -40,9 +40,10 @@
   }
       padding: 10px 20px 0 0;
       table {
-        font-family: arial, sans-serif;
-        border-collapse: collapse;
-        width: 100%;
+        // font-family: arial, sans-serif;
+        // border-collapse: collapse;
+        // width: 100%;
+        @include tableStyle;
         thead, tfoot{
           font-size: $smallText;
           color: $backgroundLingk;
@@ -58,9 +59,10 @@
             background-color: #e7e7e7;
           }
         td, th {
-            border: 1px solid #dddddd;
-            text-align: left;
-            padding: 8px;
+            // border: 1px solid #dddddd;
+            // text-align: left;
+            // padding: 8px;
+            @include tableTdTh;
           }
           tbody{
             tr{
