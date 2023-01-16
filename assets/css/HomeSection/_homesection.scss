@@ -29,6 +29,11 @@
     &-form{
         padding: 10px 0;
         &-principalKnowledges{
+            &-span{
+                font-size: $smallText ;
+                color: $backgroundLingk;
+                margin-bottom:150px;
+            }
             &-form{
                 &-wrapper{
                     &-item {

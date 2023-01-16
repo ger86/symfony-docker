@@ -2,6 +2,7 @@
 
 namespace App\Controller\Home;
 
+use App\CustomHelper\GetKnowledges\GetSingleKnowlegeByid;
 use App\CustomHelper\Homehelper\Saveknowledge;
 use App\Form\PrincipalKnowledge\PrincipalKnowledgeType;
 use Doctrine\ODM\MongoDB\DocumentManager;
@@ -24,6 +25,7 @@ class HomeSectionsController extends AbstractController
      */
     public function index(
         Request $request, 
+        GetSingleKnowlegeByid $knowlegeById
         ): Response
     {
 
@@ -32,23 +34,37 @@ class HomeSectionsController extends AbstractController
             return $this->redirectToRoute("app_home");
         }
   
-        //  dd($request->query->all());
         $status = null;
         $isActive = 'principal_knowledges';
         if ($request->query->get('active') != null) {
             switch ($request->query->get('active')) {
+               
                 case 'principal_knowledges':
+                   
                     $isActive = 'principal_knowledges';
                     if('principal_knowledges' == $request->query->get('savetype') ){
                      
                         $saveKnowledge = new Saveknowledge();
                         $saveKnowledgeResult = $saveKnowledge->saveKnowledgeInDatabase($this->dm, $request->request->get('principal_knowledge'));
-                        //  dd( getType($saveKnowledgeResult) );
+                        
                         if(true == $saveKnowledgeResult && 'boolean' == getType($saveKnowledgeResult))
                         {
                             $status = '✨ knowledge Saved Suscessfully';
                         } else {
                             $status = '🤬 '.$saveKnowledgeResult;
+                        }
+                    }
+
+                    if('eddit_knowledges' == $request->query->get('savetype') ){
+                        // dd($request->request->all()["principal_knowledge"]);
+                        $edditKnowledge = new Saveknowledge();
+                        $edditKnowledgeResult = $edditKnowledge->edditKnowledgeInDatabase($this->dm, $request->request->all()["principal_knowledge"]);
+                        //    dd(getType($edditKnowledgeResult));
+                        if('1' == $edditKnowledgeResult  && "string" == getType($edditKnowledgeResult))
+                        {
+                            $status = '✨ knowledge Eddited Suscessfully';
+                        } else {
+                            $status = '🤬 '. $edditKnowledgeResult ;
                         }
                     }
                     break;
@@ -74,15 +90,21 @@ class HomeSectionsController extends AbstractController
             }
         }
 
-        $PrincipalKnowledgeType = $this->createForm(PrincipalKnowledgeType::class);
+        $PrincipalKnowledgeType = $this->createForm(PrincipalKnowledgeType::class, null, [
+            'attr' =>  $request->query->get('active') == 'editDataKnowledge' ? 
+            $knowlegeById->returnKnowledge(
+                $request->query->get('id'),
+                $request->query->get('lang')
+                )[0] : []
+        ]);
 
-
-        
-
+       $edditing = $request->query->get('active') == 'editDataKnowledge' ? true : false;
+       
         return $this->render('home_sections/index.html.twig', [
              'active'                     => $isActive,
              'PrincipalKnowledgeType'     => $PrincipalKnowledgeType->createView(),
-             'status'                     => $status
+             'status'                     => $status,
+             'edditing'                   =>  $edditing 
         ]);
     }
 }

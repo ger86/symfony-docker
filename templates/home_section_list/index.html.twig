@@ -15,19 +15,26 @@
           <table>
             <thead>
               <tr class="Knowledge_head">
-               <td>Languaje</td>
+               <td><i class="fa fa-language" aria-hidden="true"></i></td>
                 <td>knowledge title</td>
                 <td>knowledge description</td>
+                <td>Eddit</td>
+                <td>Delette</td>
               </tr>
             </thead>
             <tbody>
-              
+              {# {{ dump(Knowledge_es) }} #}
                 {% for Knowledge in Knowledge_es %}
                  <tr class="Knowledge_es">
                   <td>es</td>
                  <td>{{ Knowledge.title }}</td>
                   <td>{{ Knowledge.body|raw }}</td>
-                   </tr>
+                  <td><a href="{{ path('app_home_sections', {active: 'editDataKnowledge', id:Knowledge.id, lang: 'es'}) }}">
+              <button class="{{'actionEddit__' ~ Knowledge.id }}"><i style="color: #ba36e9;" class="fa-solid fa-pen-to-square"></i></button></a></td> 
+                  
+                                     <td><a href="{{ path('app_eddit_post', {type: 'Delette', value:Knowledge.id}) }}">
+              <button class="{{'actionTrash__' ~ Knowledge.id }}"><i style="color: #fa6868;" class="fa-solid fa-trash"></i></button></a></td> 
+               </tr>
                 {% endfor %}
 
                 {% for Knowledge in Knowledge_en %}
@@ -35,7 +42,12 @@
                   <td>en</td>
                  <td>{{ Knowledge.title }}</td>
                   <td>{{ Knowledge.body|raw }}</td>
-                   </tr>
+                  <td><a href="{{ path('app_home_sections', {active: 'editDataKnowledge', id:Knowledge.id, lang: 'en'}) }}">
+              <button class="{{'actionEddit__' ~ Knowledge.id }}"><i style="color: #ba36e9;" class="fa-solid fa-pen-to-square"></i></button></a></td> 
+                  
+                   <td><a href="{{ path('app_eddit_post', {type: 'Delette', value:Knowledge.id}) }}">
+              <button class="{{'actionTrash__' ~ Knowledge.id }}"><i style="color: #fa6868;" class="fa-solid fa-trash"></i></button></a></td> 
+               </tr>
                 {% endfor %}
              
             </tbody>

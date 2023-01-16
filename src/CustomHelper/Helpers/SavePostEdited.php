@@ -69,9 +69,7 @@ class SavePostEdited extends AbstractController
             ->field('_id')->equals($postData["PostId"]) 
             ->getQuery()
             ->execute();
-
-          // dd($resultUpdatedPost->getModifiedCount());
-            
+ 
             return $resultUpdatedPost->getModifiedCount(); // if is true return 1 or 0 is null
         } 
     }

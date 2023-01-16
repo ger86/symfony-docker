@@ -1,6 +1,19 @@
  {% if PrincipalKnowledgeType %}
+ 
+
+ {% set actionType = '/home/sections?active=principal_knowledges&savetype=principal_knowledges'  %}
+ {% if edditing %} 
+   {% set actionType = '/home/sections?active=principal_knowledges&savetype=eddit_knowledges'   %}
+ {% endif %} 
+ 
 <div class="homesection_wrapper-form-principalKnowledges">
      
+     {% if edditing %}
+     <span class="homesection_wrapper-form-principalKnowledges-span"><i style="color: #ba36e9;" class="fa-solid fa-pen-to-square"></i> You're editing this knowledge</span>
+     {% endif %}
+
+
+
         {{
           form_start(
             PrincipalKnowledgeType,
@@ -8,11 +21,12 @@
               attr: {
                 class: 'homesection_wrapper-form-principalKnowledges-form'
               },
-              action: '/home/sections?active=principal_knowledges&savetype=principal_knowledges',
+              action: actionType,
               method: 'POST'
             }
           )
         }}
+        
         <div class="homesection_wrapper-form-principalKnowledges-form-wrapper">
          <div class="homesection_wrapper-form-principalKnowledges-form-wrapper-item">
             {{ form_label(PrincipalKnowledgeType.languaje) }}
@@ -45,7 +59,7 @@
      </div>
           <input class="homesection_wrapper-form-principalKnowledges-form-wrapper-item-submit"
             type="submit"
-            value="Add principal knowledge" />
+            value=  {% if edditing %} 'Eddit' {% else %} 'Add principal knowledge' {% endif %} />
 
           {{ form_end(PrincipalKnowledgeType) }}
 

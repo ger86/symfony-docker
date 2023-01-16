@@ -6,6 +6,7 @@ use App\CustomHelper\Languaje\GetLanguaje;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -25,8 +26,10 @@ class PrincipalKnowledgeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         
-        
-        $languaje              = $this->languaje->getAllLanguaje();
+        $haveDatatoEddit = count($options['attr']) != 0 ? true : false;
+        // dd(  $options['attr'] );
+ 
+        $languaje = $this->languaje->getAllLanguaje();
 
 
         foreach ($languaje->toArray() as $key => $value) {
@@ -36,7 +39,8 @@ class PrincipalKnowledgeType extends AbstractType
         $builder->add('title',  TextType::class, [
             'attr' => [
               'title'       => 'Title for Knowledge',
-              'placeholder' => 'add title of section'
+              'placeholder' => 'add title of section',
+              'value'       => $haveDatatoEddit == true ? $options['attr']['title'] :'' 
             ]
           ])
           ->add('languaje', ChoiceType::class, [
@@ -44,12 +48,15 @@ class PrincipalKnowledgeType extends AbstractType
               'title'       => 'Languaje' 
             ],
             'choices'  => [
-              ' ' => '', ...$this->listLanguaje
+              $haveDatatoEddit == true ? $options['attr']['languaje'] :'' 
+               => $haveDatatoEddit == true ? $options['attr']['languaje'] :'' 
+               , ...$this->listLanguaje
             ],
           ])
-          ->add('htmlarea', CKEditorType::class)
-
-          ;
+          ->add('htmlarea', CKEditorType::class, [ 
+            'data' =>  $haveDatatoEddit == true ? $options['attr']['body'] :''  
+         ])
+         ->add('id', HiddenType::class, [ 'attr' => ['value' => $haveDatatoEddit ? $options['attr']['id'] :''] ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

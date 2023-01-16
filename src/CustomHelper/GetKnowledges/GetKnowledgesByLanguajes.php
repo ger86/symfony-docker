@@ -25,10 +25,11 @@ class GetKnowledgesByLanguajes extends AbstractController
        $knowledge = $this->dm->getRepository(Principalknowledge::class)->findBy([
         'languaje' => $getLanguaje[0]->getId()
        ]);
+
         for ($i=0; $i < count($knowledge); $i++) { 
-             $getAllknowlege[] = ['title'=> $knowledge[$i]->getTitle(), 'body'=> $knowledge[$i]->getBody()];
+             $getAllknowlege[] = ['id'=> $knowledge[$i]->getId(), 'title'=> $knowledge[$i]->getTitle(), 'body'=> $knowledge[$i]->getBody()];
         }
-    //  dd( $p , count($knowledge), $knowledge);
+     //  dd( count($knowledge), $knowledge);
 
          return  new ArrayCollection($getAllknowlege);
     }

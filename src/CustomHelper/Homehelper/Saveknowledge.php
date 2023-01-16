@@ -12,9 +12,7 @@ class Saveknowledge extends AbstractController
     
     
     public function saveKnowledgeInDatabase($dm, array $knowledge): string|bool
-    {
-    
-         
+    { 
         try {
             $languaje = $dm->getRepository(Languajes::class)->findOneBy(
                 ['languaje' => $knowledge['languaje']]
@@ -28,10 +26,32 @@ class Saveknowledge extends AbstractController
             
               $result = $newKnowledge->getId() != null ? true : false ;
               return $result;
-        } catch (\Throwable $th) {
+          } catch (\Throwable $th) {
             return $th;
-        }
-         
-           
+         } 
         } 
+
+        public function edditKnowledgeInDatabase($dm, array $knowledge): string|bool
+        { 
+            //  dd($knowledge);
+            try {
+                $languaje = $dm->getRepository(Languajes::class)->findOneBy(
+                    ['languaje' => $knowledge['languaje']]
+                  ); 
+                
+                  $resultUpdatedKnowledge = $dm->createQueryBuilder(Principalknowledge::class)
+                    ->updateOne()
+                    ->field('title')->set($knowledge['title'])
+                    ->field('body')->set($knowledge['htmlarea'])
+                    ->field('languaje')->set($languaje) 
+                    ->field('_id')->equals($knowledge['id']) 
+                    ->getQuery()
+                    ->execute();
+                  
+                  return $resultUpdatedKnowledge->getModifiedCount();
+ 
+              } catch (\Throwable $th) {
+                return $th;
+             } 
+            } 
     }

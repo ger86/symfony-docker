@@ -1,13 +1,14 @@
 @import '../general.scss';
 .homesectionList{
+  width: 99%;
     &_wrapper{
         &-principalKnowledges{
          &-h3 {
-            font-size: 18px;
+            font-size: $smallText;
             margin:15px 0;
           }
           table{
-            font-size: $linksize;
+            font-size: $smallText;
             @include tableStyle;
             td, th {
               @include tableTdTh;
