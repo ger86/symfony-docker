@@ -1,0 +1,52 @@
+@import '../general.scss';
+.homesection {
+    width: 99%;
+    height: 100vh;
+    overflow: auto;
+    &_wrapper {
+        margin-top: 10px; 
+       
+        
+    &-form{
+        padding: 10px 0;
+        &-Design{
+            &-span{
+                font-size: $smallText ;
+                color: $backgroundLingk;
+                margin-bottom:150px;
+            }
+            &-form{
+                &-wrapper{
+                    &-item {
+                        display: flex;
+                        flex-direction: column;
+                        label{
+                            font-size: $linksize;
+                           }
+                        select, input{
+                            height: 30px;
+                            max-width: 200px;
+                            padding-left: 10px;
+                        }
+                       &-range {
+                            font-size: 12px;
+                          }
+                      }
+                      p{
+                        font-size: 14px;
+                        margin-bottom: 10px;
+                        color: $lightGrayText;
+                      }
+                      input{
+                        &[type="submit"]{
+                           @include submitButton;
+                        }
+                    }
+                }
+                
+            }
+        }
+     }
+ }
+ 
+}

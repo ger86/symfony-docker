@@ -3,6 +3,15 @@
   width: 99%;
     &_wrapper{
         &-principalKnowledges{
+          &-newKnowledges {
+            a{
+              button{
+                 @include buttonStyle; 
+                 margin-bottom: 20px;
+              }
+            }
+            
+          }
          &-h3 {
             font-size: $smallText;
             margin:15px 0;

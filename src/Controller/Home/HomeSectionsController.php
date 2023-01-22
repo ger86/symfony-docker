@@ -2,8 +2,10 @@
 
 namespace App\Controller\Home;
 
+use App\CustomHelper\Design\DesignHelper;
 use App\CustomHelper\GetKnowledges\GetSingleKnowlegeByid;
-use App\CustomHelper\Homehelper\Saveknowledge;
+use App\CustomHelper\Homehelper\SaveKnowledge;
+use App\Form\Design\DesignType;
 use App\Form\PrincipalKnowledge\PrincipalKnowledgeType;
 use Doctrine\ODM\MongoDB\DocumentManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -12,20 +14,15 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class HomeSectionsController extends AbstractController
-{
-    private $dm; 
-
-    public function __construct(DocumentManager $dm)
-    { 
-        $this->dm = $dm;   
-    }
-
+{ 
     /**
      * @Route("/home/sections", name="app_home_sections")
      */
     public function index(
         Request $request, 
-        GetSingleKnowlegeByid $knowlegeById
+        GetSingleKnowlegeByid $knowlegeById,
+        SaveKnowledge $knowledge,
+        DesignHelper $designhelper
         ): Response
     {
 
@@ -44,8 +41,8 @@ class HomeSectionsController extends AbstractController
                     $isActive = 'principal_knowledges';
                     if('principal_knowledges' == $request->query->get('savetype') ){
                      
-                        $saveKnowledge = new Saveknowledge();
-                        $saveKnowledgeResult = $saveKnowledge->saveKnowledgeInDatabase($this->dm, $request->request->get('principal_knowledge'));
+                     
+                        $saveKnowledgeResult = $knowledge->saveKnowledgeInDatabase($request->request->get('principal_knowledge'));
                         
                         if(true == $saveKnowledgeResult && 'boolean' == getType($saveKnowledgeResult))
                         {
@@ -56,10 +53,9 @@ class HomeSectionsController extends AbstractController
                     }
 
                     if('eddit_knowledges' == $request->query->get('savetype') ){
-                        // dd($request->request->all()["principal_knowledge"]);
-                        $edditKnowledge = new Saveknowledge();
-                        $edditKnowledgeResult = $edditKnowledge->edditKnowledgeInDatabase($this->dm, $request->request->all()["principal_knowledge"]);
-                        //    dd(getType($edditKnowledgeResult));
+                        
+                        $edditKnowledgeResult = $knowledge->edditKnowledgeInDatabase($request->request->all()["principal_knowledge"]);
+                     
                         if('1' == $edditKnowledgeResult  && "string" == getType($edditKnowledgeResult))
                         {
                             $status = '✨ knowledge Eddited Suscessfully';
@@ -67,13 +63,30 @@ class HomeSectionsController extends AbstractController
                             $status = '🤬 '. $edditKnowledgeResult ;
                         }
                     }
+                   
                     break;
-                case 'graphicDesign':
-                    $isActive = 'graphicDesign';
+                
+                case 'deletteKnowledges':
+             
+                   $id = $request->query->get('id');
+                
+                   $deletedKnowledge = $knowledge->deletteKnowledgeInDatabase($id );
+                   if($deletedKnowledge == true){
+                    return $this->redirectToRoute('app_home_section_list');
+                    
+                   } else {
+                    $status = '🤬 '. $deletedKnowledge ;
+                   }
+
                     break;
-                // case 'PHP':
-                //     $isActive = 'PHP';
-                //     break;
+
+                    case 'graphicDesign':
+                        $isActive = 'graphicDesign';
+                        if('designElement' == $request->query->get('savetype') ){
+                             $rsultDesign = $designhelper->saveDesign($request->request->all()["design"]);
+                           $rsultDesign ? $status = '✨ Design saved Suscessfully': $rsultDesign ;
+                        }
+                        break;
                 // case 'wordPress':
                 //     $isActive = 'wordPress';
                 //     break;
@@ -98,11 +111,14 @@ class HomeSectionsController extends AbstractController
                 )[0] : []
         ]);
 
+        $DesignTypeForm = $this->createForm(DesignType::class);
+
        $edditing = $request->query->get('active') == 'editDataKnowledge' ? true : false;
        
         return $this->render('home_sections/index.html.twig', [
              'active'                     => $isActive,
              'PrincipalKnowledgeType'     => $PrincipalKnowledgeType->createView(),
+             'DesignFormType'             => $DesignTypeForm->createView(),
              'status'                     => $status,
              'edditing'                   =>  $edditing 
         ]);

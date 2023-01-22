@@ -18,4 +18,7 @@ export const GALLERYFILTER = {
        trigger: 'newblog_media-items-filter_trigger'
  
 }
+export const RANGESELECTOR = {
+       inputRange : '.homesection_wrapper-form-Design-form-wrapper-item > label > #design_year'
+}
 

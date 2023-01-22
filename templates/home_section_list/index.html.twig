@@ -11,7 +11,11 @@
   <div class="homesectionList">
     <div class="homesectionList_wrapper"> 
     <div class="homesectionList_wrapper-principalKnowledges"> 
+    
         <h3 class="homesectionList_wrapper-principalKnowledges-h3">Pincipal Knowledges </h3>
+         <div class="homesectionList_wrapper-principalKnowledges-newKnowledges">
+      <a href="{{ path('app_home_sections') }}"><button>Add a New Knowledge</button> </a>  
+      </div>
           <table>
             <thead>
               <tr class="Knowledge_head">
@@ -32,7 +36,7 @@
                   <td><a href="{{ path('app_home_sections', {active: 'editDataKnowledge', id:Knowledge.id, lang: 'es'}) }}">
               <button class="{{'actionEddit__' ~ Knowledge.id }}"><i style="color: #ba36e9;" class="fa-solid fa-pen-to-square"></i></button></a></td> 
                   
-                                     <td><a href="{{ path('app_eddit_post', {type: 'Delette', value:Knowledge.id}) }}">
+                                     <td><a href="{{ path('app_home_sections', {active: 'deletteKnowledges', id:Knowledge.id}) }}">
               <button class="{{'actionTrash__' ~ Knowledge.id }}"><i style="color: #fa6868;" class="fa-solid fa-trash"></i></button></a></td> 
                </tr>
                 {% endfor %}
@@ -45,12 +49,21 @@
                   <td><a href="{{ path('app_home_sections', {active: 'editDataKnowledge', id:Knowledge.id, lang: 'en'}) }}">
               <button class="{{'actionEddit__' ~ Knowledge.id }}"><i style="color: #ba36e9;" class="fa-solid fa-pen-to-square"></i></button></a></td> 
                   
-                   <td><a href="{{ path('app_eddit_post', {type: 'Delette', value:Knowledge.id}) }}">
+                   <td><a href="{{ path('app_home_sections', {active: 'deletteKnowledges', id:Knowledge.id}) }}">
               <button class="{{'actionTrash__' ~ Knowledge.id }}"><i style="color: #fa6868;" class="fa-solid fa-trash"></i></button></a></td> 
                </tr>
                 {% endfor %}
              
             </tbody>
+             <tfoot>
+              <tr class="Knowledge_head">
+               <td><i class="fa fa-language" aria-hidden="true"></i></td>
+                <td>knowledge title</td>
+                <td>knowledge description</td>
+                <td>Eddit</td>
+                <td>Delette</td>
+              </tr>
+            </tfoot>
           </table>
        
     </div>

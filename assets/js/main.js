@@ -17,6 +17,7 @@ import Loginscript from "../login";
 import GalleryFilter from "./galleryFilter";
 import MediaSelector from "./mediaselector/MediaSelector";
 import PostStatusHidden from "./postStatusHidden";
+ 
 
 
 window.addEventListener("load", () => {
@@ -24,6 +25,7 @@ window.addEventListener("load", () => {
   window.MediaSelector                  = new MediaSelector();
   window.PostStatusHidden               = new PostStatusHidden();
   window.GalleryFilter                  = new GalleryFilter();
+ 
 });
 
     

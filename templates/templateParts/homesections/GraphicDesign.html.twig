@@ -1,1 +1,73 @@
-<h1>hola desde graphicDesign</h1>
+  {% block javascripts %}
+    <script>
+   window.addEventListener("load", () => {
+    const valueBoxRamge = document.getElementsByClassName('homesection_wrapper-form-Design-form-wrapper-item-range')[0];
+     const rangeValue = document.querySelector('#design_year');
+
+     valueBoxRamge.innerText = `Actual value = ${rangeValue.value}`;
+
+    rangeValue.addEventListener('change',(e)=>{
+        valueBoxRamge.innerText = `Actual value = ${e.target.value}`;
+ 
+}) 
+
+   })
+    </script>
+{% endblock %}
+ 
+
+  {% if DesignFormType %}
+ {# {% set actionType = '/home/sections?active=principal_knowledges&savetype=principal_knowledges'  %}
+ {% if edditing %} 
+   {% set actionType = '/home/sections?active=principal_knowledges&savetype=eddit_knowledges'   %}
+ {% endif %}  #}
+ 
+<div class="homesection_wrapper-form-Design">
+     
+     {% if edditing %}
+     <span class="homesection_wrapper-form-Design-span"><i style="color: #ba36e9;" class="fa-solid fa-pen-to-square"></i> You're editing this Design</span>
+     {% endif %}
+
+
+
+        {{
+          form_start(
+            DesignFormType,
+            {
+              attr: {
+                class: 'homesection_wrapper-form-Design-form'
+              },
+              action: '/home/sections?active=graphicDesign&savetype=designElement' ,
+              method: 'POST'
+            }
+          )
+        }}
+        
+        <div class="homesection_wrapper-form-Design-form-wrapper">
+          <div class="homesection_wrapper-form-Design-form-wrapper-item">
+            {{ form_label(DesignFormType.title) }}
+            {{ form_widget(DesignFormType.title) }}
+            {{
+              form_help(
+                DesignFormType.title,
+                {
+                  help: 'insert a new Title for this Design'
+                }
+              )
+            }}
+          </div> 
+         <div class="homesection_wrapper-form-Design-form-wrapper-item">
+      {{ form_label(DesignFormType.year) }}  
+      {{ form_widget(DesignFormType.year) }}
+       {{ form_help(DesignFormType.year,{'help': 'Set the amount of year for this design data'}) }} 
+       <div class="homesection_wrapper-form-Design-form-wrapper-item-range">
+       </div>
+     </div>
+          <input class="homesection_wrapper-form-Design-form-wrapper-item-submit"
+            type="submit"
+            value=  {% if edditing %} 'Eddit' {% else %} 'Add Design' {% endif %} />
+
+          {{ form_end(DesignFormType) }}
+
+        </div>
+        {% endif %}
