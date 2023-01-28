@@ -1,0 +1,73 @@
+  {% block javascripts %}
+    <script>
+   window.addEventListener("load", () => {
+    const valueBoxRamge = document.getElementsByClassName('homesectionweb_wrapper-form-Web-form-wrapper-item-range')[0];
+     const rangeValue = document.querySelector('#web_Porcents');
+
+     valueBoxRamge.innerText = `Actual value = ${rangeValue.value}`;
+
+    rangeValue.addEventListener('change',(e)=>{
+        valueBoxRamge.innerText = `Actual value = ${e.target.value}`;
+ 
+}) 
+
+   })
+    </script>
+{% endblock %}
+ 
+
+  {% if WebTypeForm %}
+ {# {% set actionType = '/home/sections?active=principal_knowledges&savetype=principal_knowledges'  %}
+ {% if edditing %} 
+   {% set actionType = '/home/sections?active=principal_knowledges&savetype=eddit_knowledges'   %}
+ {% endif %}  #}
+ 
+<div class="homesectionweb_wrapper-form-Web">
+     
+     {% if edditing %}
+     <span class="homesectionweb_wrapper-form-Web-span"><i style="color: #ba36e9;" class="fa-solid fa-pen-to-square"></i> You're editing this Design</span>
+     {% endif %}
+
+
+
+        {{
+          form_start(
+            WebTypeForm,
+            {
+              attr: {
+                class: 'homesectionweb_wrapper-form-Web-form'
+              },
+              action: '/home/sections?active=web_developer&savetype=webElement' ,
+              method: 'POST'
+            }
+          )
+        }}
+        
+        <div class="homesectionweb_wrapper-form-Web-form-wrapper">
+          <div class="homesectionweb_wrapper-form-Web-form-wrapper-item">
+            {{ form_label(WebTypeForm.title) }}
+            {{ form_widget(WebTypeForm.title) }}
+            {{
+              form_help(
+                WebTypeForm.title,
+                {
+                  help: 'insert a new Title for this Web Knowledge'
+                }
+              )
+            }}
+          </div> 
+         <div class="homesectionweb_wrapper-form-Web-form-wrapper-item">
+      {{ form_label(WebTypeForm.Porcents) }}  
+      {{ form_widget(WebTypeForm.Porcents) }}
+       {{ form_help(WebTypeForm.Porcents,{'help': 'Set the  Porcents for this web knowledge'}) }} 
+       <div class="homesectionweb_wrapper-form-Web-form-wrapper-item-range">
+       </div>
+     </div>
+          <input class="homesectionweb_wrapper-form-Web-form-wrapper-item-submit"
+            type="submit"
+            value=  {% if edditing %} 'Eddit' {% else %} 'Add Web Knowledge' {% endif %} />
+
+          {{ form_end(WebTypeForm) }}
+
+        </div>
+        {% endif %}

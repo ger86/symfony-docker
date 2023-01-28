@@ -15,7 +15,8 @@
                 </div> 
                {% endif %}
   {% set PrincipalKnowledgeForm = 'templateParts/homesections/principalknowledges.html.twig' %}
-  {% set  GraphicDesignForm = 'templateParts/homesections/GraphicDesign.html.twig' %}
+  {% set  GraphicDesignForm = 'templateParts/homesections/GraphicForm.html.twig' %}
+  {% set  WebForm = 'templateParts/homesections/WebForm.html.twig' %}
 
   <div class="homesection">
     <div class="homesection_wrapper">
@@ -34,7 +35,8 @@
                 </a>
                 </li>
                 <li class="homesection_wrapper-selector-ul-li">
-                <a href="{{ path('app_home_sections', {active: 'web_developer'}) }}">
+                <a href="{{ path('app_home_sections', {active: 'web_developer'}) }}" 
+                class={% if active == 'web_developer' %}'active_home_menu'{% endif %}>
                 Web Developer
                 </a>
                 </li>
@@ -65,8 +67,10 @@
                         {% include PrincipalKnowledgeForm  %}
                     {% endif %}
                     {% if active == 'graphicDesign' %}
-                         {% include GraphicDesignForm  %}
-                    
+                         {% include GraphicDesignForm  %} 
+                    {% endif %}
+                    {% if active == 'web_developer' %}
+                         {% include WebForm  %} 
                     {% endif %}
 
 

@@ -1,0 +1,55 @@
+{% extends 'pannels.html.twig' %}
+
+{% block title %}Home Web List{% endblock %}
+
+{% block backendBody %}
+  <h1>
+  Home Sections List 
+  </h1>
+ 
+ 
+  <div class="homeDesignList">
+    <div class="homeDesignList_wrapper"> 
+     <h3 class="homeDesignList_wrapper-h3">Web List </h3>
+      <div class="homeDesignList_wrapper-addNewDesign">
+      <a href="{{ path('app_home_sections', {active: 'web_developer'}) }}"><button>Add a New Web</button> </a>  
+      </div>
+      {# {{ dump(webList) }} #}
+      {% if webList|length != 0 %}
+       <table class="homeDesignList_wrapper-table">
+            <thead class="homeDesignList_wrapper-table-thead">
+              <tr class="homeDesignList_wrapper-table-thead-tr"> 
+                <td>web title</td>
+                <td>web porcents</td> 
+                <td>Delette</td>
+              </tr>
+            </thead>
+            <tbody>
+               
+                {% for webs in webList %}
+                 <tr class="homeDesignList_wrapper-table-thead-tr">
+                
+                 <td>{{ webs.title }}</td>
+                  <td>{{ webs.porcents|raw }}</td>
+                  
+                   <td><a href="{{ path('app_home_web_list', {active: 'deletteWeb', id:webs.id}) }}">
+              <button class="{{'actionTrash__' ~ webs.id }}"><i style="color: #fa6868;" class="fa-solid fa-trash"></i></button></a></td> 
+               </tr>
+                {% endfor %}
+             
+            </tbody>
+             <tfoot>
+              <tr>
+               <td>web title</td>
+                <td>web porcents</td> 
+                <td>Delette</td>
+              </tr>
+            </tfoot>
+          </table>
+          {% else %}
+          <pre>No items Here.</pre>
+          {% endif %}
+    </div>
+     </div>
+
+{% endblock %}
