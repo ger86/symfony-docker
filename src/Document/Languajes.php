@@ -4,6 +4,7 @@ namespace App\Document;
  
 use App\Document\Category;
 use App\Document\Homedata\Principalknowledge;
+use App\Document\Jobs\JobsDocument;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB; 
 
 /**
@@ -27,6 +28,9 @@ class Languajes
      /** @MongoDB\ReferenceMany(targetDocument=Principalknowledge::class, mappedBy="languaje") */
      public $principalknowledge;
 
+     /** @MongoDB\ReferenceMany(targetDocument=JobsDocument::class, mappedBy="languaje") */
+     public $jobstimeline;
+
 
     public function getId():string{
         return $this->id;
@@ -41,6 +45,11 @@ class Languajes
     {
         return $this->principalknowledge;
      }
+
+     public function getJobstimeline():JobsDocument
+     {
+         return $this->jobstimeline;
+      }
   
     // public function getCategorys():PersistentCollection
     // {

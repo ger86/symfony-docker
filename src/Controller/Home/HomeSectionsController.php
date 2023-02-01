@@ -5,8 +5,10 @@ namespace App\Controller\Home;
 use App\CustomHelper\Design\DesignHelper;
 use App\CustomHelper\GetKnowledges\GetSingleKnowlegeByid;
 use App\CustomHelper\Homehelper\SaveKnowledge;
+use App\CustomHelper\Jobs\JobsHelper;
 use App\CustomHelper\Web\WebHelper;
 use App\Form\Design\DesignType;
+use App\Form\Jobs\JobsType;
 use App\Form\PrincipalKnowledge\PrincipalKnowledgeType;
 use App\Form\Web\WebType;
 use Doctrine\ODM\MongoDB\DocumentManager;
@@ -25,7 +27,8 @@ class HomeSectionsController extends AbstractController
         GetSingleKnowlegeByid $knowlegeById,
         SaveKnowledge $knowledge,
         DesignHelper $designhelper,
-        WebHelper $webhelper
+        WebHelper $webhelper,
+        JobsHelper $jopshelper
     ): Response {
         $getLoguinStatus = intval(
             $request->cookies->get($_ENV['SECRETNAME_KOOKIE'])
@@ -113,19 +116,20 @@ class HomeSectionsController extends AbstractController
                             : $rsultWeb;
                     }
                     break;
-                // case 'wordPress':
-                //     $isActive = 'wordPress';
-                //     break;
-                // case 'reactJS':
-                //     $isActive = 'reactJS';
-                //     break;
 
-                // case 'webPack':
-                //     $isActive = 'webPack';
-                //     break;
-                // case 'hubSpot':
-                //     $isActive = 'hubSpot';
-                //     break;
+                    case 'jobs_timeLine':
+                        $isActive = 'jobs_timeLine';
+                        if ('timeline' == $request->query->get('savetype')) {
+                         
+                            $rsultJop = $jopshelper->saveJop(
+                                $request->request->all()['jobs'] 
+                            );
+                            $rsultJop
+                                ? ($status = '✨ Job saved Suscessfully')
+                                : $rsultJop;
+                        }
+                        break;
+             
             }
         }
 
@@ -147,6 +151,8 @@ class HomeSectionsController extends AbstractController
 
         $WebTypeForm = $this->createForm(WebType::class);
 
+        $JobsTypeForm = $this->createForm(JobsType::class);
+
         $edditing =
             $request->query->get('active') == 'editDataKnowledge'
                 ? true
@@ -157,6 +163,7 @@ class HomeSectionsController extends AbstractController
             'PrincipalKnowledgeType'  => $PrincipalKnowledgeType->createView(),
             'DesignFormType'          => $DesignTypeForm->createView(),
             'WebTypeForm'             => $WebTypeForm->createView(),
+            'JobsTimelineForm'        => $JobsTypeForm->createView(),
             'status'                 => $status,
             'edditing'               => $edditing,
         ]);

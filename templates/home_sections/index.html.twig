@@ -17,6 +17,7 @@
   {% set PrincipalKnowledgeForm = 'templateParts/homesections/principalknowledges.html.twig' %}
   {% set  GraphicDesignForm = 'templateParts/homesections/GraphicForm.html.twig' %}
   {% set  WebForm = 'templateParts/homesections/WebForm.html.twig' %}
+  {% set  JobsForm = 'templateParts/homesections/Jobs.html.twig' %}
 
   <div class="homesection">
     <div class="homesection_wrapper">
@@ -41,7 +42,8 @@
                 </a>
                 </li>
                   <li class="homesection_wrapper-selector-ul-li">
-                <a href="{{ path('app_home_sections', {active: 'jobs_timeLine'}) }}">
+                <a href="{{ path('app_home_sections', {active: 'jobs_timeLine'}) }}"
+                class={% if active == 'jobs_timeLine' %}'active_home_menu'{% endif %}>
                 Jobs TimeLine
                 </a>
                 </li>
@@ -71,6 +73,9 @@
                     {% endif %}
                     {% if active == 'web_developer' %}
                          {% include WebForm  %} 
+                    {% endif %}
+                    {% if active == 'jobs_timeLine' %}
+                         {% include JobsForm  %} 
                     {% endif %}
 
 
