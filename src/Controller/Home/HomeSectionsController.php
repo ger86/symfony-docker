@@ -7,10 +7,12 @@ use App\CustomHelper\GetKnowledges\GetSingleKnowlegeByid;
 use App\CustomHelper\Homehelper\SaveKnowledge;
 use App\CustomHelper\Jobs\JobsHelper;
 use App\CustomHelper\Web\WebHelper;
+use App\CustomHelper\Works\WorksHelper;
 use App\Form\Design\DesignType;
 use App\Form\Jobs\JobsType;
 use App\Form\PrincipalKnowledge\PrincipalKnowledgeType;
 use App\Form\Web\WebType;
+use App\Form\Works\WorksType;
 use Doctrine\ODM\MongoDB\DocumentManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -28,7 +30,8 @@ class HomeSectionsController extends AbstractController
         SaveKnowledge $knowledge,
         DesignHelper $designhelper,
         WebHelper $webhelper,
-        JobsHelper $jopshelper
+        JobsHelper $jopshelper,
+        WorksHelper $worksHelper
     ): Response {
         $getLoguinStatus = intval(
             $request->cookies->get($_ENV['SECRETNAME_KOOKIE'])
@@ -109,7 +112,7 @@ class HomeSectionsController extends AbstractController
                     $isActive = 'web_developer';
                     if ('webElement' == $request->query->get('savetype')) {
                         $rsultWeb = $webhelper->saveWeb(
-                            $request->request->all()['web'] 
+                            $request->request->all()['web']
                         );
                         $rsultWeb
                             ? ($status = '✨ Web saved Suscessfully')
@@ -117,19 +120,29 @@ class HomeSectionsController extends AbstractController
                     }
                     break;
 
-                    case 'jobs_timeLine':
-                        $isActive = 'jobs_timeLine';
-                        if ('timeline' == $request->query->get('savetype')) {
-                         
-                            $rsultJop = $jopshelper->saveJop(
-                                $request->request->all()['jobs'] 
+                case 'jobs_timeLine':
+                    $isActive = 'jobs_timeLine';
+                    if ('timeline' == $request->query->get('savetype')) {
+                        $rsultJop = $jopshelper->saveJop(
+                            $request->request->all()['jobs']
+                        );
+                        $rsultJop
+                            ? ($status = '✨ Job saved Suscessfully')
+                            : $rsultJop;
+                    }
+                    break;
+                   
+                    case 'some_works':
+                        $isActive = 'some_works'; 
+                        if ('someWorks' == $request->query->get('savetype')) {
+                            $rsultJop = $worksHelper->saveWorks(
+                                $request->request->all()['works']
                             );
                             $rsultJop
-                                ? ($status = '✨ Job saved Suscessfully')
+                                ? ($status = '✨ Works saved Suscessfully')
                                 : $rsultJop;
                         }
                         break;
-             
             }
         }
 
@@ -153,6 +166,8 @@ class HomeSectionsController extends AbstractController
 
         $JobsTypeForm = $this->createForm(JobsType::class);
 
+        $WorkTypeForm = $this->createForm(WorksType::class);
+
         $edditing =
             $request->query->get('active') == 'editDataKnowledge'
                 ? true
@@ -160,12 +175,13 @@ class HomeSectionsController extends AbstractController
 
         return $this->render('home_sections/index.html.twig', [
             'active' => $isActive,
-            'PrincipalKnowledgeType'  => $PrincipalKnowledgeType->createView(),
-            'DesignFormType'          => $DesignTypeForm->createView(),
-            'WebTypeForm'             => $WebTypeForm->createView(),
-            'JobsTimelineForm'        => $JobsTypeForm->createView(),
-            'status'                 => $status,
-            'edditing'               => $edditing,
+            'PrincipalKnowledgeType' => $PrincipalKnowledgeType->createView(),
+            'DesignFormType' => $DesignTypeForm->createView(),
+            'WebTypeForm' => $WebTypeForm->createView(),
+            'JobsTimelineForm' => $JobsTypeForm->createView(),
+            'worksForm' => $WorkTypeForm->createView(),
+            'status' => $status,
+            'edditing' => $edditing,
         ]);
     }
 }
