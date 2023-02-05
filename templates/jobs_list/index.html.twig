@@ -1,0 +1,85 @@
+{% extends 'pannels.html.twig' %}
+
+{% block title %}Home Web List{% endblock %}
+ 
+  {% block javascripts %}
+    <script>
+    window.addEventListener("load", function(event) {
+      const deletteBTN = document.getElementsByClassName('homeDesignList_wrapper-table')[0];
+      
+        deletteBTN.addEventListener('click', (e)=>{ 
+          if('JobsDelette__' === e.target.parentNode.classList[0]){
+             const URLToDelette = '/home/sections?active=jobs_timeLine&status=deletteJobs&id='+e.target.parentNode.classList[1]
+             let confirmDeletteJobs = prompt("Please tipe JOBS to delette");
+                  if (confirmDeletteJobs.toLowerCase() === "jobs") {
+                   window.location.href = URLToDelette;
+                  } else {
+                    console.warn('the jobs id: '+ e.target.parentNode.classList[1] + 'not has been deletted')
+                  }
+          }
+      })  
+    
+    })
+      
+    </script>
+{% endblock %}
+
+{% block backendBody %}
+  <h1>
+  Home Sections List 
+  </h1>
+ 
+ 
+  <div class="homeDesignList">
+    <div class="homeDesignList_wrapper"> 
+     <h3 class="homeDesignList_wrapper-h3">Jobs List </h3>
+      <div class="homeDesignList_wrapper-addNewDesign">
+      <a href="{{ path('app_home_sections', {active: 'jobs_timeLine'}) }}"><button>Add a New Jobs</button> </a>  
+      </div>
+      
+      {% if jobsList|length != 0 %}
+       <table class="homeDesignList_wrapper-table">
+            <thead class="homeDesignList_wrapper-table-thead">
+              <tr class="homeDesignList_wrapper-table-thead-tr"> 
+                 <td>languaje</td>
+                <td>jobs title</td>
+               <td>jobs date-name</td>
+                <td>jobs description</td> 
+                <td>eddit</td> 
+                <td>Delette</td>
+              </tr>
+            </thead>
+            <tbody>
+                {# {{ dump(jobsList) }} #}
+                {% for jobs in jobsList %}
+                 <tr class="homeDesignList_wrapper-table-thead-tr">
+                 <td>{{ jobs.lang }}</td>
+                 <td>{{ jobs.title }}</td>
+                 <td>{{ jobs.dateName }}</td>
+                  <td>{{ jobs.description|raw }}</td>
+                   <td><a href="{{ path('app_home_sections', {active: 'jobs_timeLine', status:'edditJobs', id:jobs.id, lang: jobs.lang}) }}">
+              <button class="{{'actionTrash__' ~ jobs.id }}"><i style="color: #ba36e9;" class="fa-solid fa-pen-to-square"></i></button></a></td> 
+                   <td><a class="{{'JobsDelette__ ' ~ jobs.id }}">
+              <button class="{{'JobsDelette__ ' ~ jobs.id }}"><i style="color: #fa6868;" class="fa-solid fa-trash"></i></button></a></td> 
+               </tr>
+                {% endfor %}
+             
+            </tbody>
+             <tfoot>
+              <tr>
+               <td>languaje</td>
+                <td>jobs title</td>
+               <td>jobs date-name</td>
+                <td>jobs description</td> 
+                <td>eddit</td> 
+                <td>Delette</td>
+              </tr>
+            </tfoot>
+          </table>
+          {% else %}
+          <pre>No items Here.</pre>
+          {% endif %}
+    </div>
+     </div>
+
+{% endblock %}  

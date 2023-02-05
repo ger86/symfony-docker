@@ -57,11 +57,13 @@
       {{ form_widget(PrincipalKnowledgeType.htmlarea) }}
        {{ form_help(PrincipalKnowledgeType.htmlarea,{'help': 'salida en html con estilos inclustados'}) }} 
      </div>
+     <div class="homesection_wrapper-form-principalKnowledges-form-wrapper-item-submit">
           <input class="homesection_wrapper-form-principalKnowledges-form-wrapper-item-submit"
             type="submit"
             value=  {% if edditing %} 'Eddit' {% else %} 'Add principal knowledge' {% endif %} />
 
           {{ form_end(PrincipalKnowledgeType) }}
-
+          <a href="{{ path('app_home_section_list') }}" title="see list"> <i class="fa-solid fa-list"></i></a>
+        </div>
         </div>
         {% endif %}

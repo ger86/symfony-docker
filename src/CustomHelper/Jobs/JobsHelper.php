@@ -42,44 +42,95 @@ class JobsHelper extends AbstractController
        
     }
 
-    // public function getWeb() 
-    // {
-    //     try {
-    //         $outputWeb = [];
-    //         $getWebRepository = $this->dm->getRepository(WebDocument::class);
-    //          $webRepository = $getWebRepository->findAll();
+    public function getJobs() 
+    {
+        try {
+            $outputJobs = [];
+            $getJobsRepository = $this->dm->getRepository(JobsDocument::class);
+             $jobsRepository = $getJobsRepository->findAll();
                  
-    //         for ($i = 0; $i < count($webRepository); $i++) {
+            for ($i = 0; $i < count($jobsRepository); $i++) {
               
-    //             $outputWeb[$i]['id'] = $webRepository[$i]->getId();
-    //             $outputWeb[$i]['title']  = $webRepository[$i]->getTitle();
-    //             $outputWeb[$i]['porcents']  = $webRepository[$i]->getPorcent();
+                $outputJobs[$i]['id'] = $jobsRepository[$i]->getId();
+                $outputJobs[$i]['dateName']  = $jobsRepository[$i]->getDatename();
+                $outputJobs[$i]['title']  = $jobsRepository[$i]->getTitle();
+                $outputJobs[$i]['description']  = $jobsRepository[$i]->getDescription();
+                $outputJobs[$i]['lang']  = $jobsRepository[$i]->getLanguaje()->getLanguaje();
                 
-    //         }
-    //       return new ArrayCollection($outputWeb);
-    //     } catch (\Throwable $th) {
-    //      return $th;
-    //     }
+            }
+          return new ArrayCollection($outputJobs);
+        } catch (\Throwable $th) {
+         return $th;
+        }
         
-    //  }
+     }
 
-
-    //  public function deletteweb($id):bool|string
-    //  {
-    //      try { 
-    //         $webRepository = $this->dm->createQueryBuilder(WebDocument::class)
-    //             ->findAndRemove()
-    //             ->field('id')->equals($id)
-    //             ->getQuery()
-    //             ->execute();
- 
-    //           return  !$webRepository->getId() ? false : true;
-           
-    //      } catch (\Throwable $th) {
-    //       return $th;
-    //      }
+     public function returnJobs(string $id, string $lang) 
+     {
+         try {
+             $outputJobs = [];
+             $getJobsRepository = $this->dm->getRepository(JobsDocument::class);
+              $jobsRepository = $getJobsRepository->findBy(['id' => $id]);
+                  
+             for ($i = 0; $i < count($jobsRepository); $i++) {
+               
+                 $outputJobs[$i]['id'] = $jobsRepository[$i]->getId();
+                 $outputJobs[$i]['dateName']  = $jobsRepository[$i]->getDatename();
+                 $outputJobs[$i]['title']  = $jobsRepository[$i]->getTitle();
+                 $outputJobs[$i]['description']  = $jobsRepository[$i]->getDescription();
+                 $outputJobs[$i]['lang']  = $jobsRepository[$i]->getLanguaje()->getLanguaje();
+                 
+             }
+            //    dd($outputJobs);
+           return $outputJobs;
+         } catch (\Throwable $th) {
+          return $th;
+         }
          
-    //   }
+      }
+     
+
+      public function edditJobs(array $jobs){
+        try {
+           
+                $languaje = $this->dm->getRepository(Languajes::class)->findOneBy(
+                  ['languaje' => $jobs['languaje']]
+                );
+          
+                $resultJobEddited = $this->dm->createQueryBuilder(JobsDocument::class)
+                  ->updateOne()
+                  ->field('datename')->set($jobs['datename'])
+                  ->field('title')->set($jobs['title'])
+                  ->field('description')->set($jobs['htmlarea'])
+                  ->field('languaje')->set($languaje)
+                  ->field('_id')->equals($jobs['id'])
+                  ->getQuery()
+                  ->execute();
+          
+                return $resultJobEddited->getModifiedCount();
+
+            } catch (\Throwable $th) {
+              return  $th;
+        }
+      }
+
+
+     public function delettejobs($id):bool|string
+     {
+         try { 
+            $jobRepository = $this->dm->createQueryBuilder(JobsDocument::class)
+                ->findAndRemove()
+                ->field('id')->equals($id)
+                ->getQuery()
+                ->execute();
+ 
+              return  !$jobRepository->getId() ? false : true;
+           
+         } catch (\Throwable $th) {
+          return $th;
+         }
+         
+      }
  
 
 }

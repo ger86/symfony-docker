@@ -31,6 +31,14 @@
                        &-range {
                             font-size: 12px;
                           }
+                          &-submit{
+                            display: flex;
+                            align-items: center;
+                            margin-right: 10px;
+                            a{
+                                @include submitButton; 
+                            }
+                        }
                       }
                       p{
                         font-size: 14px;

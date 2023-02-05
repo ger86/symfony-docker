@@ -46,6 +46,7 @@ class HomeSectionsController extends AbstractController
             switch ($request->query->get('active')) {
                 case 'principal_knowledges':
                     $isActive = 'principal_knowledges';
+                    $edditing =  false; 
                     if (
                         'principal_knowledges' ==
                         $request->query->get('savetype')
@@ -67,6 +68,8 @@ class HomeSectionsController extends AbstractController
                     if (
                         'eddit_knowledges' == $request->query->get('savetype')
                     ) {
+
+                        
                         $edditKnowledgeResult = $knowledge->edditKnowledgeInDatabase(
                             $request->request->all()['principal_knowledge']
                         );
@@ -82,6 +85,9 @@ class HomeSectionsController extends AbstractController
                     }
 
                     break;
+                    case 'editDataKnowledge':
+                        $edditing =  true; 
+                        break;
 
                 case 'deletteKnowledges':
                     $id = $request->query->get('id');
@@ -95,10 +101,11 @@ class HomeSectionsController extends AbstractController
                         $status = '🤬 ' . $deletedKnowledge;
                     }
 
-                    break;
-
+                    break; 
+                    
                 case 'graphicDesign':
                     $isActive = 'graphicDesign';
+                    $edditing =  false; 
                     if ('designElement' == $request->query->get('savetype')) {
                         $rsultWeb = $designhelper->saveDesign(
                             $request->request->all()['design']
@@ -107,9 +114,11 @@ class HomeSectionsController extends AbstractController
                             ? ($status = '✨ Design saved Suscessfully')
                             : $rsultWeb;
                     }
+                    $DesignTypeForm = $this->createForm(DesignType::class);
                     break;
                 case 'web_developer':
                     $isActive = 'web_developer';
+                    $edditing =  false; 
                     if ('webElement' == $request->query->get('savetype')) {
                         $rsultWeb = $webhelper->saveWeb(
                             $request->request->all()['web']
@@ -118,31 +127,65 @@ class HomeSectionsController extends AbstractController
                             ? ($status = '✨ Web saved Suscessfully')
                             : $rsultWeb;
                     }
+                    $WebTypeForm = $this->createForm(WebType::class);
+                    // if ('edditJobs' == $request->query->get('savetype')) {
+                    // }
                     break;
 
-                case 'jobs_timeLine':
+                case 'jobs_timeLine': 
                     $isActive = 'jobs_timeLine';
-                    if ('timeline' == $request->query->get('savetype')) {
+                    // dd( $isActive );
+                    if ('saveJobs' == $request->query->get('savetype')) {
                         $rsultJop = $jopshelper->saveJop(
                             $request->request->all()['jobs']
                         );
                         $rsultJop
                             ? ($status = '✨ Job saved Suscessfully')
                             : $rsultJop;
-                    }
+                    } 
+                    if ('edditJobs' == $request->query->get('savetype')) {
+                       
+                        $rsultJop = $jopshelper->edditJobs(
+                           $request->request->all()['jobs']  
+                         );
+                          
+                        $rsultJop
+                            ? ($status = '✨ Job eddited Suscessfully')
+                            : $rsultJop;
+                    } 
+                    if ('deletteJobs' == $request->query->get('status')) {
+                        $resultJop = $jopshelper->delettejobs(
+                            $request->query->get('id') 
+                         );
+                          if($resultJop){
+                            return $this->redirectToRoute('app_home_jobs_list');
+                          }
+                         
+                    } 
+                    $JobsTypeForm = $this->createForm(JobsType::class, null, [
+                        'attr' => $request->query->get('status')  == 'edditJobs' ?
+                            $jopshelper->returnJobs(
+                                $request->query->get('id'),
+                                $request->query->get('lang')
+                            )[0] : [],
+                    ]);
+                     $edditing = $request->query->get('status') == 'edditJobs' ? true : false;
                     break;
-                   
-                    case 'some_works':
-                        $isActive = 'some_works'; 
-                        if ('someWorks' == $request->query->get('savetype')) {
-                            $rsultJop = $worksHelper->saveWorks(
-                                $request->request->all()['works']
-                            );
-                            $rsultJop
-                                ? ($status = '✨ Works saved Suscessfully')
-                                : $rsultJop;
-                        }
-                        break;
+ 
+                case 'some_works':
+                    $isActive = 'some_works';
+                    $edditing =  false; 
+                    if ('someWorks' == $request->query->get('savetype')) {
+                        $rsultJop = $worksHelper->saveWorks(
+                            $request->request->all()['works']
+                        );
+                        $rsultJop
+                            ? ($status = '✨ Works saved Suscessfully')
+                            : $rsultJop;
+                    }
+                    $WorkTypeForm = $this->createForm(WorksType::class);
+
+                    break;
             }
         }
 
@@ -151,37 +194,24 @@ class HomeSectionsController extends AbstractController
             null,
             [
                 'attr' =>
-                    $request->query->get('active') == 'editDataKnowledge'
-                        ? $knowlegeById->returnKnowledge(
-                            $request->query->get('id'),
-                            $request->query->get('lang')
-                        )[0]
-                        : [],
+                $request->query->get('active') == 'editDataKnowledge'
+                    ? $knowlegeById->returnKnowledge(
+                        $request->query->get('id'),
+                        $request->query->get('lang')
+                    )[0]
+                    : [],
             ]
         );
-
-        $DesignTypeForm = $this->createForm(DesignType::class);
-
-        $WebTypeForm = $this->createForm(WebType::class);
-
-        $JobsTypeForm = $this->createForm(JobsType::class);
-
-        $WorkTypeForm = $this->createForm(WorksType::class);
-
-        $edditing =
-            $request->query->get('active') == 'editDataKnowledge'
-                ? true
-                : false;
-
+       
         return $this->render('home_sections/index.html.twig', [
             'active' => $isActive,
-            'PrincipalKnowledgeType' => $PrincipalKnowledgeType->createView(),
-            'DesignFormType' => $DesignTypeForm->createView(),
-            'WebTypeForm' => $WebTypeForm->createView(),
-            'JobsTimelineForm' => $JobsTypeForm->createView(),
-            'worksForm' => $WorkTypeForm->createView(),
             'status' => $status,
-            'edditing' => $edditing,
+            'edditing' => isset($edditing) == false ? null : $edditing,
+            'PrincipalKnowledgeType' => $PrincipalKnowledgeType->createView(),
+            'DesignFormType' => $isActive == 'graphicDesign' ? $DesignTypeForm->createView() : null,
+            'WebTypeForm' => $isActive == 'web_developer' ? $WebTypeForm->createView() : null,
+            'JobsTimelineForm' =>  $isActive == 'jobs_timeLine' ? $JobsTypeForm->createView() : null,
+            'worksForm' => $isActive == 'some_works' ? $WorkTypeForm->createView() : null
         ]);
     }
 }

@@ -63,11 +63,13 @@
        <div class="homesection_wrapper-form-Design-form-wrapper-item-range">
        </div>
      </div>
+      <div class="homesection_wrapper-form-Design-form-wrapper-item-submit">
           <input class="homesection_wrapper-form-Design-form-wrapper-item-submit"
             type="submit"
             value=  {% if edditing %} 'Eddit' {% else %} 'Add Design' {% endif %} />
 
           {{ form_end(DesignFormType) }}
-
+           <a href="{{ path('app_home_design_list') }}" title="see list"> <i class="fa-solid fa-list"></i></a>
+          </div>
         </div>
         {% endif %}

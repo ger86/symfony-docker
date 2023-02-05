@@ -63,11 +63,13 @@
        <div class="homesectionweb_wrapper-form-Web-form-wrapper-item-range">
        </div>
      </div>
+     <div class="homesectionweb_wrapper-form-Web-form-wrapper-item-submit">
           <input class="homesectionweb_wrapper-form-Web-form-wrapper-item-submit"
             type="submit"
             value=  {% if edditing %} 'Eddit' {% else %} 'Add Web Knowledge' {% endif %} />
 
           {{ form_end(WebTypeForm) }}
-
+            <a href="{{ path('app_home_web_list') }}" title="see list"> <i class="fa-solid fa-list"></i></a>
+          </div>
         </div>
         {% endif %}
