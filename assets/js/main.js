@@ -17,15 +17,19 @@ import Loginscript from "../login";
 import GalleryFilter from "./galleryFilter";
 import MediaSelector from "./mediaselector/MediaSelector";
 import PostStatusHidden from "./postStatusHidden";
+import DeletteJobs from "./jobsDelette";
+import WebValueRange from "./WebValueRange";
+
  
 
 
 window.addEventListener("load", () => {
+  window.DeletteJobs                    = new DeletteJobs();
   window.Loginscript                    = new Loginscript(); 
   window.MediaSelector                  = new MediaSelector();
   window.PostStatusHidden               = new PostStatusHidden();
   window.GalleryFilter                  = new GalleryFilter();
- 
+  window.WebValueRange                  = new WebValueRange();
 });
 
     

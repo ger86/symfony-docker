@@ -3,25 +3,7 @@
 {% block title %}Home Web List{% endblock %}
  
   {% block javascripts %}
-    <script>
-    window.addEventListener("load", function(event) {
-      const deletteBTN = document.getElementsByClassName('homeDesignList_wrapper-table')[0];
-      
-        deletteBTN.addEventListener('click', (e)=>{ 
-          if('JobsDelette__' === e.target.parentNode.classList[0]){
-             const URLToDelette = '/home/sections?active=jobs_timeLine&status=deletteJobs&id='+e.target.parentNode.classList[1]
-             let confirmDeletteJobs = prompt("Please tipe JOBS to delette");
-                  if (confirmDeletteJobs.toLowerCase() === "jobs") {
-                   window.location.href = URLToDelette;
-                  } else {
-                    console.warn('the jobs id: '+ e.target.parentNode.classList[1] + 'not has been deletted')
-                  }
-          }
-      })  
-    
-    })
-      
-    </script>
+   {{ encore_entry_script_tags('js/main') }}
 {% endblock %}
 
 {% block backendBody %}

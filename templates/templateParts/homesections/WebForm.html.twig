@@ -1,22 +1,4 @@
-  {% block javascripts %}
-    <script>
-   window.addEventListener("load", () => {
-    const valueBoxRamge = document.getElementsByClassName('homesectionweb_wrapper-form-Web-form-wrapper-item-range')[0];
-     const rangeValue = document.querySelector('#web_Porcents');
-
-     valueBoxRamge.innerText = `Actual value = ${rangeValue.value}`;
-
-    rangeValue.addEventListener('change',(e)=>{
-        valueBoxRamge.innerText = `Actual value = ${e.target.value}`;
- 
-}) 
-
-   })
-    </script>
-{% endblock %}
- 
-
-  {% if WebTypeForm %}
+ {% if WebTypeForm %}
  {# {% set actionType = '/home/sections?active=principal_knowledges&savetype=principal_knowledges'  %}
  {% if edditing %} 
    {% set actionType = '/home/sections?active=principal_knowledges&savetype=eddit_knowledges'   %}

@@ -28,18 +28,18 @@ class MediaSelector
         const imageSelector =  document.getElementsByClassName(boxMediaCollection)[0]; 
         const FriendlyInput =  document.getElementsByClassName(friendlyUrlSwitch)[0]; 
 
-        triguer.addEventListener('click', (e)=>{
+        triguer && triguer.addEventListener('click', (e)=>{
             e.preventDefault();
             media.classList.add(this.active);
         })
 
-        close.addEventListener('click', async ()=>{ 
+        close && close.addEventListener('click', async ()=>{ 
             media.classList.remove(this.active);
         })
 
         
 
-        imageSelector.addEventListener('click', (e) => {
+        imageSelector && imageSelector.addEventListener('click', (e) => {
             // console.log("🚀 ~ file: ~ e", show)
             if("IMG" == e.target.nodeName){
                 media.classList.remove(this.active);
@@ -49,7 +49,7 @@ class MediaSelector
         })
 
 
-        FriendlyInput.addEventListener('keyup',(e)=>{ 
+        FriendlyInput && FriendlyInput.addEventListener('keyup',(e)=>{ 
             e.target.value = this.switchTextToHeart(e.target.value); 
         })
  
@@ -58,7 +58,7 @@ class MediaSelector
     checkIfImageIsNotEmpty(){
         const input =  document.getElementsByClassName(MEDIASELECTORS.dataInput)[0];
         const show =  document.getElementsByClassName(MEDIASELECTORS.showMedia)[0];
-        if('' != input.value){
+        if(input && '' != input.value){
          show.style.backgroundImage = `url('${input.value}')`;
         }
     }

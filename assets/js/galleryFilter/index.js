@@ -10,7 +10,7 @@ class GalleryFilter {
 
     var triggerBtns = document.getElementsByClassName(trigger)[0];
   
-    triggerBtns.addEventListener('click',(e) => {
+    triggerBtns && triggerBtns.addEventListener('click',(e) => {
           const selector = e.target.id.split('__')[1]
           this.filterGallery( selector ,boxgallery , partUrl) 
       })

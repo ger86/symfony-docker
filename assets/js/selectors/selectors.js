@@ -21,4 +21,13 @@ export const GALLERYFILTER = {
 export const RANGESELECTOR = {
        inputRange : '.homesection_wrapper-form-Design-form-wrapper-item > label > #design_year'
 }
+export const DELETTEBTNJOB = {
+       deleteBtnJobs : 'homeDesignList_wrapper-table',
+       utlActionToDelette: '/home/sections?active=jobs_timeLine&status=deletteJobs&id='
+
+}
+export const WEBRANGESELECTOR = {
+       selectorShowText: 'homesectionweb_wrapper-form-Web-form-wrapper-item-range',
+       valueInputSelector : '#web_Porcents'
+}
 

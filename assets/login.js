@@ -3,8 +3,8 @@ class Loginscript {
       this.init();
     }
     init() {
-    console.log('try than this work')
-    
+      
+     console.log('try than this work')
     }
      
   }
