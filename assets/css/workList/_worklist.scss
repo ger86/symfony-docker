@@ -1,6 +1,6 @@
 @import '../general.scss';
 
-.homeDesignList{
+.homeWorksnList{
   width: 99%;
     &_wrapper{
         padding: 10px;
@@ -26,6 +26,7 @@
           &-thead,tfoot{
             background: white;
           }
+
         }
     }
 }

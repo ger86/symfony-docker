@@ -30,6 +30,14 @@
                             max-width: 500px;
                             padding-left: 10px;
                         }
+                        &-submit{
+                            display: flex;
+                            align-items: center;
+                            margin-right: 10px;
+                            a{
+                                @include submitButton; 
+                            }
+                        }
                       }
                       p{
                         font-size: 14px;

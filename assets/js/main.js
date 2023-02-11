@@ -19,6 +19,8 @@ import MediaSelector from "./mediaselector/MediaSelector";
 import PostStatusHidden from "./postStatusHidden";
 import DeletteJobs from "./jobsDelette";
 import WebValueRange from "./WebValueRange";
+import GraphicRange from "./GraphicRange";
+import DeletteWorks from "./worksDelette";
 
  
 
@@ -30,6 +32,8 @@ window.addEventListener("load", () => {
   window.PostStatusHidden               = new PostStatusHidden();
   window.GalleryFilter                  = new GalleryFilter();
   window.WebValueRange                  = new WebValueRange();
+  window.GraphicRange                   = new GraphicRange();
+  window.DeletteWorks                   = new DeletteWorks();
 });
 
     

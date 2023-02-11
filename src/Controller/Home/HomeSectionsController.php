@@ -183,8 +183,32 @@ class HomeSectionsController extends AbstractController
                             ? ($status = '✨ Works saved Suscessfully')
                             : $rsultJop;
                     }
-                    $WorkTypeForm = $this->createForm(WorksType::class);
-
+                    if ('edditWorks' == $request->query->get('savetype')) {
+                        $rsultJop = $worksHelper->edditWorks(
+                            $request->request->all()['works']
+                        );
+                        
+                        $rsultJop === 1
+                            ? $status = '✨ Works editted Suscessfully'
+                            : $status = $rsultJop;
+                    }
+                    if ('deletteWorks' == $request->query->get('savetype')) {
+                        $rsultWorks = $worksHelper->deletteWorks(
+                            $request->query->get('id')
+                        ); 
+                        if($rsultWorks){
+                            return $this->redirectToRoute('app_home_works_list');
+                          }
+                        
+                    }
+                    $WorkTypeForm = $this->createForm(WorksType::class, null, [
+                        'attr' => $request->query->get('status')  == 'returnWorks' ?
+                               $worksHelper->returnWork(
+                                $request->query->get('id'),
+                                $request->query->get('lang')
+                            )[0] : [],
+                    ]);
+                    $edditing = $request->query->get('status') == 'returnWorks' ? true : false;
                     break;
             }
         }

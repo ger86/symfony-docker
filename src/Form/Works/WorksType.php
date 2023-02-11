@@ -27,7 +27,7 @@ class WorksType extends AbstractType
     {
         
         $haveDatatoEddit = count($options['attr']) != 0 ? true : false;
-        // dd(  $options['attr'] );
+       //   dd(  $options['attr'] );
  
         $languaje = $this->languaje->getAllLanguaje();
 
@@ -40,26 +40,26 @@ class WorksType extends AbstractType
             'attr' => [
               'title'       => 'Base of this work',
               'placeholder' => 'add name of the base of this work',
-            //   'value'       => $haveDatatoEddit == true ? $options['attr']['datename'] :'' 
+             'value'       => $haveDatatoEddit == true ? $options['attr']['base'] :'' 
             ]
           ])
           ->add('techs',  TextType::class, [
             'attr' => [
               'title'       => 'List of techs',
               'placeholder' => 'add the list of techs for this work',
-            //   'value'       => $haveDatatoEddit == true ? $options['attr']['title'] :'' 
+              'value'       => $haveDatatoEddit == true ? $options['attr']['techs'] :'' 
             ]
           ])
           ->add('htmlarea', CKEditorType::class, [ 
-            'data' =>  $haveDatatoEddit == true ? $options['attr']['body'] :''  
+            'data' =>  $haveDatatoEddit == true ? $options['attr']['htmlarea'] :''  
          ])
          ->add('languaje', ChoiceType::class, [
             'attr' => [
               'title'       => 'Languaje' 
             ],
             'choices'  => [
-              $haveDatatoEddit == true ? $options['attr']['languaje'] :'' 
-               => $haveDatatoEddit == true ? $options['attr']['languaje'] :'' 
+              $haveDatatoEddit == true ? $options['attr']['lang'] :'' 
+               => $haveDatatoEddit == true ? $options['attr']['lang'] :'' 
                , ...$this->listLanguaje
             ],
           ])

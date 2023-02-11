@@ -1,21 +1,3 @@
-  {% block javascripts %}
-    <script>
-   window.addEventListener("load", () => {
-    const valueBoxRamge = document.getElementsByClassName('homesection_wrapper-form-Design-form-wrapper-item-range')[0];
-     const rangeValue = document.querySelector('#design_year');
-
-     valueBoxRamge.innerText = `Actual value = ${rangeValue.value}`;
-
-    rangeValue.addEventListener('change',(e)=>{
-        valueBoxRamge.innerText = `Actual value = ${e.target.value}`;
- 
-}) 
-
-   })
-    </script>
-{% endblock %}
- 
-
   {% if DesignFormType %}
  {# {% set actionType = '/home/sections?active=principal_knowledges&savetype=principal_knowledges'  %}
  {% if edditing %} 

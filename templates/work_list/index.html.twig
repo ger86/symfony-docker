@@ -1,0 +1,70 @@
+{% extends 'pannels.html.twig' %}
+
+{% block title %}Home Works List{% endblock %}
+
+{% block javascripts %}
+   {{ encore_entry_script_tags('js/main') }}
+{% endblock %}
+
+{% block backendBody %}
+  <h1>
+  Home Sections List 
+  </h1>
+ 
+ 
+  <div class="homeWorksnList">
+    <div class="homeWorksnList_wrapper"> 
+     <h3 class="homeWorksnList_wrapper-h3">Works List </h3>
+      <div class="homeWorksnList_wrapper-addNewDesign">
+      <a href="{{ path('app_home_sections', {active: 'some_works'}) }}"><button>Add a New works</button> </a>  
+      </div>
+      {# {{ dump(webList) }} #}
+      {% if worksList|length != 0 %}
+       <table class="homeWorksnList_wrapper-table">
+            <thead class="homeWorksnList_wrapper-table-thead">
+              <tr class="homeWorksnList_wrapper-table-thead-tr"> 
+              <td><i class="fa fa-language" aria-hidden="true"></i></td>
+              <td>base</td>
+                <td>techs</td>
+                <td>details</td>  
+                <td>eddit</td>  
+                <td>delette</td> 
+              </tr>
+            </thead>
+            <tbody>
+               
+                {% for works in worksList %}
+                 <tr class="homeWorksnList_wrapper-table-thead-tr">
+                 <td>{{ works.languaje }}</td>
+                 <td>{{ works.base }}</td>
+                  <td>{{ works.techs }}</td>
+                  <td>{{ works.htmlarea|raw }}</td>
+
+                  <td><a href="{{ path('app_home_sections', {active: 'some_works', status:'returnWorks', id:works.id, lang: works.languaje}) }}">
+              <button class="{{'actionTrash__' ~ works.id }}"><i style="color: #ba36e9;" class="fa-solid fa-pen-to-square"></i></button></a></td> 
+
+                   <td><a class="{{'WorksDelette__ ' ~ works.id }}">
+              <button><i style="color: #fa6868;" class="fa-solid fa-trash"></i></button></a></td> 
+
+               </tr>
+                {% endfor %}
+             
+            </tbody>
+             <tfoot>
+              <tr>
+               <td><i class="fa fa-language" aria-hidden="true"></i></td>
+               <td>base</td>
+                <td>techs</td>
+                <td>details</td>  
+                <td>eddit</td>  
+                <td>delette</td> 
+              </tr>
+            </tfoot>
+          </table>
+          {% else %}
+          <pre>No items Here.</pre>
+          {% endif %}
+    </div>
+     </div>
+
+{% endblock %}

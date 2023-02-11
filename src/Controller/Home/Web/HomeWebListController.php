@@ -18,6 +18,13 @@ class HomeWebListController extends AbstractController
         WebHelper $webHelper
     ): Response
     {
+        $getLoguinStatus = intval(
+            $request->cookies->get($_ENV['SECRETNAME_KOOKIE'])
+        );
+        if (!$getLoguinStatus) {
+            return $this->redirectToRoute('app_home');
+        }
+        
 
         if ($request->query->get('active') != null) {
             switch ($request->query->get('active')) {

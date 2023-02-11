@@ -19,7 +19,7 @@ class DeletteJobs {
                   console.warn('the jobs id: '+ e.target.parentNode.classList[1] + 'not has been deletted')
                 }
         }
-    })  
+      })  
     }
 
 }

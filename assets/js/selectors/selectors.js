@@ -26,8 +26,17 @@ export const DELETTEBTNJOB = {
        utlActionToDelette: '/home/sections?active=jobs_timeLine&status=deletteJobs&id='
 
 }
+export const DELETTEBTNWORKS = {
+       deleteBtnWorksTable : 'homeWorksnList_wrapper-table',
+       utlActionToDeletteWorks: '/home/sections?active=some_works&savetype=deletteWorks&id='
+
+}
 export const WEBRANGESELECTOR = {
        selectorShowText: 'homesectionweb_wrapper-form-Web-form-wrapper-item-range',
        valueInputSelector : '#web_Porcents'
+}
+export const DESIGNRANGESELECTOR = {
+       valueText: 'homesection_wrapper-form-Design-form-wrapper-item-range',
+       valueInputSelector : '#design_year'
 }
 

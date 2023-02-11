@@ -4,12 +4,12 @@
   {% if worksForm %}
 
 <div class="homesectionWorks_wrapper-form-Timeline">
-     
      {% if edditing %}
-     <span class="homesectionWorks_wrapper-form-Timeline-span"><i style="color: #ba36e9;" class="fa-solid fa-pen-to-square"></i> You're editing this Design</span>
-     {% endif %}
-
-
+      {% set actionUrl = '/home/sections?active=some_works&savetype=edditWorks' %}
+       <span class="homesectionWorks_wrapper-form-Timeline-span"><i style="color: #ba36e9;" class="fa-solid fa-pen-to-square"></i> You're editing this Work</span>
+      {% else %}
+      {% set actionUrl = '/home/sections?active=some_works&savetype=someWorks' %}
+    {% endif %}
 
         {{
           form_start(
@@ -18,7 +18,7 @@
               attr: {
                 class: 'homesectionWorks_wrapper-form-Timeline-form'
               },
-              action: '/home/sections?active=some_works&savetype=someWorks' ,
+              action: actionUrl ,
               method: 'POST'
             }
           )
@@ -72,11 +72,13 @@
             {{ form_help(worksForm.htmlarea,{'help': 'salida en html con estilos inclustados'}) }} 
           </div>
        
-          <input class="homesectionWorks_wrapper-form-Timeline-form-wrapper-item-submit"
+         <div class="homesectionWorks_wrapper-form-Timeline-form-wrapper-item-submit">
+           <input class="homesectionWorks_wrapper-form-Timeline-form-wrapper-item-submit"
             type="submit"
             value=  {% if edditing %} 'Eddit' {% else %} 'Add this Work' {% endif %} />
 
           {{ form_end(worksForm) }}
-
+              <a href="{{ path('app_home_works_list') }}" title="see list"> <i class="fa-solid fa-list"></i></a>
+         </div>
         </div>
         {% endif %}
