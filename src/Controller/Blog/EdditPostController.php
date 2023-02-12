@@ -4,8 +4,8 @@ namespace App\Controller\Blog;
 
 use App\Feching\Fetchdata;
 use App\Form\Actions\EdditForm;
-use App\CustomHelper\Helpers\SavePostEdited;
-use App\CustomHelper\Helpers\SetDataForEddit;
+use App\CustomHelper\Post\SavePostEdited;
+use App\CustomHelper\Post\SetDataForEddit;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

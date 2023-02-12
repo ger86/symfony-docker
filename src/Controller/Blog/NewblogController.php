@@ -7,7 +7,7 @@ use App\Document\Category;
 use App\Document\Languajes;
 use App\Form\Articleform;
 use App\Feching\Fetchdata;
-use App\CustomHelper\Helpers\SavePost;
+use App\CustomHelper\Post\SavePost;
 use Doctrine\ODM\MongoDB\DocumentManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;

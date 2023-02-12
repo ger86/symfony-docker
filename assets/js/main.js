@@ -21,6 +21,7 @@ import DeletteJobs from "./jobsDelette";
 import WebValueRange from "./WebValueRange";
 import GraphicRange from "./GraphicRange";
 import DeletteWorks from "./worksDelette";
+import DelettePost from "./PostDelette";
 
  
 
@@ -34,6 +35,7 @@ window.addEventListener("load", () => {
   window.WebValueRange                  = new WebValueRange();
   window.GraphicRange                   = new GraphicRange();
   window.DeletteWorks                   = new DeletteWorks();
+  window.DelettePost                    = new DelettePost();
 });
 
     

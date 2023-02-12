@@ -1,94 +1,186 @@
 {% extends 'pannels.html.twig' %}
 
-{% block title %}™️ Todos los Artículos{% endblock %}
+{% block title %}
+  ™️ Todos los Artículos
+{% endblock %}
+
+{% block javascripts %}
+   {{ encore_entry_script_tags('js/main') }}
+{% endblock %}
 
 {% block backendBody %}
-<h1>
-  Todos los artículos
-</h1>
-<div class="blogList">
-  <div class="blogList_wrapper">
-  {# {{ dump(BlogList) }} #}
-<div class="blogList_wrapper-newBlog">
- <a href="{{ path('app_newblog') }}"><button>Add a New Blog</button> </a>  
-</div>
-  
-   <div class="blogList_wrapper-filter">
-    <div class="blogList_wrapper-filter-languaje">
-    <div class="blogList_wrapper-filter-languaje-wrapper">
-    <label for="langajeFilter">Filter By languaje</label>
-    <select id="langajeFilter">
-    <option value="">-------------</option>
-     <option value="es">es</option>
-     <option value="en">en</option>
-    </select>
+  <h1>
+    Todos los artículos
+  </h1>
+ 
+  <div class="blogList">
+    <div class="blogList_wrapper"> 
+      {% if status %}
+      <span style="background: #dff3df; font-size: 18px; padding: 10px; overflow: hidden;" 
+      class="blogList_wrapper-status">{{status}}</span>
+   {% endif %}
+      <div class="blogList_wrapper-newBlog">
+        <a href="{{ path('app_newblog') }}"><button>Add a New Blog</button></a>
+      </div>
+
+      <div class="blogList_wrapper-filter">
+        <div class="blogList_wrapper-filter-languaje">
+          <div class="blogList_wrapper-filter-languaje-wrapper">
+            <label for="langajeFilter">Filter By languaje</label>
+            <select id="langajeFilter">
+              <option value="">
+                -------------
+              </option>
+              <option value="es">
+                es
+              </option>
+              <option value="en">
+                en
+              </option>
+            </select>
+          </div>
+
+          <button class="blogList_wrapper-filter-languaje-filterLanguaje">
+            apply
+          </button>
+        </div>
+        <div class="blogList_wrapper-filter-published">
+          <div class="blogList_wrapper-filter-published-wrapper">
+            <label for="langajeStatusPublished">Filter By status</label>
+            <select id="langajeStatusPublished">
+              <option value="">
+                -------------
+              </option>
+              <option value="published">
+                published
+              </option>
+              <option value="draft">
+                draft
+              </option>
+            </select>
+          </div>
+
+          <button class="blogList_wrapper-filter-languaje-filterPublished">
+            apply
+          </button>
+        </div>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <td>
+              title
+            </td>
+            <td>
+              status
+            </td>
+            <td>
+              Date Published
+            </td>
+            <td>
+              see
+            </td>
+            <td>
+              eddit
+            </td>
+            <td>
+              delette
+            </td>
+          </tr>
+        </thead>
+
+        <tbody>
+          {% if BlogList %}
+            {% for blog in BlogList %}
+              {# {{ dump(blog.languaje.languaje) }} #}
+              <tr>
+                <td>
+                  <a href="{{
+                    path(
+                      'app_eddit_post',
+                      {
+                        type: 'Eddit',
+                        value: blog.id
+                      }
+                    )
+                    }}">
+                    {{ blog.title }}
+                  </a>
+                </td>
+                <td>
+                  {{ blog.status.status }}
+                </td>
+                <td>
+                  {{ blog.datePublished|date('m/d/Y') }}
+                </td>
+                <td>
+                  <a href="{{
+                    path(
+                      'app_see_post',
+                      {
+                        type: 'See',
+                        value: blog.id
+                      }
+                    )
+                    }}">
+                    <button class="{{ 'actionSee__' ~ blog.id }}">
+                      <i style="color:#1ca238;" class="fa-solid fa-eye"></i>
+                    </button>
+                  </a>
+                </td>
+                <td>
+                  <a href="{{
+                    path(
+                      'app_eddit_post',
+                      {
+                        type: 'Eddit',
+                        value: blog.id
+                      }
+                    )
+                    }}">
+                    <button class="{{ 'actionEddit__' ~ blog.id }}">
+                      <i style="color: #ba36e9;"
+                        class="fa-solid fa-pen-to-square">
+
+                      </i>
+                    </button>
+                  </a>
+                </td>
+                <td>
+                  <a>
+                    <button class="{{ 'actionTrash__ ' ~ blog.id }}">
+                      <i style="color: #fa6868;" class="fa-solid fa-trash"></i>
+                    </button>
+                  </a>
+                </td>
+              </tr>
+            {% endfor %}
+          {% endif %}
+        </tbody>
+
+        <tfoot>
+          <tr>
+            <td>
+              title
+            </td>
+            <td>
+              status
+            </td>
+            <td>
+              Date Published
+            </td>
+            <td>
+              see
+            </td>
+            <td>
+              eddit
+            </td>
+            <td>
+              delette
+            </td>
+          </tr>
+        </tfoot>
+      </table>
     </div>
-   
-    <button class="blogList_wrapper-filter-languaje-filterLanguaje">apply</button>
-     </div>
-       <div class="blogList_wrapper-filter-published">
-     <div class="blogList_wrapper-filter-published-wrapper">
-     <label for="langajeStatusPublished">Filter By status</label>
-    <select id="langajeStatusPublished">
-    <option value="">-------------</option>
-     <option value="published">published</option>
-     <option value="draft">draft</option>
-    </select>
-     </div>
-   
-    <button class="blogList_wrapper-filter-languaje-filterPublished">apply</button>
-     </div>
-   </div>
-    <table>
-      <thead>
-      <tr>
-      <td>title</td>
-      <td>status</td>
-      <td>Date Published</td>
-      <td>see</td>
-      <td>eddit</td>
-      <td>delette</td>
-      </tr>
-      </thead>
-
-      <tbody>
-
-     
-          
-       {% if BlogList %}
-          {% for blog in BlogList %}  
-          {# {{ dump(blog.languaje.languaje) }} #}
-           <tr>
-            <td><a href="{{ path('app_eddit_post', {type: 'Eddit', value:blog.id}) }}">{{ blog.title }}</a></td>   
-                <td>{{blog.status.status}}</td> 
-               <td>{{ blog.datePublished|date("m/d/Y") }}</td>
-              <td><a href="{{ path('app_see_post', {type: 'See', value:blog.id}) }}">
-              <button class="{{'actionSee__' ~ blog.id  }}"><i style="color:#1ca238;" class="fa-solid fa-eye"></i></button></a></td>
-              <td><a href="{{ path('app_eddit_post', {type: 'Eddit', value:blog.id}) }}">
-              <button class="{{'actionEddit__' ~ blog.id }}"><i style="color: #ba36e9;" class="fa-solid fa-pen-to-square"></i></button></a></td> 
-              <td><a href="{{ path('app_eddit_post', {type: 'Delette', value:blog.id}) }}">
-              <button class="{{'actionTrash__' ~ blog.id }}"><i style="color: #fa6868;" class="fa-solid fa-trash"></i></button></a></td> 
-               </tr>
-         {% endfor %} 
-       {% endif %}
-      
-       </tbody>
-
-      <tfoot>
-      <tr>
-      <td>title</td>
-      <td>status</td>
-      <td>Date Published</td>
-      <td>see</td>
-      <td>eddit</td>
-      <td>delette</td>
-      </tr>
-      </tfoot>
-
-    </table>
   </div>
-</div>
-
-
-  
-{% endblock %} 
+{% endblock %}

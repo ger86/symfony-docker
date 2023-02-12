@@ -31,6 +31,11 @@ export const DELETTEBTNWORKS = {
        utlActionToDeletteWorks: '/home/sections?active=some_works&savetype=deletteWorks&id='
 
 }
+export const DELETTEBTNPOST = {
+       deleteBtnPostTable : '.blogList table',
+       utlActionToDelettePost: '/blog/list?type=Delette&value='
+
+}
 export const WEBRANGESELECTOR = {
        selectorShowText: 'homesectionweb_wrapper-form-Web-form-wrapper-item-range',
        valueInputSelector : '#web_Porcents'
