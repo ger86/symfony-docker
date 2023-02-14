@@ -1,0 +1,31 @@
+@import '../general.scss';
+
+.homeDesignList{
+  width: 99%;
+    &_wrapper{
+        padding: 10px;
+        &-h3{
+          font-size: $smallText;
+          margin:15px 0;
+        }
+        &-addNewDesign {
+          a{
+            button{
+               @include buttonStyle; 
+               margin-bottom: 20px;
+            }
+          }
+          
+        }
+        &-table{
+          font-size: $smallText;
+          @include tableStyle;
+          td, th {
+            @include tableTdTh;
+          }
+          &-thead,tfoot{
+            background: white;
+          }
+        }
+    }
+}

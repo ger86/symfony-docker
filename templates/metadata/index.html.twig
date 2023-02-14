@@ -1,0 +1,46 @@
+{% extends 'pannels.html.twig' %}
+
+{% block title %}
+  metadata
+{% endblock %}
+
+
+{% block backendBody %}
+  <h1>
+    Metadata 
+  </h1>
+    
+       {% set languaje = 'templateParts/metadata/languaje/lang.html.twig' %}
+       {% set category = 'templateParts/metadata/category/category.html.twig' %}
+       {% set status = 'templateParts/metadata/status/status.html.twig' %}
+         {% set isActivelang = active == 'lang' ? 'activeMetadata' : null  %}
+         {% set isActivecat = active == 'cat' ? 'activeMetadata' : null  %}
+          {% set isActivestatus = active == 'stat' ? 'activeMetadata' : null  %}
+  <div class="metadata">
+    <div class="metadata-wrapper">
+      <div class="metadata-wrapper-selector">
+        <ul class="metadata-wrapper-selector-ul">
+          <li class="metadata-wrapper-selector-ul-li">
+            <a class="metadata-wrapper-selector-ul-li-actionLang {{ isActivelang }}"
+              href="{{ path('app_metadata', {active: 'lang'}) }}">
+              Languajes
+            </a>
+          </li>
+          <li class="metadata-wrapper-selector-ul-li">
+            <a class="metadata-wrapper-selector-ul-li-actionCategory {{ isActivecat }}" href="{{ path('app_metadata', {active: 'cat'}) }}">
+              Categorys
+            </a>
+          </li> 
+          <li class="metadata-wrapper-selector-ul-li">
+            <a class="metadata-wrapper-selector-ul-li-actionStatus {{ isActivestatus }}" href="{{ path('app_metadata', {active: 'stat'}) }}">
+              Status
+            </a>
+          </li>
+        </ul>
+      </div>
+     
+      {% include active == 'lang' ? languaje : active == 'stat' ? status : category  %} 
+      
+    </div>
+  </div>
+{% endblock %}

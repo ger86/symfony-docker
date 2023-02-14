@@ -1,0 +1,12 @@
+#config/packages/fos_ck_editor.yaml
+fos_ck_editor:
+    configs:
+        my_config_1:
+            toolbar: "my_toolbar_1"
+            uiColor: "#ffffff"
+            # ...
+     
+    toolbars:
+        configs:
+            my_toolbar_1: [ [ 'Source', '-',],['Bold', 'Italic', 'Underline', 'Strike'],['Styles', 'Format', 'Font', 'FontSize' ],['Scayt'],'/',['JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock'],['NumberedList', 'BulletedList'],['Link', 'Unlink'],['Image', 'PageBreak'],['PasteText', 'PasteFromWord', '-', 'Undo', 'Redo'],['Find', 'Replace', '-', 'SelectAll'],['Table'],[ 'TextColor', 'BGColor' ]]
+           

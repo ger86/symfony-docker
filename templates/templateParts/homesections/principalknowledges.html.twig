@@ -1,0 +1,69 @@
+ {% if PrincipalKnowledgeType %}
+ 
+
+ {% set actionType = '/home/sections?active=principal_knowledges&savetype=principal_knowledges'  %}
+ {% if edditing %} 
+   {% set actionType = '/home/sections?active=principal_knowledges&savetype=eddit_knowledges'   %}
+ {% endif %} 
+ 
+<div class="homesection_wrapper-form-principalKnowledges">
+     
+     {% if edditing %}
+     <span class="homesection_wrapper-form-principalKnowledges-span"><i style="color: #ba36e9;" class="fa-solid fa-pen-to-square"></i> You're editing this knowledge</span>
+     {% endif %}
+
+
+
+        {{
+          form_start(
+            PrincipalKnowledgeType,
+            {
+              attr: {
+                class: 'homesection_wrapper-form-principalKnowledges-form'
+              },
+              action: actionType,
+              method: 'POST'
+            }
+          )
+        }}
+        
+        <div class="homesection_wrapper-form-principalKnowledges-form-wrapper">
+         <div class="homesection_wrapper-form-principalKnowledges-form-wrapper-item">
+            {{ form_label(PrincipalKnowledgeType.languaje) }}
+            {{ form_widget(PrincipalKnowledgeType.languaje) }}
+            {{
+              form_help(
+                PrincipalKnowledgeType.languaje,
+                {
+                  help: 'Select the languaje for this knowledge'
+                }
+              )
+            }}
+          </div> 
+          <div class="homesection_wrapper-form-principalKnowledges-form-wrapper-item">
+            {{ form_label(PrincipalKnowledgeType.title) }}
+            {{ form_widget(PrincipalKnowledgeType.title) }}
+            {{
+              form_help(
+                PrincipalKnowledgeType.title,
+                {
+                  help: 'insert a new Title for this knowledge'
+                }
+              )
+            }}
+          </div> 
+         <div class="homesection_wrapper-form-principalKnowledges-form-wrapper-item">
+      {{ form_label(PrincipalKnowledgeType.htmlarea) }}  
+      {{ form_widget(PrincipalKnowledgeType.htmlarea) }}
+       {{ form_help(PrincipalKnowledgeType.htmlarea,{'help': 'salida en html con estilos inclustados'}) }} 
+     </div>
+     <div class="homesection_wrapper-form-principalKnowledges-form-wrapper-item-submit">
+          <input class="homesection_wrapper-form-principalKnowledges-form-wrapper-item-submit"
+            type="submit"
+            value=  {% if edditing %} 'Eddit' {% else %} 'Add principal knowledge' {% endif %} />
+
+          {{ form_end(PrincipalKnowledgeType) }}
+          <a href="{{ path('app_home_section_list') }}" title="see list"> <i class="fa-solid fa-list"></i></a>
+        </div>
+        </div>
+        {% endif %}

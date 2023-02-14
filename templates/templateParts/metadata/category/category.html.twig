@@ -1,0 +1,101 @@
+ 
+  
+  <script>
+    function confirmDeletteCategory(e) {  
+
+      const confirmResponse = prompt('Please type: '+ e.href.split("_")[1].toLowerCase() + ' to delette this Category');
+       if(confirmResponse === e.href.split("_")[1].toLowerCase()){
+        e.href = e.href 
+        return
+       }
+      e.href =  "/metadata?active=cat";
+  }
+
+  window.addEventListener('load', ()=>{
+      const selectLanguaje = 'category_languajes';
+ 
+    
+    if (document.getElementById(selectLanguaje)) { 
+      const optoinsValues = document.getElementById(selectLanguaje);
+      optoinsValues.childNodes.forEach(
+        (element) => (element.innerText = element.value)
+      );
+    }
+   
+
+  })
+     </script>
+
+ 
+
+
+ <div class="metadata-wrapper-lang activeBodyMetadata">
+        {{
+          form_start(
+            CategoryForm,
+            {
+              attr: {
+                class: 'metadata-wrapper-lang-formLang'
+              },
+              action: '/metadata',
+              method: 'POST'
+            }
+          )
+        }}
+        <div class="metadata-wrapper-lang-formLang-wrapper">
+          <div class="metadata-wrapper-lang-formLang-wrapper-item">
+            {{ form_label(CategoryForm.category) }}
+            {{ form_widget(CategoryForm.category) }}
+            {{
+              form_help(
+                CategoryForm.category,
+                {
+                  help: 'insert a new category in the sistem'
+                }
+              )
+            }}
+          </div> 
+          <input class="metadata-wrapper-lang-formLang-wrapper-item-submit"
+            type="submit"
+            value="Add category" />
+
+          {{ form_end(CategoryForm) }}
+        </div>
+        <table class="metadata-wrapper-lang-table"
+          border="1"
+          style="border-collapse: collapse;">
+          <thead class="metadata-wrapper-lang-table-thead">
+            <tr>
+              <td>
+                Category name
+              </td>
+             
+            </tr>
+          </thead>
+          <tbody class="metadata-wrapper-lang-table-tbody activeBodyMetadata">
+            
+            {% if categories != '' %}
+
+            
+    {% for category in categories %}
+     
+           <tr>
+              <td>
+               {{ category}}
+              <a onClick="{{ 'confirmDeletteCategory(this)'}}" class="{{ 'metadata-wrapper-lang-table-tbody__' ~ category}}" 
+              href="{{ path('app_metadata', {active: 'delette_' ~ category}) }}">
+             <i class="fa-solid fa-trash"></i>
+            </a>
+              </td>
+               
+            </tr>
+      {% endfor %} 
+          {% endif %}
+
+
+             
+
+
+          </tbody>
+        </table>
+      </div>

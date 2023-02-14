@@ -1,0 +1,92 @@
+{% extends 'pannels.html.twig' %}
+
+{% block title %}See post{% endblock %}
+ 
+{% block backendBody %}
+<h1>
+  🔍 You Are Inspect this Post.
+</h1>
+<div class="seepost">
+  <div class="seepost_wrapper"> 
+     <div class="seepost_wrapper_title">
+      <h1>{{ postValue.title }}</h1>
+     </div>
+     <div class="seepost_wrapper_date">
+      <h1>{{ postValue.date }} | Status: <i>{{ postValue.Status }}</i></h1>
+     </div>
+     <div class="seepost_wrapper_image">
+      <img width="800" height="534" src="{{ postValue.imageURL }}" />
+     </div>
+      <div class="seepost_wrapper_body">
+          {{ postValue.body | raw }} 
+     </div>
+  </div>
+  </div>
+{% endblock %}
+{# "id" => "63b5e9e4129070fa7d062336"
+    "title" => "Edited now"
+    "friendlyURL" => "Insert-a-new-post-minalo"
+    "body" => """
+      <table border="1" cellpadding="1" cellspacing="1" style="width:500px">
+
+
+      \t<tbody>
+
+
+      \t\t<tr>
+
+
+      \t\t\t<td>&nbsp;</td>
+
+
+      \t\t\t<td>&nbsp;</td>
+
+
+      \t\t</tr>
+
+
+      \t\t<tr>
+
+
+      \t\t\t<td>&nbsp;</td>
+
+
+      \t\t\t<td>&nbsp;</td>
+
+
+      \t\t</tr>
+
+
+      \t\t<tr>
+
+
+      \t\t\t<td>&nbsp;</td>
+
+
+      \t\t\t<td>&nbsp;</td>
+
+
+      \t\t</tr>
+
+
+      \t</tbody>
+
+
+      </table>
+
+
+      
+
+
+      <p>asas</p>
+
+
+      """
+    "imageURL" => "https://media.lavour.es/Blog/all_new-set.webp"
+    "Status" => "draft"
+    "keyworl" => "asfdsfas-sdfas"
+    "date" => "2019-01-04"
+    "category" => "Javascript"
+    "languaje" => "es"
+  ]
+} #}

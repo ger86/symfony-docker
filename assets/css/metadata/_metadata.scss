@@ -1,0 +1,104 @@
+@import '../general.scss';
+
+.metadata {
+    width: 98%;
+    &-wrapper{
+        margin:10px 0; 
+        &-selector{
+          &-ul{
+            display: flex;
+            border-bottom: solid 2px #dde;
+             &-li{
+              margin-right: -2px;
+                a{
+                    line-height: 60px;
+                    display: block;
+                    padding: 0 20px;
+                    border: solid 2px #dde;
+                    margin-bottom: -2px; 
+                    font-size: $linksize; 
+                    color: black;
+                    &:hover{
+                        text-decoration: underline;
+                    }
+                }
+             }
+          }
+        }
+        &-lang{
+            &-table{
+              width: 30%; max-width: 300px; text-align: center;min-width: 300px;
+                font-size: $linksize;
+                thead {
+                    background: #d5d5d5;
+                  }
+                  tbody {
+                     tr{
+                      td{
+                        position: relative;
+                        overflow: hidden;
+                        a{
+                          position: absolute;
+                          right: -30px;
+                        }
+                        &:hover{
+                          a{
+                            right: 5px;
+                            i{
+                              color: $pannelBg;
+                              &:hover{
+                                color:red;
+                              }
+                            }
+                          }
+                        }
+                      }
+                     }
+                  }
+            }
+            &-formLang{
+              margin:20px 0;
+              &-wrapper{
+                &-item{
+                  label {
+                    display: block;
+                    font-size: $linksize;
+                    margin-bottom: 10px;
+                  }
+                  input {
+                    height: 35px;
+                    background: white;
+                    border: solid 1px $inputBorderColor;
+                    padding: 0 5px;
+                    font-size: $linksize;
+                  }
+                  p {
+                    font-size: $smallText;
+                    color: $lightGrayText;
+                  }
+                  &-submit {
+                    background: $pannelBg;
+                    border: none;
+                    display: block;
+                    width: max-content;
+                    line-height: 35px;
+                    font-size: 18px;
+                    color: $lightgreen;
+                    padding: 0 20px;
+                    border-radius: 3px;
+                    cursor: pointer;
+                    margin-top: 10px;
+                    &:hover {
+                      background: $backgroundLingk;
+                      color: white;
+                    }
+                  }
+                }
+              }
+            }
+        }
+      }
+  }
+  a.activeMetadata{ 
+    border-bottom: solid 2px $lignhtGray;
+}

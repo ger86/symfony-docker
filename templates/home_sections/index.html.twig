@@ -1,0 +1,84 @@
+{% extends 'pannels.html.twig' %}
+
+{% block title %}Home Sections{% endblock %}
+
+{% block backendBody %}
+  <h1>
+   Home Sections
+  </h1>
+ 
+              {% if status %}
+                <div class="newblog_wrapper_status">
+                  <span>  {{ status }}</span>
+                </div> 
+               {% endif %}
+  {% set PrincipalKnowledgeForm = 'templateParts/homesections/principalknowledges.html.twig' %}
+  {% set  GraphicDesignForm = 'templateParts/homesections/GraphicForm.html.twig' %}
+  {% set  WebForm = 'templateParts/homesections/WebForm.html.twig' %}
+  {% set  JobsForm = 'templateParts/homesections/Jobs.html.twig' %}
+  {% set  WorksForm = 'templateParts/homesections/Works.html.twig' %} 
+
+  <div class="homesection">
+    <div class="homesection_wrapper">
+        <div class="homesection_wrapper-selector">
+            <ul class="homesection_wrapper-selector-ul">
+                <li class="homesection_wrapper-selector-ul-li">
+                <a href="{{ path('app_home_sections', {active: 'principal_knowledges'}) }}" 
+                class={% if active == 'principal_knowledges' %}'active_home_menu'{% endif %}>
+                principal knowledges
+                </a>
+                </li>
+                <li class="homesection_wrapper-selector-ul-li">
+                <a href="{{ path('app_home_sections', {active: 'graphicDesign'}) }}" 
+                class={% if active == 'graphicDesign' %}'active_home_menu'{% endif %}>
+                GraphicDesign
+                </a>
+                </li>
+                <li class="homesection_wrapper-selector-ul-li">
+                <a href="{{ path('app_home_sections', {active: 'web_developer'}) }}" 
+                class={% if active == 'web_developer' %}'active_home_menu'{% endif %}>
+                Web Developer
+                </a>
+                </li>
+                  <li class="homesection_wrapper-selector-ul-li">
+                <a href="{{ path('app_home_sections', {active: 'jobs_timeLine'}) }}"
+                class={% if active == 'jobs_timeLine' %}'active_home_menu'{% endif %}>
+                Jobs TimeLine
+                </a>
+                </li>
+               <li class="homesection_wrapper-selector-ul-li">
+                <a href="{{ path('app_home_sections', {active: 'some_works'}) }}"
+                 class={% if active == 'some_works' %}'active_home_menu'{% endif %}>
+                 Some Works
+                </a>
+                </li>
+            </ul>
+            <div class="homesection_wrapper-form">
+                
+                    {% if active == 'principal_knowledges' %}
+                        {% include PrincipalKnowledgeForm  %}
+                    {% endif %}
+                    {% if active == 'graphicDesign' %}
+                         {% include GraphicDesignForm  %} 
+                    {% endif %}
+                    {% if active == 'web_developer' %}
+                         {% include WebForm  %} 
+                    {% endif %}
+                    {% if active == 'jobs_timeLine' %}
+                         {% include JobsForm  %} 
+                    {% endif %}
+                    {% if active == 'some_works' %}
+                         {% include WorksForm  %} 
+                    {% endif %}
+                    
+
+
+               </div>
+               <div class="homesection_wrapper-content">
+               </div>
+            </div>
+        </div>
+    </div>
+  </div>
+
+{% endblock %}

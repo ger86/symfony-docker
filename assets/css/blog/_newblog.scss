@@ -1,0 +1,314 @@
+@import '../general.scss';
+.newblog {
+  &_wrapper {
+    padding: 10px 20px 0 0;
+    &_status {
+      background: #dff3df;
+      font-size: 18px;
+      padding: 10px;
+      overflow: hidden;
+    }
+    &_actions{
+      &-ul{
+        padding: 0 0 10px 0;
+        display: flex;
+        li{
+          margin-right: 5px;
+          a{
+            button{
+              @include buttonStyle;
+            }
+          }
+        }
+      }
+    }
+
+    &-form {
+      display: flex;
+      justify-content: space-between;
+      &-left {
+        width: 70%;
+        &-title {
+          margin-bottom: 10px;
+          display: flex;
+          flex-direction: column;
+          label {
+            display: block;
+            font-size: $linksize;
+            margin-bottom: 10px;
+          }
+          input {
+            height: 35px;
+            background: white;
+            border: solid 1px $inputBorderColor;
+            padding: 0 5px;
+            font-size: $linksize;
+          }
+          p {
+            font-size: $smallText;
+            color: $lightGrayText;
+          }
+        }
+        &-Furl {
+          margin-bottom: 10px;
+          display: flex;
+          flex-direction: column;
+          label {
+            display: block;
+            font-size: $linksize;
+            margin-bottom: 10px;
+          }
+          input {
+            height: 35px;
+            background: white;
+            border: solid 1px $inputBorderColor;
+            padding: 0 5px;
+            font-size: $linksize;
+          }
+          p {
+            font-size: $smallText;
+            color: $lightGrayText;
+          }
+        }
+        &-htmlarea {
+          label {
+            display: block;
+            font-size: $linksize;
+            margin-bottom: 10px;
+          }
+          p {
+            font-size: $smallText;
+            color: $lightGrayText;
+          }
+        }
+        &-keywordsCategories {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          &-keywords,
+          &-categories {
+            width: 48%;
+            margin-top: 5px;
+            label {
+              display: block;
+              font-size: $linksize;
+              margin-bottom: 10px;
+            }
+            input {
+              height: 35px;
+              background: white;
+              border: solid 1px $inputBorderColor;
+              padding: 0 5px;
+              font-size: $linksize;
+              width: 100%;
+            }
+            select {
+              background: white;
+              border: solid 1px $inputBorderColor;
+              height: 35px;
+              text-align: center;
+              margin: 5px;
+              border-radius: 3px;
+              background: #fbfbfb;
+              width: 98%;
+            }
+            p {
+              font-size: $smallText;
+              color: $lightGrayText;
+            }
+          }
+        }
+        &-submit {
+          @include submitButton;
+        }
+      }
+      &-right {
+        width: 28%;
+        &-items {
+          &-imageSelector {
+            margin-bottom: 20px;
+            &-show {
+              background: #e3e3e3;
+              display: block;
+              height: 200px;
+              background-size: cover;
+            }
+            &-input {
+              width: 99%;
+              height: 35px;
+              background: white;
+              border: solid 1px $inputBorderColor;
+              padding: 0 5px;
+              font-size: $linksize;
+              box-sizing: border-box;
+              margin-top: 10px;
+            }
+            &-help {
+              font-size: $smallText;
+              color: $lightGrayText;
+              margin-bottom: 10px;
+            }
+            &-button {
+              background: $pannelBg;
+              border: none;
+              display: block;
+              width: max-content;
+              line-height: 35px;
+              font-size: 18px;
+              color: $lightgreen;
+              padding: 0 20px;
+              border-radius: 3px;
+              cursor: pointer;
+              &:hover {
+                background: $backgroundLingk;
+                color: white;
+              }
+            }
+          }
+          &-status,
+          &-languaje,
+          &-published {
+            display: flex;
+            flex-direction: column;
+            background: white;
+            padding: 5px 0;
+            margin-bottom: 10px;
+            border: solid 1px $inputBorderColor;
+            &-wrapperLabel {
+              display: flex;
+              flex-direction: row;
+              justify-content: start;
+              border-bottom: solid 1px $inputBorderColor;
+              i {
+                font-size: $linksize;
+                color: $lightGrayText;
+                margin: 8px 0 0 5px;
+              }
+              label {
+                font-size: $linksize;
+                display: block;
+                margin: 0 10px;
+                padding: 5px;
+              }
+            }
+            select {
+              background: white;
+              border: solid 1px $inputBorderColor;
+              height: 35px;
+              text-align: center;
+              margin: 15px 5px 5px;
+              border-radius: 3px;
+              background: #fbfbfb;
+            }
+            p {
+              font-size: $smallText;
+              color: $lightGrayText;
+              margin-left: 5px;
+            }
+          }
+        }
+      }
+    }
+  }
+  &_media {
+    position: fixed;
+    height: 0;
+    width: 0;
+    background: #000000d9;
+    z-index: -10;
+    opacity: 0;
+    &_buttonClose {
+      position: absolute;
+      right: 1%;
+      top: 3%;
+      border: none;
+      background: $backgroundLingk;
+      line-height: 35px;
+      font-size: 18px;
+      color: $lightgreen;
+      padding: 0 10px;
+      border-radius: 3px;
+      &:hover {
+        background: #00596b;
+        cursor: pointer;
+      }
+    }
+    &-items {
+      width: 90%;
+      margin: 15vh auto;
+
+      &-filter {
+        border: solid 1px #3b3b3b;
+        margin: 0 0 15px;
+        padding: 10px;
+        span {
+          color: gray;
+          display: block;
+          margin: 10px 0;
+        }
+        ul {
+          display: flex;
+          li {
+            button {
+              background: none;
+              border: solid 1px #595858;
+              color: white;
+              display: block;
+              line-height: 30px;
+              padding: 0 30px;
+              margin: 0 1px;
+              &:hover {
+                background: #595858;
+                border: solid 1px #595858;
+                cursor: pointer;
+              }
+            }
+          }
+        }
+      }
+      &-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        overflow-y: auto;
+        box-sizing: border-box;
+        height: 80vh;
+        padding: 10px 30px 10px 10px;
+        background: #00596b;
+        &-item {
+          width: 20%;
+          min-width: 300px;
+          margin-bottom: 20px;
+          img {
+            width: 100%;
+            height: 200px;
+            min-width: 300px;
+            border: solid 5px transparent;
+            &:hover {
+              width: 100%;
+              height: 200px;
+              min-width: 300px;
+              border: solid 5px $lightgreen;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.active {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  background: #000000d9;
+  z-index: 999;
+  opacity: 1;
+}
+
+.hiddeStatus {
+  padding: 0;
+  height: 0;
+}

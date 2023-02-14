@@ -1,0 +1,84 @@
+
+ 
+
+  {% if worksForm %}
+
+<div class="homesectionWorks_wrapper-form-Timeline">
+     {% if edditing %}
+      {% set actionUrl = '/home/sections?active=some_works&savetype=edditWorks' %}
+       <span class="homesectionWorks_wrapper-form-Timeline-span"><i style="color: #ba36e9;" class="fa-solid fa-pen-to-square"></i> You're editing this Work</span>
+      {% else %}
+      {% set actionUrl = '/home/sections?active=some_works&savetype=someWorks' %}
+    {% endif %}
+
+        {{
+          form_start(
+            worksForm,
+            {
+              attr: {
+                class: 'homesectionWorks_wrapper-form-Timeline-form'
+              },
+              action: actionUrl ,
+              method: 'POST'
+            }
+          )
+        }}
+        
+        <div class="homesectionWorks_wrapper-form-Timeline-form-wrapper">
+        {# languaje #}
+          <div class="homesectionWorks_wrapper-form-Timeline-form-wrapper-item">
+            {{ form_label(worksForm.languaje) }}
+            {{ form_widget(worksForm.languaje) }}
+            {{
+              form_help(
+                worksForm.languaje,
+                {
+                  help: 'Select the languaje for this works'
+                }
+              )
+            }}
+          </div> 
+          
+         {# datename #}
+          <div class="homesectionWorks_wrapper-form-Timeline-form-wrapper-item">
+            {{ form_label(worksForm.base) }}
+            {{ form_widget(worksForm.base) }}
+            {{
+              form_help(
+                worksForm.base,
+                {
+                  help: 'insert the tech used on this work'
+                }
+              )
+            }}
+          </div> 
+          {# title #}
+          <div class="homesectionWorks_wrapper-form-Timeline-form-wrapper-item">
+            {{ form_label(worksForm.techs) }}
+            {{ form_widget(worksForm.techs) }}
+            {{
+              form_help(
+                worksForm.techs,
+                {
+                  help: 'insert the base of this work'
+                }
+              )
+            }}
+          </div>
+          {# bodyHtml #}
+          <div class="homesectionWorks_wrapper-form-Timeline-form-wrapper-item">
+            {{ form_label(worksForm.htmlarea) }}  
+            {{ form_widget(worksForm.htmlarea) }}
+            {{ form_help(worksForm.htmlarea,{'help': 'salida en html con estilos inclustados'}) }} 
+          </div>
+       
+         <div class="homesectionWorks_wrapper-form-Timeline-form-wrapper-item-submit">
+           <input class="homesectionWorks_wrapper-form-Timeline-form-wrapper-item-submit"
+            type="submit"
+            value=  {% if edditing %} 'Eddit' {% else %} 'Add this Work' {% endif %} />
+
+          {{ form_end(worksForm) }}
+              <a href="{{ path('app_home_works_list') }}" title="see list"> <i class="fa-solid fa-list"></i></a>
+         </div>
+        </div>
+        {% endif %}

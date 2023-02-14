@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello QueriesController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+     <h1>{{ dump(qb) }}</h1> 
+    <hr />
+ <h1>{{ dump(h) }}</h1> 
+  <hr />
+ <h1>{{ dump(u.books.snapshot) }}</h1>
+   <hr />
+ <h1>{{ dump(bk) }}</h1>
+</div>
+{% endblock %}

@@ -1,0 +1,77 @@
+@mixin buttonStyle { 
+    border: solid 1px rgb(77, 77, 77);
+    line-height: 30px;
+    padding: 0 20px;
+    border-radius: 4px;
+    color: rgb(77, 77, 77);
+    &:hover{
+       cursor: pointer; 
+       border: solid 1px $linkColor;
+       color: $linkColor;
+       background: unset;
+      }
+ 
+  }
+
+  @mixin submitButton {
+    background: $pannelBg;
+    border: none;
+    display: block;
+    width: max-content;
+    line-height: 35px;
+    font-size: 18px;
+    color: $lightgreen;
+    padding: 0 20px;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-top: 10px;
+    &:hover {
+      background: $backgroundLingk;
+      color: white;
+    }
+  }
+  @mixin tableStyle {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  @mixin tableTdTh {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    font-family: 'Barlow', sans-serif;
+     transition: all .3s;
+    -moz-transition: all .3s;
+    -webkit-transition: all .3s;
+}
+body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Barlow', sans-serif;
+    font-size: 1.5em;
+  }
+  h1{
+    font-size: 1em;
+  }
+  // for background backend 
+  $lignhtGray: #f6f6f6;
+// for border input color
+ $inputBorderColor:rgb(182, 182, 182);
+ // great for background of pannel, buttons and lings
+ $pannelBg:#197D90;
+  // great for color of input helper
+   $lightGrayText:gray;
+  // great for color of pannel menu
+  $lightgreen:#B2F3FF;
+  $backgroundLingk: #026E83;
+  $linkColor: #023fa0;
+  // tamano normal del texto
+  $linksize:18px;
+  // great for input help and more
+  $smallText: 13px;

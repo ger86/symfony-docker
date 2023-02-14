@@ -1,0 +1,87 @@
+
+ 
+
+  {% if JobsTimelineForm %}
+
+<div class="homesectionJobs_wrapper-form-Timeline">
+     
+     {% if edditing  %}
+     {% set actionUrl = '/home/sections?active=jobs_timeLine&savetype=edditJobs' %}
+      <span class="homesectionJobs_wrapper-form-Timeline-span"><i style="color: #ba36e9;" class="fa-solid fa-pen-to-square"></i> You're editing this Jobs</span>
+      {% else %}
+      {% set actionUrl = '/home/sections?active=jobs_timeLine&savetype=saveJobs' %}
+      
+      {% endif %}
+
+
+
+        {{
+          form_start(
+            JobsTimelineForm,
+            {
+              attr: {
+                class: 'homesectionJobs_wrapper-form-Timeline-form'
+              },
+              action:  actionUrl ,
+              method: 'POST'
+            }
+          )
+        }}
+        
+        <div class="homesectionJobs_wrapper-form-Timeline-form-wrapper">
+        {# languaje #}
+          <div class="homesectionJobs_wrapper-form-Timeline-form-wrapper-item">
+            {{ form_label(JobsTimelineForm.languaje) }}
+            {{ form_widget(JobsTimelineForm.languaje) }}
+            {{
+              form_help(
+                JobsTimelineForm.languaje,
+                {
+                  help: 'Select the languaje for this job'
+                }
+              )
+            }}
+          </div> 
+          
+         {# datename #}
+          <div class="homesectionJobs_wrapper-form-Timeline-form-wrapper-item">
+            {{ form_label(JobsTimelineForm.datename) }}
+            {{ form_widget(JobsTimelineForm.datename) }}
+            {{
+              form_help(
+                JobsTimelineForm.datename,
+                {
+                  help: 'insert date and name like: 2001 > 2003 (Viarte Publicidad)'
+                }
+              )
+            }}
+          </div> 
+          {# title #}
+          <div class="homesectionJobs_wrapper-form-Timeline-form-wrapper-item">
+            {{ form_label(JobsTimelineForm.title) }}
+            {{ form_widget(JobsTimelineForm.title) }}
+            {{
+              form_help(
+                JobsTimelineForm.title,
+                {
+                  help: 'insert title for this job'
+                }
+              )
+            }}
+          </div>
+          {# bodyHtml #}
+          <div class="homesectionJobs_wrapper-form-Timeline-form-wrapper-item">
+            {{ form_label(JobsTimelineForm.htmlarea) }}  
+            {{ form_widget(JobsTimelineForm.htmlarea) }}
+            {{ form_help(JobsTimelineForm.htmlarea,{'help': 'salida en html con estilos inclustados'}) }} 
+          </div>
+       <div class="homesectionJobs_wrapper-form-Timeline-form-wrapper-item-submit">
+          <input class="homesectionJobs_wrapper-form-Timeline-form-wrapper-item-submit"
+            type="submit"
+            value=  {% if edditing %} 'Eddit' {% else %} 'Add Jobs Timeline' {% endif %} />
+
+          {{ form_end(JobsTimelineForm) }}
+              <a href="{{ path('app_home_jobs_list') }}" title="see list"> <i class="fa-solid fa-list"></i></a>
+         </div>
+        </div>
+        {% endif %}

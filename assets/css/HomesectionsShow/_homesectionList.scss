@@ -1,0 +1,38 @@
+@import '../general.scss';
+.homesectionList{
+  width: 99%;
+    &_wrapper{
+        &-principalKnowledges{
+          &-newKnowledges {
+            a{
+              button{
+                 @include buttonStyle; 
+                 margin-bottom: 20px;
+              }
+            }
+            
+          }
+         &-h3 {
+            font-size: $smallText;
+            margin:15px 0;
+          }
+          table{
+            font-size: $smallText;
+            @include tableStyle;
+            td, th {
+              @include tableTdTh;
+            }
+          }
+        }
+    }
+   
+}
+.Knowledge_head{
+  background:  #ffffff;
+}
+.Knowledge_es{
+ background:  #ededed;
+}
+.Knowledge_en{
+  background:  #e4e4e4;
+}

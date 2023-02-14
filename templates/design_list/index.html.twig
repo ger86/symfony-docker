@@ -1,0 +1,55 @@
+{% extends 'pannels.html.twig' %}
+
+{% block title %}Home Design List{% endblock %}
+
+{% block backendBody %}
+  <h1>
+  Home Sections List
+  </h1>
+ 
+ 
+  <div class="homeDesignList">
+    <div class="homeDesignList_wrapper"> 
+     <h3 class="homeDesignList_wrapper-h3">Design List </h3>
+      <div class="homeDesignList_wrapper-addNewDesign">
+      <a href="{{ path('app_home_sections', {active: 'graphicDesign'}) }}"><button>Add a New Design</button> </a>  
+      </div>
+      {# {{ dump(designs|length) }} #}
+      {% if designs|length != 0 %}
+       <table class="homeDesignList_wrapper-table">
+            <thead class="homeDesignList_wrapper-table-thead">
+              <tr class="homeDesignList_wrapper-table-thead-tr"> 
+                <td>design title</td>
+                <td>design year</td> 
+                <td>Delette</td>
+              </tr>
+            </thead>
+            <tbody>
+               
+                {% for design in designs %}
+                 <tr class="homeDesignList_wrapper-table-thead-tr">
+                
+                 <td>{{ design.title }}</td>
+                  <td>{{ design.year|raw }}</td>
+                  
+                   <td><a href="{{ path('app_home_design_list', {active: 'deletteDesign', id:design.id}) }}">
+              <button class="{{'actionTrash__' ~ design.id }}"><i style="color: #fa6868;" class="fa-solid fa-trash"></i></button></a></td> 
+               </tr>
+                {% endfor %}
+             
+            </tbody>
+             <tfoot>
+              <tr>
+               <td>design title</td>
+                <td>design year</td> 
+                <td>Delette</td>
+              </tr>
+            </tfoot>
+          </table>
+          {% else %}
+          <pre>No items Here.</pre>
+          {% endif %}
+    </div>
+     </div>
+
+{% endblock %}

@@ -2,8 +2,10 @@ version: "3"
 
 services:
     db:
-        image: mysql:8.0.23
-        platform: linux/x86_64
+        image: mysql
+        # platform: linux/x86_64
+        # The mysql_native_password authentication plugin is statically 
+        # linked into the server, so no installation is necessary.
         command: --default-authentication-plugin=mysql_native_password
         volumes:
             - "db_app:/var/lib/mysql"
@@ -22,14 +24,14 @@ services:
             args:
                 TIMEZONE: ${TIMEZONE}
         volumes:
-            - symfony_dockerized_app_sync:/var/www/symfony/
+            - ../:/var/www/symfony/
         networks:
             - symfony
     nginx:
         build:
             context: ./nginx
         volumes:
-            - symfony_dockerized_app_sync:/var/www/symfony/
+            - ../:/var/www/symfony/
         ports:
             - 80:80
         networks:
@@ -37,6 +39,35 @@ services:
         env_file:
             - .env.nginx.local
 
+    mongo:
+        image: mongo:latest
+        # constainer_name: este es el nombre que debo usar para la coneccion con symfony
+        container_name: mongodbN
+        environment:
+           MONGO_INITDB_ROOT_USERNAME: root
+           MONGO_INITDB_ROOT_PASSWORD: mongopwd
+        networks:
+          - symfony
+        ports:
+          - 27017:27017  
+
+    mongo-express:
+     image: mongo-express:latest
+     container_name: mongoexP
+     ports:
+       - 8081:8081
+     environment:
+    #    ME_CONFIG_MONGODB_SERVER: mongodbN
+       ME_CONFIG_MONGODB_ADMINUSERNAME: root
+       ME_CONFIG_MONGODB_ADMINPASSWORD: mongopwd
+       ME_CONFIG_MONGODB_URL: mongodb://root:mongopwd@172.20.0.1:27017
+     links:
+       - mongo
+     depends_on:
+       - mongo 
+     networks: #network es necesario para poder conectar con mongo
+       - symfony   
+ 
 volumes:
     symfony_dockerized_app_sync:
         external: true
