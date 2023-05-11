@@ -7,7 +7,7 @@ This is a complete stack for running Symfony 6.2 into Docker containers using do
 It is composed by 4 containers:
 
 - `nginx`, acting as the webserver.
-- `php`, the PHP-FPM container with the 8.0 version of PHP.
+- `php`, the PHP-FPM container with the 8.2 version of PHP.
 - `db` which is the MySQL database container with a **MySQL 8.0** image.
 
 ## Installation
@@ -27,7 +27,7 @@ It is composed by 4 containers:
 7. Use the following value for the DATABASE_URL environment variable:
 
 ```
-DATABASE_URL=mysql://app_user:helloworld@db:3306/app_db?serverVersion=8.0.23
+DATABASE_URL=mysql://app_user:helloworld@db:3306/app_db?serverVersion=8.0.33
 ```
 
 You could change the name, user and password of the database in the `env` file at the root of the project.
