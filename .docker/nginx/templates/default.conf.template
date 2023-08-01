@@ -3,11 +3,7 @@ server {
     server_name ${NGINX_BACKEND_DOMAIN};
     root /var/www/symfony/public;
 
-    location = / {
-        return 301 http://${NGINX_BACKEND_DOMAIN}/find_range;
-    }
-
-    location / {
+    location /find_range {
         try_files $uri /index.php$is_args$args;
     }
 
