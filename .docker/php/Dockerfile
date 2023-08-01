@@ -21,7 +21,7 @@ RUN apt-get update && apt-get install -y \
     acl \
     && echo 'alias sf="php bin/console"' >> ~/.bashrc
 
-RUN docker-php-ext-configure gd --with-jpeg --with-freetype 
+RUN docker-php-ext-configure gd --with-jpeg --with-freetype
 
 RUN docker-php-ext-install \
     pdo pdo_mysql zip xsl gd intl opcache exif mbstring
