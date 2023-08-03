@@ -16,16 +16,20 @@
   {% endblock %}
 </head>
 <body>
+<div class="container">
+
 
 {% block body %}
   {{ form(form) }}
 
   {% if rangeId %}
-    <p class="result">
+    <p class="alert alert-success" role="alert">
       Range id of the current number is {{ rangeId }}!
     </p>
   {% endif %}
 
 {% endblock %}
+</div>
+
 </body>
 </html>
