@@ -4,7 +4,7 @@
 
 This is a complete stack for running Symfony 6.2 into Docker containers using docker-compose tool.
 
-It is composed by 4 containers:
+It is composed by 3 containers:
 
 - `nginx`, acting as the webserver.
 - `php`, the PHP-FPM container with the 8.2 version of PHP.
@@ -25,15 +25,15 @@ It is composed by 4 containers:
 6. Inside the `php` container, run `composer install` to install dependencies from `/var/www/symfony` folder.
 
 7. Use the following value for the DATABASE_URL environment variable:
-
 ```
 DATABASE_URL=mysql://app_user:helloworld@db:3306/app_db?serverVersion=8.0.33
 ```
 
-You could change the name, user and password of the database in the `env` file at the root of the project.
-
-## To learn more
-
-I have recorded a Youtube session explaining the different parts of this project. You could see it here:
-
-[Boilerplate para Symfony basado en Docker, NGINX y PHP8](https://youtu.be/A82-hry3Zvw)
+8. Create DB 
+```bash
+docker exec -it symfony_dockerized-php-1 bin/console doctrine:database:create
+```
+9. Run migrations
+```bash
+docker exec -it symfony_dockerized-php-1 bin/console doctrine:migrations:migrate
+```
