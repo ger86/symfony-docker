@@ -40,6 +40,9 @@ services:
             - symfony_app
         env_file:
             - .env.nginx.local
+    mailer:
+        image: schickling/mailcatcher
+        ports: [ "1025", "1080" ]
 
 volumes:
     symfony_app_var:

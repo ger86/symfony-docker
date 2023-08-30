@@ -8,17 +8,30 @@
     "composer/package-versions-deprecated": "1.11.99.5",
     "doctrine/annotations": "^2.0",
     "doctrine/doctrine-bundle": "^2.8",
-    "doctrine/doctrine-migrations-bundle": "^3.2",
+    "doctrine/doctrine-migrations-bundle": "^3.0",
     "doctrine/orm": "^2.14",
-    "symfony/console": "6.2.*",
-    "symfony/dotenv": "6.2.*",
+    "symfony/console": "6.3.*",
+    "symfony/doctrine-bridge": "6.3.*",
+    "symfony/dotenv": "6.3.*",
     "symfony/flex": "^2",
-    "symfony/framework-bundle": "6.2.*",
-    "symfony/runtime": "6.2.*",
-    "symfony/yaml": "6.2.*"
+    "symfony/form": "6.3.*",
+    "symfony/framework-bundle": "6.3.*",
+    "symfony/google-mailer": "6.3.*",
+    "symfony/runtime": "6.3.*",
+    "symfony/security-bundle": "6.3.*",
+    "symfony/twig-bundle": "6.3.*",
+    "symfony/validator": "6.3.*",
+    "symfony/yaml": "6.3.*",
+    "twig/extra-bundle": "^2.12|^3.0",
+    "twig/twig": "^2.12|^3.0"
   },
   "require-dev": {
-    "symfony/maker-bundle": "^1.48"
+    "doctrine/doctrine-fixtures-bundle": "^3.4",
+    "phpunit/phpunit": "^9.5",
+    "symfony/browser-kit": "6.3.*",
+    "symfony/css-selector": "6.3.*",
+    "symfony/maker-bundle": "^1.50",
+    "symfony/phpunit-bridge": "^6.3"
   },
   "config": {
     "preferred-install": {
@@ -67,7 +80,7 @@
   "extra": {
     "symfony": {
       "allow-contrib": false,
-      "require": "6.2.*"
+      "require": "6.3.*"
     }
   }
 }

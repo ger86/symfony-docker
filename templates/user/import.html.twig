@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Import users{% endblock %}
+
+{% block body %}
+    <h1>Import users</h1>
+    {% if app.user %}
+      <div class="mb-3">
+        You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+      </div>
+    {% endif %}
+    {{ errors }}
+
+    {{ form_errors(importForm) }}
+
+    {{ form_start(importForm) }}
+        {{ form_row(importForm.csv, {
+            label: 'File'
+        }) }}
+
+        <button type="submit" class="btn">Import users</button>
+    {{ form_end(importForm) }}
+{% endblock %}

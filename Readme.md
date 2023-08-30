@@ -37,3 +37,8 @@ You could change the name, user and password of the database in the `env` file a
 I have recorded a Youtube session explaining the different parts of this project. You could see it here:
 
 [Boilerplate para Symfony basado en Docker, NGINX y PHP8](https://youtu.be/A82-hry3Zvw)
+
+docker compose up -d
+docker-compose run php composer install
+docker-compose run php php bin/console doctrine:migrations:migrate
+docker-compose run php php bin/console doctrine:fixtures:load

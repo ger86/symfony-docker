@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block body %}
+    <h1>Dashboard</h1>
+    {% if app.user %}
+      <div class="mb-3">
+        You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+      </div>
+      <div class="mb-3">
+        Import users from CSV <a href="{{ path('userImport') }}">Import</a>
+      </div>
+    {% endif %}
+{% endblock %}
