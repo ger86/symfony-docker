@@ -24,10 +24,14 @@ class AppFixtures extends Fixture
             $user->setPassword(
                 $this->hasher->hashPassword(
                     $user,
-                    '12#$asDF'// . $i
+                    '12#$asDF' . $i
                 )
             );
             $manager->persist($user);
+
+            $userPasswordHistory = new UserPasswordHistory();
+            $userPasswordHistory->setPassword('12#$asDF' . $i);
+            $userPasswordHistory->setUser($user);
         }
 
         $manager->flush();
