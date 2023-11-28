@@ -22,3 +22,13 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+    App\Baselinker\Service\BaselinkerServiceFactory:
+        arguments:
+            $apiKey: '%env(BASELINKER_API_KEY)%'
+
+    App\Baselinker\Service\Allegro\BaselinkerAllegroService: ~
+    App\Baselinker\Service\Amazon\BaselinkerAmazonService: ~
+
+    App\MessageHandler\BaselinkerOrderFetchHandler:
+        arguments:
+            $serviceFactory: '@App\Baselinker\Service\BaselinkerServiceFactory'

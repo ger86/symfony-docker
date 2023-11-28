@@ -1,3 +1,11 @@
 controllers:
     resource: ../src/Controller/
     type: attribute
+fetch_orders:
+    path: '/fetch-orders/{platform}'
+    methods: ['GET']
+    defaults:
+        _controller: 'App\Controller\BaselinkerController::fetchOrders'
+        platform: null
+#    requirements:
+#        platform: 'allegro|amazon'

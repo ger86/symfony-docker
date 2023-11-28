@@ -13,7 +13,7 @@ services:
             MYSQL_USER: ${MYSQL_USER}
             MYSQL_PASSWORD: ${MYSQL_PASSWORD}
         ports:
-            - 3306:3306
+            - "127.0.0.1:3306:3306"
         networks:
             - symfony_app
     php:
@@ -23,8 +23,8 @@ services:
                 TIMEZONE: ${TIMEZONE}
         volumes:
             - ../:/var/www/symfony:cached
-            - symfony_app_var:/var/www/symfony/var
-            - symfony_app_vendor:/var/www/symfony/vendor
+            - ../var:/var/www/symfony/var:rw
+            - ../vendor:/var/www/symfony/vendor:rw
         networks:
             - symfony_app
     nginx:

@@ -1,3 +1,11 @@
+##composer instalacja z kontenera php
+composer install 
+
+## Zbieranie z kolejek
+php bin/console messenger:consume async -vv
+
+
+
 # 🐳 Docker + PHP 8.2 + MySQL + Nginx + Symfony 6.2 Boilerplate
 
 ## Description
