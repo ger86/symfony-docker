@@ -3,10 +3,22 @@ fos_ck_editor:
     configs:
         my_config_1:
             toolbar: "my_toolbar_1"
-            uiColor: "#ffffff"
+            uiColor: "#efefef" 
+            stylesSet: "my_styles"
+    styles:
+        # configs:
+            my_styles:
+                - { name: "dowbleSect 40-60", element: "section", attributes: { class: "DowbleElement4060" }}
+                - { name: "dowbleSect 50-50", element: "section", attributes: { class: "DowbleElement5050" }}
+                - { name: "dowbleSect 60-40", element: "section", attributes: { class: "DowbleElement6040" }}
+                - { name: "recurrent Box Model", element: "section", attributes: { class: "recurrentBoxModel" }}
+                - { name: "Box Model", element: "div", attributes: { class: "contentBox" }}
+                - { name: "imageBox 🧚🏼‍♂️", element: "div", attributes: { class: "imageBox" }}
+                - { name: "dowbleSect left ⬅️", element: "div", attributes: { class: "DowbleElement-left" }}
+                - { name: "dowbleSect right 🔜", element: "div", attributes: { class: "DowbleElement-right" }}
+                - { name: "Block Quote", element: "span", attributes: { class: "customblockquote" }}
             # ...
      
     toolbars:
         configs:
             my_toolbar_1: [ [ 'Source', '-',],['Bold', 'Italic', 'Underline', 'Strike'],['Styles', 'Format', 'Font', 'FontSize' ],['Scayt'],'/',['JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock'],['NumberedList', 'BulletedList'],['Link', 'Unlink'],['Image', 'PageBreak'],['PasteText', 'PasteFromWord', '-', 'Undo', 'Redo'],['Find', 'Replace', '-', 'SelectAll'],['Table'],[ 'TextColor', 'BGColor' ]]
-           
