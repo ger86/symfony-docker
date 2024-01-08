@@ -1,0 +1,45 @@
+ 
+{% extends 'pannels.html.twig' %}
+
+{% block title %}pages{% endblock %}
+ 
+{% block backendBody %}
+<h1>
+  Nueva página
+</h1>
+{% if status %}
+<span>👍🏻 Pagina creada!</span>
+{% endif %}
+
+ <div class="pages">
+     <div class="pages-wrapper">
+       
+       <div class="pages-wrapper-form">
+       {{ form_start(pageform, {'attr': {'class': 'pages-wrapper-form-form'},
+    'action': '/page/newpage', 'method': 'POST'}
+    ) }}
+     <div class="pages-wrapper-form-form-title"> 
+     <span>{{ form_help(pageform.title,{'help': 'Hero Image'}) }}</span>
+       {{ form_widget(pageform.title) }} 
+     </div>
+     <div class="pages-wrapper-form-form-friendytitle"> 
+     <span>{{ form_help(pageform.friendly_title,{'help': 'Friendy title'}) }}</span>
+       {{ form_widget(pageform.friendly_title) }} 
+     </div>
+     <div class="pages-wrapper-form-form-heroImage"> 
+     <span>{{ form_help(pageform.heroImage,{'help': 'Link hero imagen'}) }}</span>
+       {{ form_widget(pageform.heroImage) }} 
+     </div>
+     <div class="pages-wrapper-form-form-html"> 
+ 
+       {{ form_widget(pageform.htmlarea) }} 
+     </div>
+     <div class="pages-wrapper-form-form-btn"> 
+      <input class="pages-wrapper-form-heroImage-submir" type="submit" value="Save Page" /> 
+     </div>
+ 
+     {{ form_end(pageform) }}
+       </div>
+</div>
+</div>
+{% endblock %}

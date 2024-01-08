@@ -1,0 +1,18 @@
+@import '../general.scss';
+.pages {
+     &-wrapper{
+        width: 98%; 
+        margin: 2% auto;
+        &-form{
+            &-form{
+              &-title{
+                span{
+                    font-size: $linksize;
+                }
+              }
+            }
+        }
+     }
+}
+
+// font-size: 18px;
