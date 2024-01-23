@@ -28,13 +28,9 @@ class SavePage extends AbstractController
          $newPage = new Page();
          
           $newPage->setTitle($pageData["title"]);
-         
-          $newPage->setUrlFriendly($pageData["friendly_title"]);
-          
+          $newPage->setImageUrl($pageData["heroImage"]);
           $newPage->setBody($pageData["htmlarea"]);
          
-          $newPage->setImageUrl($pageData["heroImage"]);
-    
           $this->dm->persist($newPage);
           $this->dm->flush();
         

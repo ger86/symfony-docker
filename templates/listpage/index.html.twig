@@ -1,0 +1,69 @@
+ 
+{% extends 'pannels.html.twig' %}
+
+{% block title %}pages{% endblock %}
+ 
+{% block backendBody %}
+<h1>
+  listado de paginas
+</h1>
+{# {% if status %}
+<span>👍🏻 Pagina creada!</span>
+{% endif %} #}
+
+ <div class="listpages">
+     <div class="listpages-wrapper">
+      
+   <table>
+        <thead>
+          <tr>
+            <td>
+              title
+            </td>  
+            <td>
+              see
+            </td>
+            <td>
+              eddit
+            </td>
+            <td>
+              delette
+            </td>
+          </tr>
+        </thead>
+
+        <tbody>
+        {% if pageList %}
+           {% for pages in pageList %}
+               <tr>
+                <td>{{ pages.title }}</td>
+                <td>see</td>
+                <td>eddit</td>
+                <td>delette</td>
+               </tr>
+           {% endfor %}
+         {% endif %}
+        </tbody>
+
+         <tfoot>
+           <tr>
+            <td>
+              title
+            </td>  
+            <td>
+              see
+            </td>
+            <td>
+              eddit
+            </td>
+            <td>
+              delette
+            </td>
+          </tr>
+        </tfoot>
+        </table>
+
+
+</div>
+</div>
+{% endblock %}

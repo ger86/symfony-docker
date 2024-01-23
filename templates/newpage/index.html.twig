@@ -19,13 +19,9 @@
     'action': '/page/newpage', 'method': 'POST'}
     ) }}
      <div class="pages-wrapper-form-form-title"> 
-     <span>{{ form_help(pageform.title,{'help': 'Hero Image'}) }}</span>
+     <span>{{ form_help(pageform.title,{'help': 'Page Title'}) }}</span>
        {{ form_widget(pageform.title) }} 
-     </div>
-     <div class="pages-wrapper-form-form-friendytitle"> 
-     <span>{{ form_help(pageform.friendly_title,{'help': 'Friendy title'}) }}</span>
-       {{ form_widget(pageform.friendly_title) }} 
-     </div>
+     </div> 
      <div class="pages-wrapper-form-form-heroImage"> 
      <span>{{ form_help(pageform.heroImage,{'help': 'Link hero imagen'}) }}</span>
        {{ form_widget(pageform.heroImage) }} 

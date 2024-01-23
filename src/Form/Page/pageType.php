@@ -11,10 +11,8 @@ use Symfony\Component\Form\FormBuilderInterface;
 class PageType extends AbstractType
 { 
     public function buildForm(FormBuilderInterface $builder, array $options): void
-    { $builder->add('title', TextType::class)
-      ->add('friendly_title', TextType::class)
-        ->add('heroImage', TextType::class)
-        ->add('title', TextType::class)
+    { $builder->add('title', TextType::class) 
+        ->add('heroImage', TextType::class) 
         ->add('htmlarea', CKEditorType::class);
     } 
 }

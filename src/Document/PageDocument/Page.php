@@ -23,10 +23,6 @@ class Page
     /**
      * @MongoDB\Field(type="string")
      */
-    private $urlFriendly;
-    /**
-     * @MongoDB\Field(type="string")
-     */
     private $body;
 
     /**
@@ -48,16 +44,16 @@ class Page
     public function getTitle(): string
     {
         return $this->title;
-    }
-    // * $urlFriendly
-    public function setUrlFriendly(string $urlFriendly): void
-    {
-        $this->urlFriendly = $urlFriendly;
-    }
-    public function getUrlFriendly(): string
-    {
-        return $this->urlFriendly;
-    }
+    } 
+      // * $imageUrl
+      public function setImageUrl(string $imageUrl): void
+      {
+          $this->imageUrl = $imageUrl;
+      }
+      public function getImageUrl(): string
+      {
+          return $this->imageUrl;
+      }
     // * $body
     public function setBody(string $body): void
     {
@@ -66,16 +62,5 @@ class Page
     public function getBody(): string
     {
         return $this->body;
-    }
-     
-     
-    // * $imageUrl
-    public function setImageUrl(string $imageUrl): void
-    {
-        $this->imageUrl = $imageUrl;
-    }
-    public function getImageUrl(): string
-    {
-        return $this->imageUrl;
-    }
+    } 
 }
