@@ -5,9 +5,24 @@
         margin: 2% auto;
         &-form{
             &-form{
-              &-title{
+              &-title, &-friendytitle, &-heroImage{
                 span{
-                    font-size: $linksize;
+                  p{
+                    font-size: $linksize; 
+                  }
+                } 
+                input {
+                  width: 100%;
+                  min-height: 30px;
+                  border: solid 1px lightgray;
+                 }
+              } 
+              &-html{
+                margin-top: 20px;
+              }
+              &-btn{
+                input{
+                  @include submitButton;
                 }
               }
             }

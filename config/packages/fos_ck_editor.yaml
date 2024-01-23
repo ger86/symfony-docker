@@ -8,6 +8,7 @@ fos_ck_editor:
     styles:
         # configs:
             my_styles:
+                - { name: "Block Quote", element: "span", attributes: { class: "customblockquote" }}
                 - { name: "dowbleSect 40-60", element: "section", attributes: { class: "DowbleElement4060" }}
                 - { name: "dowbleSect 50-50", element: "section", attributes: { class: "DowbleElement5050" }}
                 - { name: "dowbleSect 60-40", element: "section", attributes: { class: "DowbleElement6040" }}
@@ -16,7 +17,6 @@ fos_ck_editor:
                 - { name: "imageBox 🧚🏼‍♂️", element: "div", attributes: { class: "imageBox" }}
                 - { name: "dowbleSect left ⬅️", element: "div", attributes: { class: "DowbleElement-left" }}
                 - { name: "dowbleSect right 🔜", element: "div", attributes: { class: "DowbleElement-right" }}
-                - { name: "Block Quote", element: "span", attributes: { class: "customblockquote" }}
             # ...
      
     toolbars:
