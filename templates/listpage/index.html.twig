@@ -38,7 +38,19 @@
                <tr>
                 <td>{{ pages.title }}</td>
                 <td>see</td>
-                <td>eddit</td>
+                <td>
+                <a href="{{
+                    path(
+                      'app_edditpage',
+                      { 
+                        type: 'eddit',
+                        pageId: pages.id
+                      }
+                    )
+                    }}">
+                     eddit
+                  </a>
+                  </td>
                 <td>delette</td>
                </tr>
            {% endfor %}

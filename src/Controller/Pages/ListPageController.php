@@ -33,21 +33,13 @@ class ListPageController extends AbstractController
     if (!$getLoguinStatus) {
       return $this->redirectToRoute("app_home");
     }
-
-   
+ 
     try {
-      if ("array" == getType($request->request->get("page"))) { 
-        $this->status = $savepage->getDataToSavePageInDatabase($request->request->get("page"));
-      }
+      $allpages = $dm->getRepository(Page::class)->findAll();
      } catch (\Throwable $e) {
       dd($e);
-    }
+    } 
 
-
-
-
-    $allpages = $dm->getRepository(Page::class)->findAll();
- 
     return $this->render('listpage/index.html.twig', [
     'status'       => $this->status, 
     'pageList'     => $allpages,

@@ -1,0 +1,41 @@
+ 
+{% extends 'pannels.html.twig' %}
+
+{% block title %}edit page{% endblock %}
+ 
+{% block backendBody %}
+<h1>
+  editar página
+</h1>
+ 
+{% if status %}
+<span>👍🏻 Pagina editada!</span>
+{% endif %}
+
+ <div class="pages">
+     <div class="pages-wrapper">
+       
+       <div class="pages-wrapper-form">
+       {{ form_start(pageFormData, {'attr': {'class': 'pages-wrapper-form-form'},
+    'action': '/page/edditpage?type=save', 'method': 'POST'}
+    ) }}
+     <div class="pages-wrapper-form-form-title"> 
+     <span>{{ form_help(pageFormData.title,{'help': 'Page Title'}) }}</span>
+       {{ form_widget(pageFormData.title) }} 
+     </div> 
+     <div class="pages-wrapper-form-form-heroImage"> 
+     <span>{{ form_help(pageFormData.heroImage,{'help': 'Link hero imagen'}) }}</span>
+       {{ form_widget(pageFormData.heroImage) }} 
+     </div>
+     <div class="pages-wrapper-form-form-html"> 
+       {{ form_widget(pageFormData.htmlarea) }} 
+     </div>
+     <div class="pages-wrapper-form-form-btn"> 
+      <input class="pages-wrapper-form-heroImage-submir" type="submit" value="Eddit Page" /> 
+     </div>
+ 
+     {{ form_end(pageFormData) }}
+       </div>
+</div>
+</div>
+{% endblock %}
