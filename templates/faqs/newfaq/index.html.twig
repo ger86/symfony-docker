@@ -1,0 +1,40 @@
+ 
+{% extends 'pannels.html.twig' %}
+
+{% block title %}pages{% endblock %}
+ 
+{% block backendBody %}
+<h1>
+  New Faqs
+</h1>
+ 
+    
+{% if status == 'Faq Creado' %} 
+   <span>faq creado!</span>
+{% endif %}
+
+ <div class="newfaqs">  
+     <div class="newfaqs-wrapper">
+       {% if faqform %}
+
+ {{ form_start(faqform, {'attr': {'class': 'newfaqs-wrapper-form'},
+    'action': '/faqs/newfaqs', 'method': 'POST'}
+    ) }}
+    <div class="newfaqs-wrapper-form__question">
+       {{ form_widget(faqform.question) }}
+         {{ form_help(faqform.question,{'help': 'Add a question'}) }} 
+    </div>
+
+<div class="newfaqs-wrapper-form__response">
+       {{ form_widget(faqform.response) }}
+         {{ form_help(faqform.response,{'help': 'Add a response'}) }} 
+    </div>
+<div class="newfaqs-wrapper-form__submit">
+    <input class="newfaqs-wrapper-form__submit-submit" type="submit" value="Save Faq" /> 
+</div>
+
+   {{ form_end(faqform) }}
+       {% endif %}
+    </div>
+</div>
+{% endblock %}

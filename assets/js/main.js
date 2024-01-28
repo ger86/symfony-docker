@@ -10,10 +10,7 @@
 
 // start the Stimulus application
 // import './bootstrap';
-
  
- 
-import Loginscript from "../login";
 import GalleryFilter from "./galleryFilter";
 import MediaSelector from "./mediaselector/MediaSelector";
 import PostStatusHidden from "./postStatusHidden";
@@ -22,13 +19,11 @@ import WebValueRange from "./WebValueRange";
 import GraphicRange from "./GraphicRange";
 import DeletteWorks from "./worksDelette";
 import DelettePost from "./PostDelette";
-
+import DelettePage from "./PageDelette";
+import DeletteFaq from "./DeletteFaq";
  
-
-
 window.addEventListener("load", () => {
-  window.DeletteJobs                    = new DeletteJobs();
-  window.Loginscript                    = new Loginscript(); 
+  window.DeletteJobs                    = new DeletteJobs(); 
   window.MediaSelector                  = new MediaSelector();
   window.PostStatusHidden               = new PostStatusHidden();
   window.GalleryFilter                  = new GalleryFilter();
@@ -36,6 +31,8 @@ window.addEventListener("load", () => {
   window.GraphicRange                   = new GraphicRange();
   window.DeletteWorks                   = new DeletteWorks();
   window.DelettePost                    = new DelettePost();
+  window.DelettePage                    = new DelettePage();
+  window.DeletteFaq                     = new DeletteFaq();
 });
 
     

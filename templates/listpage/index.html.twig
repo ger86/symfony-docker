@@ -7,14 +7,23 @@
 <h1>
   listado de paginas
 </h1>
-{# {% if status %}
-<span>👍🏻 Pagina creada!</span>
+{% if status == 'Pagina eliminada' %}
+<span>⭕️ Pagina eliminada!</span> 
+<script>
+setTimeout(()=>{
+ window.location.reload();
+},3000)
+</script>
+{% endif %}
+    
+{# {% if status == 'Pagina eliminada' %} 
+ {% redirect "app_listpage" %}
 {% endif %} #}
 
- <div class="listpages">
+ <div class="listpages">  
      <div class="listpages-wrapper">
       
-   <table>
+   <table class="listpages-wrapper_table">
         <thead>
           <tr>
             <td>
@@ -51,7 +60,17 @@
                      eddit
                   </a>
                   </td>
-                <td>delette</td>
+                <td><a class="delettePostFromId" href="{{
+                    path(
+                      'app_listpage',
+                      { 
+                       
+                        pageId: pages.id
+                      }
+                    )
+                    }}">
+                     delette
+                  </a></td>
                </tr>
            {% endfor %}
          {% endif %}

@@ -1,0 +1,33 @@
+@import '../general.scss';
+
+.newfaqs{
+    &-wrapper{
+        width: 95%; 
+        margin: 2% auto;
+        &-form{
+            &__question{
+                margin-bottom: 10px;
+                input{
+                    width: 100%;
+                    min-height: 30px;
+                    border: solid 1px lightgray;
+                }
+                p{
+                 font-size: $smallText;
+                 color: $lightGrayText; 
+                }
+            }
+            &__response{
+                p{
+                    font-size: $smallText;
+                    color: $lightGrayText; 
+                }
+            }
+            &__submit{
+                input{
+                    @include submitButton;
+                }
+            }
+        }
+    }
+}

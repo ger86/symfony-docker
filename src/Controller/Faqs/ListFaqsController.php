@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Controller\Pages;
+namespace App\Controller\Faqs;
 
-// use App\CustomHelper\Post\SavePost;
+
 
 use App\CustomHelper\Page\DelettePage;
-use App\Document\PageDocument\Page; 
+use App\Document\Faqs\Faqs; 
 use Doctrine\ODM\MongoDB\DocumentManager;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-class ListPageController extends AbstractController 
+class ListFaqsController extends AbstractController 
 {
 
   private $status;
@@ -24,7 +24,7 @@ class ListPageController extends AbstractController
 
  
  /** 
-  * @Route("/page/listpage", name="app_listpage")
+  * @Route("/faqs/listfaqs", name="app_listfaqs")
  */
  public function index(Request $request, DocumentManager $dm, DelettePage $delettePage): Response
  {
@@ -34,19 +34,18 @@ class ListPageController extends AbstractController
       return $this->redirectToRoute("app_home");
     }
  
-    try {
-      
-      if( $request->query->get("type") == 'delette' && $request->query->get("pageId")){
-        $this->status = $delettePage->delettePage($request->query->get("pageId"));
-         }
-         $allpages = $dm->getRepository(Page::class)->findAll();
+    try { 
+      // if( $request->query->get("type") == 'delette' && $request->query->get("pageId")){
+      //   $this->status = $delettePage->delettePage($request->query->get("pageId"));
+      // }
+         $allfaqs = $dm->getRepository(Faqs::class)->findAll();
      } catch (\Throwable $e) {
       dd($e);
     } 
 
-    return $this->render('listpage/index.html.twig', [
+    return $this->render('faqs/faqlist/index.html.twig', [
         'status'       => $this->status, 
-        'pageList'     => $allpages,
+         'faqsList'     => $allfaqs,
       ]); 
  }
 }

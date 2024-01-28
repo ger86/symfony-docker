@@ -1,0 +1,40 @@
+ 
+{% extends 'pannels.html.twig' %}
+
+{% block title %}pages{% endblock %}
+ 
+{% block backendBody %}
+<h1>
+  Eddit Faqs
+</h1>
+ 
+    
+{% if status == 'Faq Creado' %} 
+   <span>faq editado!</span>
+{% endif %}
+
+ <div class="newfaqs">  
+     <div class="newfaqs-wrapper">
+       {% if faqFormData %}
+
+ {{ form_start(faqFormData, {'attr': {'class': 'newfaqs-wrapper-form'},
+    'action': '/faqs/edditfaqs?type=save', 'method': 'POST'}
+    ) }}
+    <div class="newfaqs-wrapper-form__question">
+       {{ form_widget(faqFormData.question) }}
+         {{ form_help(faqFormData.question,{'help': 'Add a question'}) }} 
+    </div>
+
+<div class="newfaqs-wrapper-form__response">
+       {{ form_widget(faqFormData.response) }}
+         {{ form_help(faqFormData.response,{'help': 'Add a response'}) }} 
+    </div>
+<div class="newfaqs-wrapper-form__submit">
+    <input class="newfaqs-wrapper-form__submit-submit" type="submit" value="Eddit Faq" /> 
+</div>
+
+   {{ form_end(faqFormData) }}
+       {% endif %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,86 @@
+ 
+{% extends 'pannels.html.twig' %}
+
+{% block title %}faqs list{% endblock %}
+ 
+{% block backendBody %}
+<h1>
+  listado de faqs
+</h1>
+ 
+    
+{# {% if status == 'Pagina eliminada' %} 
+ {% redirect "app_listpage" %}
+{% endif %} #}
+
+ <div class="listpages">  
+     <div class="listpages-wrapper">
+      
+   <table class="listpages-wrapper_table">
+        <thead>
+          <tr>
+            <td>
+              title
+            </td>  
+            <td>
+              see
+            </td>
+            <td>
+              eddit
+            </td>
+            <td>
+              delette
+            </td>
+          </tr>
+        </thead>
+
+        <tbody>
+          
+              {% if faqsList %}
+            {% for faqs in faqsList %}
+                
+          <tr>
+            <td>
+ {{ faqs.question }}
+           </td>  
+            <td>
+            <a href="{{ path('app_edditfaqs', {action: 'edditFaqs', id:faqs.id}) }}">
+              <button class="{{'actionTrash__' ~ faqs.id }}"> <i style="color:#1ca238;" class="fa-solid fa-eye"></i></button></a>
+            </td>
+            <td> 
+             <a href="{{ path('app_edditfaqs', {type: 'eddit', id:faqs.id}) }}">
+              <button class="{{'actionTrash__' ~ faqs.id }}"><i style="color: #ba36e9;" class="fa-solid fa-pen-to-square"></i></button></a>
+            </td>
+            <td>
+             <a class="deletterFaqFromId" href="{{ path('app_delettetfaqs', {id:faqs.id}) }}">
+              <button class="{{'actionTrash__' ~ faqs.id }}"><i style="color: #fa6868;" class="fa-solid fa-trash"></i></button></a>
+            </td>
+          </tr>
+
+            {% endfor %}
+              {% endif %}
+            
+        </tbody>
+
+         <tfoot>
+           <tr>
+            <td>
+              title
+            </td>  
+            <td>
+              see
+            </td>
+            <td>
+              eddit
+            </td>
+            <td>
+              delette
+            </td>
+          </tr>
+        </tfoot>
+        </table>
+
+
+</div>
+</div>
+{% endblock %}
