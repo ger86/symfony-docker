@@ -1,0 +1,122 @@
+
+{% extends 'pannels.html.twig' %}
+
+{% block title %}™️ New Blog{% endblock %}
+ 
+{% block backendBody %}
+<h1>
+  ✨ Insert a new work.
+</h1>
+<div class="newWork">
+  <div class="newWork_wrapper">
+
+               {% if status == true %}
+                <div class="newWork_wrapper_status">
+                  <span>👏 Great. work was submited! </span>
+                </div>
+               {% endif %}
+
+         
+    {{ form_start(workform, {'attr': {'class': 'newWork_wrapper-form'},
+    'action': '/work/newWork', 'method': 'POST'}
+    ) }}
+      
+   <div class="newWork_wrapper-form_containner"> 
+   <div class="newWork_wrapper-form_containnerdowble"> 
+      <div class="newWork_wrapper-form_containnerdowble-dowbleBloqueLeft"> 
+            <div class="newWork_wrapper-form_containnerdowble-dowbleBloqueLeft-image"> 
+            {{ form_label(workform.image) }} 
+            {{ form_widget(workform.image) }} 
+            </div>
+            <div class="newWork_wrapper-form_containnerdowble-dowbleBloqueLeft-title"> 
+            {{ form_label(workform.title) }} 
+            {{ form_widget(workform.title) }} 
+            </div>
+            <div class="newWork_wrapper-form_containnerdowble-dowbleBloqueLeft-tools"> 
+            {{ form_label(workform.tools) }}  
+            {{ form_widget(workform.tools) }} 
+            </div>
+            <div class="newWork_wrapper-form_containnerdowble-dowbleBloqueLeft-link"> 
+            {{ form_label(workform.link) }}  
+            {{ form_widget(workform.link) }} 
+            </div>
+    </div>
+   <div class="newWork_wrapper-form_containnerdowble-dowbleBloqueright">
+       <div class="newWork_wrapper-form_containnerdowble-dowbleBloqueright-imageBox">
+        </div>
+        <div class="newWork_wrapper-form_containnerdowble-dowbleBloqueright-button">
+       <button class="newWork_wrapper-form_containnerdowble-dowbleBloqueright-button-button">
+        seleccionar imagen para el work</button>
+       </div>
+   </div>
+ </div>
+        <div class="newWork_wrapper-form_containner-body"> 
+        {{ form_label(workform.body) }}  
+        {{ form_widget(workform.body) }} 
+        </div>
+       
+        <div class="newWork_wrapper-form_containner-destination">  
+        {{ form_widget(workform.destination) }} 
+        </div>
+        <div class="newWork_wrapper-form_containner-btn"> 
+        <input class="newWork_wrapper-form_containner-btn-submit" type="submit" value="Save work" /> 
+        </div>
+
+    </div> 
+     
+ {{ form_end(workform) }}
+      
+        
+       
+        </div>
+     </div>
+    
+
+     <section class="newWork_media">
+     <button class="newWork_media_buttonClose">close media resource</button>
+     {# <iframe src="https://media.lavour.es/" class="newWork_media_button-iframe"></iframe>  #}
+     <div class="newWork_media-items">
+     <div class="newWork_media-items-filter">
+        <span>Filter this gallery</span>
+         <ul class="newWork_media-items-filter_trigger">
+         <li>
+         <button id="newWork_media-items-filter__all">
+         all
+         </button>
+         </li>
+         <li>
+         <button id="newWork_media-items-filter__blog">
+         blog
+         </button>
+         </li>
+          <li>
+         <button id="newWork_media-items-filter__article">
+         article
+         </button>
+         </li>
+          <li>
+         <button id="newWork_media-items-filter__home">
+         home
+         </button>
+         </li>
+          <li>
+         <button id="newWork_media-items-filter__pages">
+         pages
+         </button>
+         </li>
+         </ul>
+        </div>
+        <div class="newWork_media-items-wrapper">
+        
+      {% for elemets in mediaElement %}
+        <div class="newWork_media-items-wrapper-item">
+         <img src={{elemets.file}} />  
+        </div>
+       {% endfor %}
+        </div>
+     </div>
+    </section>  
+{% endblock %}
+
+
+ 

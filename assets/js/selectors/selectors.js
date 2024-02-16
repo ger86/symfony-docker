@@ -45,3 +45,11 @@ export const DESIGNRANGESELECTOR = {
        valueInputSelector : '#design_year'
 }
 
+export const WORKESELECTOR = {
+       workImageBtnSelector:   'newWork_wrapper-form_containnerdowble-dowbleBloqueright-button-button',
+       mediaWindows:           'newWork_media',
+       closeMediaButton:       'newWork_media_buttonClose',
+       boxMediaCollection:      'newWork_media-items-wrapper',
+       input:                   '.newWork_wrapper-form_containnerdowble-dowbleBloqueLeft-image input',
+       showImageBox:            'newWork_wrapper-form_containnerdowble-dowbleBloqueright-imageBox',
+}

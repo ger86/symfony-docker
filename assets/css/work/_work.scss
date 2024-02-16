@@ -1,0 +1,176 @@
+@import '../general.scss';
+.newWork{
+  &_wrapper{
+    &-form{
+      &_containnerdowble{
+        display: flex;
+        margin-top: 20px;
+        justify-content: space-around;
+          &-dowbleBloqueLeft{
+            width: 70%;
+            &-image, &-title, &-tools, &-link{
+              display: flex;
+              flex-direction: column;
+              width: 100%;
+              margin-bottom: 10px;
+              label{
+                font-size: .8em;
+                margin-bottom: 5px;
+              }
+              input{
+                height: 35px;
+                border: solid 1px $inputBorderColor;
+                padding: 0 5px;
+                font-size: .8em;
+              }
+            }
+          }
+          &-dowbleBloqueright{
+            width: 23%;
+            &-imageBox{
+              height: 220px;
+              width: 100%;
+              background-color: $inputBorderColor;
+              background-size: cover;
+            }
+            &-button{
+              &-button{
+                @include submitButton;
+                width: 100%;
+              }
+            }
+
+          }
+      }
+      &_containner{
+        &-body{
+          label{
+            font-size: .8em;
+                margin-bottom: 5px;
+          }
+        }
+        &-btn{
+          &-submit{
+            @include submitButton;
+          }
+
+        }
+      }
+    }
+  }
+}
+
+ 
+.newWork_media {
+  position: fixed;
+  height: 0;
+  width: 0;
+  background: #000000d9;
+  z-index: -10;
+  opacity: 0;
+
+  &_buttonClose {
+    position: absolute;
+    right: 1%;
+    top: 3%;
+    border: none;
+    background: $backgroundLingk;
+    line-height: 35px;
+    font-size: 18px;
+    color: $lightgreen;
+    padding: 0 10px;
+    border-radius: 3px;
+
+    &:hover {
+      background: #00596b;
+      cursor: pointer;
+    }
+  }
+
+  &-items {
+    width: 90%;
+    margin: 15vh auto;
+
+    &-filter {
+      border: solid 1px #3b3b3b;
+      margin: 0 0 15px;
+      padding: 10px;
+
+      span {
+        color: gray;
+        display: block;
+        margin: 10px 0;
+      }
+
+      ul {
+        display: flex;
+
+        li {
+          button {
+            background: none;
+            border: solid 1px #595858;
+            color: white;
+            display: block;
+            line-height: 30px;
+            padding: 0 30px;
+            margin: 0 1px;
+
+            &:hover {
+              background: #595858;
+              border: solid 1px #595858;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+
+    &-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      overflow-y: auto;
+      box-sizing: border-box;
+      height: 80vh;
+      padding: 10px 30px 10px 10px;
+      background: #00596b;
+
+      &-item {
+        width: 20%;
+        min-width: 300px;
+        margin-bottom: 20px;
+
+        img {
+          width: 100%;
+          height: 200px;
+          min-width: 300px;
+          border: solid 5px transparent;
+
+          &:hover {
+            width: 100%;
+            height: 200px;
+            min-width: 300px;
+            border: solid 5px $lightgreen;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}
+
+.active {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  background: #000000d9;
+  z-index: 999;
+  opacity: 1;
+}
+
+.hiddeStatus {
+  padding: 0;
+  height: 0;
+}
